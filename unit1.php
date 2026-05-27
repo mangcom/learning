@@ -17,7 +17,10 @@
 
     <div class="page-header">
         <div class="container">
-            <a href="index.php" class="back-link">⬅ กลับสู่หน้าหลักวิชา</a>
+            <a href="index.php" class="back-link">
+                <span class="arrow-icon">⬅</span>
+                <span>กลับสู่หน้าหลักวิชา</span>
+            </a>
             <h2>หน่วยที่ 1: Introduction to Back-End Development</h2>
             <p>สัปดาห์ที่ 1 | เวลาเรียน 5 ชั่วโมง (ทฤษฎี 1 ชม. ปฏิบัติ 4 ชม.)</p>
         </div>
@@ -65,7 +68,7 @@
 
                 <h4 class="topic-title">เรื่องที่ 1.1: ความแตกต่างระหว่าง Front-End และ Back-End</h4>
                 <p>
-                    ในระบบเว็บแอปพลิเคชันยุคปัจจุบัน การทำงานจะถูกแยกออกเป็นสองส่วนเพื่อความเป็นอิสระในการพัฒนาและการสเกลระบบ (Decoupled Architecture)
+                    In ระบบเว็บแอปพลิเคชันยุคปัจจุบัน การทำงานจะถูกแยกออกเป็นสองส่วนเพื่อความเป็นอิสระในการพัฒนาและการสเกลระบบ (Decoupled Architecture)
                 </p>
                 <table class="grading-table" style="margin: 15px 0;">
                     <tr style="background:#f1f5f9;">
@@ -95,8 +98,8 @@
                         <figure class="custom-image-box">
                             <img src="assets/images/client-server-diagram.png" alt="แผนภาพแสดงสถาปัตยกรรม Client-Server" class="responsive-img">
                             <figcaption class="image-caption">
-                                <strong>รูปที่ 1.1:</strong> แผนภาพแสดงสถาปัตยกรรม Client-Server และวงจรการสื่อสารผ่านเครือข่ายด้วยโปรโตคอล HTTP
-                                <span class="image-source">🔗 แหล่งอ้างอิงภาพ: ดัดแปลงตามมาตรฐานสากลจาก <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" target="_blank">MDN Web Docs</a></span>
+                                <strong>รูปที่ 1.1:</strong> วงจรการสื่อสารผ่านเครือข่ายด้วยโปรโตคอล HTTP
+                                <span class="image-source">🔗 แหล่งอ้างอิงรูปภาพ: ดัดแปลงตามมาตรฐานสากลจาก <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" target="_blank">MDN Web Docs - HTTP Overview</a></span>
                             </figcaption>
                         </figure>
                     </div>
@@ -125,8 +128,17 @@
                     <div class="step-detail">
                         <strong>ตรวจสอบการติดตั้ง Node.js และ npm ภายในเครื่อง</strong>
                         <p>เปิด Terminal (PowerShell) ในโปรแกรม VS Code แล้วพิมพ์คำสั่งเช็กเวอร์ชัน:</p>
+
                         <div class="code-window">
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                            <div class="code-header">
+                                <span class="code-lang">PowerShell</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
                             <pre>node -v
 npm -v</pre>
                         </div>
@@ -138,7 +150,7 @@ npm -v</pre>
                             <div class="image-container">
                                 <div>
                                     <figure class="custom-image-box">
-                                        <img src="assets/images/PSSecurityExceptionError.png" alt="หน้าจอแสดงข้อผิดพลาดการทำงานของสคริปต์" class="responsive-img">
+                                        <img src="assets/images/PSSecurityExceptionError.png" alt="Windows PowerShell Execution Policy Error" class="responsive-img">
                                         <figcaption class="image-caption">
                                             <strong>รูปที่ 1.2:</strong> หน้าจอแสดงข้อผิดพลาดสิทธิ์การรันสคริปต์บน Windows PowerShell
                                             <span class="image-source">🔗 แหล่งอ้างอิงภาพ: ถ่ายจากหน้าจอการทำงานจริง</span>
@@ -148,9 +160,22 @@ npm -v</pre>
                             </div>
 
                             <strong>🛠️ วิธีแก้ไข (ทำเพียงครั้งเดียว):</strong>
+                            <p>ให้คัดลอก (Copy) คำสั่งด้านล่างนี้ไปวางใน Terminal แล้วกด Enter:</p>
+
+                            <div class="code-window">
+                                <div class="code-header">
+                                    <span class="code-lang">PowerShell</span>
+                                    <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <pre>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</pre>
+                            </div>
+
                             <ol style="margin-left: 20px; margin-top: 5px;">
-                                <li>ให้คัดลอก (Copy) คำสั่งด้านล่างนี้ไปวางใน Terminal แล้วกด Enter:</li>
-                                <pre style="background-color: #7f1d1d; color: #fecaca;">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</pre>
                                 <li>ระบบจะถามเพื่อยืนยัน ให้พิมพ์ <kbd>Y</kbd> แล้วกด Enter</li>
                                 <li>ลองพิมพ์คำสั่ง <code>npm -v</code> อีกครั้ง จะสามารถใช้งานได้ตามปกติครับ!</li>
                             </ol>
@@ -158,9 +183,9 @@ npm -v</pre>
                             <div class="image-container">
                                 <div>
                                     <figure class="custom-image-box">
-                                        <img src="assets/images/node-npm-v.png" alt="การเช็คเวอร์ชัน Node.js และ npm" class="responsive-img">
+                                        <img src="assets/images/node-npm-v.png" alt="Node.js and npm Version Check" class="responsive-img">
                                         <figcaption class="image-caption">
-                                            <strong>รูปที่ 1.3:</strong> หน้าจอแสดงการตรวจสอบเวอร์ชันของ Node.js และ npm หลังแก้ไขสิทธิ์สำเร็จ
+                                            <strong>รูปที่ 1.3:</strong> ตรวจสอบเวอร์ชันสำเร็จหลังปลดล็อกระบบความปลอดภัยของ Windows
                                             <span class="image-source">🔗 แหล่งอ้างอิงภาพ: ถ่ายจากหน้าจอการทำงานจริง</span>
                                         </figcaption>
                                     </figure>
@@ -175,22 +200,29 @@ npm -v</pre>
                     <div class="step-detail">
                         <strong>การเริ่มสร้างโปรเจกต์และติดตั้ง Express Framework</strong>
                         <p>เมื่อแก้ระบบสิทธิ์การรันสคริปต์เรียบร้อยแล้ว ให้เริ่มสร้างโฟลเดอร์งานและขึ้นระบบด้วยคำสั่ง:</p>
+
                         <div class="code-window">
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                            <pre>
-mkdir backend-unit1
+                            <div class="code-header">
+                                <span class="code-lang">PowerShell</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>mkdir backend-unit1
 cd backend-unit1
 npm init -y
 npm install express</pre>
                         </div>
 
-
                         <div class="image-container">
                             <div>
                                 <figure class="custom-image-box">
-                                    <img src="assets/images/npm-init-i-express.png" alt="การติดตั้งแพ็กเกจด้วย npm" class="responsive-img">
+                                    <img src="assets/images/npm-init-i-express.png" alt="npm init and npm install express" class="responsive-img">
                                     <figcaption class="image-caption">
-                                        <strong>รูปที่ 1.4:</strong> หน้าจอแสดงการใช้คำสั่งเริ่มต้นโปรเจกต์และติดตั้งไลบรารี Express
+                                        <strong>รูปที่ 1.4:</strong> หน้าจอแสดงผลลัพธ์การรันคำสั่งเริ่มใช้งานโปรเจกต์ (npm init) และติดตั้ง Express
                                         <span class="image-source">🔗 แหล่งอ้างอิงภาพ: ถ่ายจากหน้าจอการทำงานจริง</span>
                                     </figcaption>
                                 </figure>
@@ -204,10 +236,18 @@ npm install express</pre>
                     <div class="step-detail">
                         <strong>การเขียนโค้ดสร้างเซิร์ฟเวอร์หลัก</strong>
                         <p>สร้างไฟล์ชื่อ <code>server.js</code> ด้วยโปรแกรม VS Code แล้วเขียนโค้ดโปรแกรมดังต่อไปนี้:</p>
+
                         <div class="code-window">
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                            <pre>
-// นำเข้าโมดูล Express
+                            <div class="code-header">
+                                <span class="code-lang">Node.js</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>// นำเข้าโมดูล Express
 const express = require('express');
 const app = express();
 const PORT = 3000;
@@ -223,13 +263,12 @@ app.listen(PORT, () => {
 });</pre>
                         </div>
 
-
                         <div class="image-container">
                             <div>
                                 <figure class="custom-image-box">
-                                    <img src="assets/images/u1-node-server.png" alt="ตัวอย่างการเขียนโค้ด server.js" class="responsive-img">
+                                    <img src="assets/images/u1-node-server.png" alt="Sample server.js code" class="responsive-img">
                                     <figcaption class="image-caption">
-                                        <strong>รูปที่ 1.5:</strong> หน้าจอแสดงตัวอย่างการเขียนโค้ดเปิดใช้งานเซิร์ฟเวอร์ในไฟล์ server.js
+                                        <strong>รูปที่ 1.5:</strong> การสร้างสถาปัตยกรรมไฟล์เซิร์ฟเวอร์หลักเบื้องต้นใน server.js
                                         <span class="image-source">🔗 แหล่งอ้างอิงภาพ: ถ่ายจากหน้าจอการทำงานจริง</span>
                                     </figcaption>
                                 </figure>
@@ -242,32 +281,45 @@ app.listen(PORT, () => {
                     <div class="step-num">ขั้นตอนที่ 4</div>
                     <div class="step-detail">
                         <strong>การรันและการทดสอบระบบด้วย Postman</strong>
-                        <p>1. พิมพ์คำสั่งรันใน Terminal: <code>node server.js</code></p>
+                        <p>1. พิมพ์คำสั่งรันใน Terminal เพื่อเปิดเซิร์ฟเวอร์:</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">PowerShell</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>node server.js</pre>
+                        </div>
                         <p>2. เปิดแอปพลิเคชัน <strong>Postman</strong> เลือก Method <code>GET</code> กรอก URL <code>http://localhost:3000</code> แล้วกดปุ่ม <strong>Send</strong></p>
                     </div>
-                </div>
 
-                <div class="image-container">
-                    <div>
-                        <figure class="custom-image-box">
-                            <img src="assets/images/localhost-3000.png" alt="ทดสอบเปิดระบบผ่านเบราว์เซอร์" class="responsive-img">
-                            <figcaption class="image-caption">
-                                <strong>รูปที่ 1.6:</strong> หน้าจอแสดงการเข้าสู่เว็บไซต์ผ่านเบราว์เซอร์ที่ http://localhost:3000
-                                <span class="image-source">🔗 แหล่งอ้างอิงภาพ: ถ่ายจากหน้าจอการทำงานจริง</span>
-                            </figcaption>
-                        </figure>
+
+                    <div class="image-container">
+                        <div>
+                            <figure class="custom-image-box">
+                                <img src="assets/images/localhost-3000.png" alt="Localhost 3000 Screenshot" class="responsive-img">
+                                <figcaption class="image-caption">
+                                    <strong>รูปที่ 1.6:</strong> หน้าจอแสดงการเข้าสู่ระบบผ่าน Web Browser ทั่วไปที่ http://localhost:3000
+                                    <span class="image-source">🔗 แหล่งอ้างอิงภาพ: ถ่ายจากหน้าจอการทำงานจริง</span>
+                                </figcaption>
+                            </figure>
+                        </div>
                     </div>
-                </div>
 
-                <div class="image-container">
-                    <div>
-                        <figure class="custom-image-box">
-                            <img src="assets/images/postman-localhost-3000.png" alt="ทดสอบยิง Request ผ่านโปรแกรม Postman" class="responsive-img">
-                            <figcaption class="image-caption">
-                                <strong>รูปที่ 1.7:</strong> หน้าจอแสดงผลลัพธ์การทดสอบยิง Request และรับค่า HTTP Status 200 OK ผ่านโปรแกรม Postman
-                                <span class="image-source">🔗 แหล่งอ้างอิงภาพ: ถ่ายจากหน้าจอการทำงานจริง</span>
-                            </figcaption>
-                        </figure>
+                    <div class="image-container">
+                        <div>
+                            <figure class="custom-image-box">
+                                <img src="assets/images/postman-localhost-3000.png" alt="Postman Response Screenshot" class="responsive-img">
+                                <figcaption class="image-caption">
+                                    <strong>รูปที่ 1.7:</strong> ผลลัพธ์การยิงทดสอบระบบ API และการตอบกลับสถานะ HTTP Status 200 OK ภายในแอปพลิเคชัน Postman
+                                    <span class="image-source">🔗 แหล่งอ้างอิงภาพ: ถ่ายจากหน้าจอการทำงานจริง</span>
+                                </figcaption>
+                            </figure>
+                        </div>
                     </div>
                 </div>
             </section>
