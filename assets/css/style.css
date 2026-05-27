@@ -1,0 +1,793 @@
+/* style.css */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #0f172a;
+  --text-dark: #334155;
+  --bg-light: #f8fafc;
+  --white: #ffffff;
+  --accent: #10b981;
+  --navbar-height: 70px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Sarabun", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding-top: var(--navbar-height); /* ป้องกันเนื้อหาโดน Navbar ทับ */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ─── Navigation Bar Style ─── */
+.navbar {
+  background-color: var(--secondary);
+  height: var(--navbar-height);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-logo {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.code-badge {
+  background-color: var(--primary);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--white);
+}
+
+/* Hamburger Menu Button */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--white);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* ─── Hero Section ─── */
+.hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+  color: var(--white);
+  padding: 50px 0;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.hero p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+/* ─── Main Content Grid ─── */
+main {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+/* 10 Units Layout */
+.unit-list {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.unit-list h3 {
+  margin-bottom: 20px;
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+}
+
+details {
+  background-color: var(--bg-light);
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+summary {
+  padding: 15px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #edf2f7;
+}
+
+summary::after {
+  content: "➕";
+  font-size: 0.8rem;
+}
+details[open] summary::after {
+  content: "➖";
+}
+details[open] summary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.unit-content {
+  padding: 20px;
+  background-color: var(--white);
+}
+.unit-content ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+pre {
+  background-color: #1e293b;
+  color: #f8fafc;
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: monospace;
+  margin-top: 10px;
+}
+
+/* Sidebar Layout */
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.sidebar-card {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+.sidebar-card h4 {
+  margin-bottom: 15px;
+  color: var(--secondary);
+  border-left: 4px solid var(--primary);
+  padding-left: 10px;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  text-align: center;
+}
+.tech-item {
+  background: var(--bg-light);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.grading-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.grading-table td,
+.grading-table th {
+  padding: 8px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+/* ─── 📱 Responsive Breakpoints ─── */
+@media (max-width: 968px) {
+  main {
+    grid-template-columns: 1fr;
+  } /* หน้าจอเล็กยุบเหลือ 1 คอลัมน์ */
+
+  .menu-toggle {
+    display: flex;
+  } /* แสดงปุ่มแฮมเบอร์เกอร์ */
+
+  .nav-menu {
+    position: absolute;
+    top: var(--navbar-height);
+    left: -100%;
+    flex-direction: column;
+    background-color: var(--secondary);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    gap: 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  } /* สไลด์เมนูออกมาเมื่อกดปุ่ม */
+
+  .nav-menu li {
+    width: 100%;
+  }
+  .nav-link {
+    display: block;
+    padding: 20px;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  /* Animation สำหรับปุ่มแฮมเบอร์เกอร์เมื่อถูกเปิด */
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+/* style.css */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #0f172a;
+  --text-dark: #334155;
+  --bg-light: #f8fafc;
+  --white: #ffffff;
+  --accent: #10b981;
+  --navbar-height: 70px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Sarabun", sans-serif;
+  scroll-behavior: smooth;
+}
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding-top: var(--navbar-height);
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ─── Navbar ─── */
+.navbar {
+  background-color: var(--secondary);
+  height: var(--navbar-height);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.nav-logo {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.code-badge {
+  background-color: var(--primary);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-right: 5px;
+}
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+.nav-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.nav-link:hover {
+  color: var(--white);
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.menu-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--white);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ─── Hero ─── */
+.hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+  color: var(--white);
+  padding: 40px 0;
+  text-align: center;
+}
+.hero h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+/* ─── Main Grid Layout (index.php) ─── */
+main {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 30px;
+  margin: 30px 0;
+}
+.content-area h3 {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Unit Grid & Cards */
+.unit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.unit-card {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.3s;
+}
+.unit-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  border-color: var(--primary);
+}
+.active-card {
+  border-left: 5px solid var(--primary);
+}
+.unit-badge {
+  background-color: #dbeafe;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 12px;
+  width: max-content;
+  margin-bottom: 10px;
+}
+.unit-badge.muted {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+.unit-card h4 {
+  margin-bottom: 8px;
+  color: var(--secondary);
+}
+.unit-card p {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 15px;
+}
+.btn-read {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* Sidebar */
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.sidebar-card {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+.sidebar-card h4 {
+  margin-bottom: 12px;
+  border-left: 3px solid var(--primary);
+  padding-left: 8px;
+}
+.grading-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.grading-table td {
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* ─── Single Page Layout (unit1.php) ─── */
+.page-header {
+  background-color: #f1f5f9;
+  padding: 30px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.single-layout {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 12px;
+  margin: 30px 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+.lesson-section {
+  margin-bottom: 40px;
+}
+.lesson-section h3 {
+  color: var(--secondary);
+  margin-bottom: 15px;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 5px;
+}
+.lesson-section h4 {
+  margin: 15px 0 5px 0;
+  color: #1e293b;
+}
+.analogy-box {
+  background-color: #f8fafc;
+  border-left: 4px solid var(--accent);
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9rem;
+}
+pre {
+  background-color: #1e293b;
+  color: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: monospace;
+  margin: 15px 0;
+  font-size: 0.9rem;
+}
+.inline-code {
+  background-color: #e2e8f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #e11d48;
+}
+.assignment-box {
+  background-color: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-left: 5px solid #d97706;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  .unit-grid {
+    grid-template-columns: 1fr;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-menu {
+    position: absolute;
+    top: var(--navbar-height);
+    left: -100%;
+    flex-direction: column;
+    background-color: var(--secondary);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    gap: 0;
+  }
+  .nav-menu.active {
+    left: 0;
+  }
+  .nav-link {
+    display: block;
+    padding: 15px;
+    border-bottom: 1px solid #1e293b;
+  }
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* สไตล์ควบคุมขนาดรูปภาพให้พอเหมาะและยืดหยุ่น (Responsive Image) */
+.img-wrapper {
+  max-width: 650px;
+  margin: 20px auto;
+  padding: 10px;
+  background: var(--white);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+  /* ✨ จัดกึ่งกลางด้วยวิธีปกติ แทนการใช้ Flexbox เพื่อไม่ให้ภาพโดนดึงขยาย */
+  text-align: center;
+}
+
+.responsive-img {
+  /* ✨ ใช้ max-width คู่กับ width: auto */
+  max-width: 100%; /* ถ้ารูปใหญ่เกิน 650px ให้บีบลงมาพอดีกล่อง */
+  width: auto; /* ถ้ารูปเล็ก (เช่น 400px) ให้คงขนาดจริง 400px เอาไว้ ไม่ขยายเพิ่ม */
+  height: auto; /* รักษาอัตราส่วนภาพ */
+  display: inline-block; /* ทำงานร่วมกับ text-align: center เพื่อจัดกึ่งกลาง */
+  border-radius: 6px;
+}
+
+/* ─── กล่องครอบภาพและคำอธิบาย (Figure) ─── */
+.custom-image-box {
+  max-width: 650px; /* จำกัดความกว้างสูงสุดไม่ให้รูปใหญ่ล้นจอคอมพิวเตอร์ */
+  margin: 25px auto; /* มาร์จินบน-ล่าง 25px และ auto ซ้าย-ขวา เพื่อจัดกึ่งกลางหน้าจอ */
+  padding: 12px;
+  background-color: var(--white);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  text-align: center; /* สั่งให้เนื้อหาทั้งหมด (ภาพและตัวอักษร) จัดอยู่กึ่งกลาง */
+}
+
+/* ─── ตัวรูปภาพภายในกล่อง ─── */
+.custom-image-box .responsive-img {
+  max-width: 100%; /* ถ้ารูปใหญ่เกิน 650px ให้บีบลงมาพอดีกล่อง */
+  width: auto; /* ถ้ารูปเล็ก (เช่น 400px) ให้แสดง 400px เท่าขนาดจริง ไม่ขยายให้แตก */
+  height: auto; /* รักษาอัตราส่วนภาพไม่ให้บิดเบี้ยว */
+  display: inline-block; /* ทำงานร่วมกับ text-align: center เพื่อจัดกึ่งกลางภาพ */
+  border-radius: 6px;
+}
+
+/* ─── ส่วนคำอธิบายใต้ภาพ (Figcaption) ─── */
+.image-caption {
+  margin-top: 12px; /* เว้นระยะห่างระหว่างใต้รูปภาพกับตัวอักษร */
+  font-size: 0.85rem; /* ปรับขนาดตัวอักษรคำอธิบายให้เล็กกว่าเนื้อหาหลักเล็กน้อย */
+  color: #475569; /* ใช้สีเทาเข้มเพื่อให้สบายตา */
+  line-height: 1.5;
+}
+
+/* ─── แหล่งที่มาของภาพ (ถ้ามี) ─── */
+.image-source {
+  display: block; /* บังคับให้ขึ้นบรรทัดใหม่ */
+  font-size: 0.75rem; /* ขนาดตัวอักษรเล็กพิเศษ */
+  color: #94a3b8; /* สีเทาจาง */
+  margin-top: 4px;
+}
+.image-source a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* กล่องแจ้งเตือนข้อผิดพลาดและการแก้ไขระบบ (Troubleshooting) */
+.error-alert-box {
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+  border-left: 5px solid #ef4444;
+  padding: 18px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #991b1b;
+}
+.error-title {
+  font-weight: bold;
+  color: #dc2626;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+.error-alert-box kbd {
+  background: #e2e8f0;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-weight: bold;
+  color: #334155;
+}
+
+/* ─── Code Window & Header Bar (รูปแบบใหม่) ─── */
+.code-window {
+  background-color: #1a1a1a; /* สีพื้นหลังกล่องโค้ด (ดำด้าน) */
+  border-radius: 10px; /* ขอบมนแบบในรูป */
+  margin: 15px 0;
+  overflow: hidden; /* เพื่อให้มุมมนตัดกับ Header พอดี */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  border: 1px solid #2d2d2d;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #242424; /* สีแถบด้านบน (เทาเข้ม) */
+  padding: 10px 16px;
+  border-bottom: 1px solid #333;
+}
+
+.code-lang {
+  color: #e5e5e5;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase; /* บังคับตัวพิมพ์ใหญ่ */
+  letter-spacing: 0.5px;
+}
+
+.copy-icon-btn {
+  background: transparent;
+  border: none;
+  color: #a3a3a3; /* สีไอคอนปกติ */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.copy-icon-btn:hover {
+  color: #ffffff; /* hover แล้วไอคอนสว่างขึ้น */
+  background-color: #3b3b3b; /* มีพื้นหลังจางๆ รองรับการกด */
+}
+
+.code-window pre {
+  margin: 0;
+  padding: 16px; /* ปรับลด Padding เพราะมีแถบด้านบนแล้ว */
+  overflow-x: auto;
+  color: #e2e8f0;
+  font-family: "Consolas", "Courier New", monospace; /* ฟอนต์สไตล์โค้ด */
+  font-size: 0.9rem;
+  background: transparent;
+}
+
+/* ─── เพิ่มเติมต่อท้ายจากของเดิม ─── */
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #242424;
+  padding: 10px 16px;
+  border-bottom: 1px solid #333;
+  /* 💡 ใส่เพื่อให้ข้อความและปุ่มเรียงกันในฝั่งขวาอย่างสวยงาม */
+  position: relative;
+}
+
+/* ข้อความแสดงสถานะคัดลอกสำเร็จ */
+.copy-toast {
+  color: #10b981; /* ตัวอักษรสีเขียวบ่งบอกว่าสำเร็จ */
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-right: 10px; /* เว้นระยะห่างจากปุ่มไอคอน */
+  display: inline-block;
+  vertical-align: middle;
+  /* 🎬 เรียกใช้ Animation: ทำงาน 1 วินาที, สมูทหัวท้าย, แสดงค้างที่เฟรมสุดท้าย (forwards) */
+  animation: fadeOutToast 1s ease-in-out forwards;
+}
+
+/* 🎬 แอนิเมชันควบคุมการจางหายใน 1 วินาที */
+@keyframes fadeOutToast {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateX(5px); /* เลื่อนเข้ามาและขยายเล็กน้อย */
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1) translateX(0); /* แสดงชัดเจน 100% */
+  }
+  75% {
+    opacity: 1; /* คงความชัดเจนไว้จนถึงช่วงท้าย */
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95) translateX(-5px); /* ค่อยๆ หดและเลื่อนจางหายไป */
+  }
+}
