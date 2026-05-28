@@ -11,6 +11,7 @@
         </button>
 
         <ul class="nav-menu" id="nav-menu-list">
+            <li><a href="../index.php" class="nav-link">🏠 หน้าหลัก</a></li>
             <li><a href="index.php" class="nav-link">🏠 หน้าแรก</a></li>
             <li><a href="index.php#syllabus" class="nav-link">📚 หน่วยการเรียน</a></li>
             <li><a href="index.php#grading" class="nav-link">📊 เกณฑ์คะแนน</a></li>
