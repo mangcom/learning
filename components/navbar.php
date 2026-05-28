@@ -22,17 +22,18 @@ if (!isset($active_nav)) {
                 </a>
             </li>
             <li>
-                <a href="<?php echo $base_dir; ?>backend/index.php"
-                    style="color: <?php echo ($active_nav == 'backend') ? '#3b82f6' : '#94a3b8'; ?>; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s;">
-                    💻 วิชา Back-End
-                </a>
-            </li>
-            <li>
                 <a href="<?php echo $base_dir; ?>server/index.php"
                     style="color: <?php echo ($active_nav == 'server') ? '#3b82f6' : '#94a3b8'; ?>; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s;">
                     🖥️ วิชา Server Linux
                 </a>
             </li>
+            <li>
+                <a href="<?php echo $base_dir; ?>backend/index.php"
+                    style="color: <?php echo ($active_nav == 'backend') ? '#3b82f6' : '#94a3b8'; ?>; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s;">
+                    💻 วิชา Back-End
+                </a>
+            </li>
+
         </ul>
 
     </div>
