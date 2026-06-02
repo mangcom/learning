@@ -18,18 +18,23 @@ if (!isset($active_nav)) {
         display: inline-block;
     }
 
-    /* สไตล์กล่องรายการวิชาที่จะคลี่ลงมา (ซ่อนไว้เริ่มต้น) */
+    /* สไตล์กล่องรายการวิชาที่จะคลี่ลงมา */
     .dropdown-course-list {
         display: none;
         position: absolute;
         top: 100%;
-        left: 0;
+        right: 0;
+        /* เปลี่ยนจาก left: 0 เป็น right: 0 เพื่อให้เมนูกางไปทางซ้าย ไม่หลุดขอบจอขวา */
         background-color: #0f172a;
-        min-width: 320px;
+        width: max-content;
+        /* ปรับความกว้างอัตโนมัติตามขนาดข้อความที่ยาวที่สุด */
+        min-width: 380px;
+        /* กำหนดขนาดความกว้างขั้นต่ำไว้ */
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
         border: 1px solid #1e293b;
         border-top: 3px solid #2563eb;
-        border-radius: 0 0 8px 8px;
+        border-radius: 8px 0 8px 8px;
+        /* ปรับส่วนโค้งมนให้รับกับมุมขวา */
         padding: 8px 0;
         margin: 0;
         list-style: none;
@@ -39,11 +44,14 @@ if (!isset($active_nav)) {
     /* รายการย่อยแต่ละตัวใน List */
     .dropdown-course-list li a {
         display: block;
-        padding: 10px 20px !important;
+        padding: 12px 24px !important;
+        /* เพิ่มพื้นที่กดและระยะห่างซ้ายขวา */
         color: #94a3b8 !important;
-        font-size: 0.9rem !important;
+        font-size: 0.95rem !important;
         font-weight: 500 !important;
         text-decoration: none;
+        white-space: nowrap;
+        /* บังคับข้อความให้อยู่บรรทัดเดียว ไม่ตัดคำล้นบรรทัด */
         transition: all 0.2s ease;
     }
 
@@ -51,8 +59,8 @@ if (!isset($active_nav)) {
     .dropdown-course-list li a:hover {
         background-color: #1e293b;
         color: #fff !important;
-        padding-left: 25px !important;
-        /* ดันตัวหนังสือไปขวาเล็กน้อยเพิ่มมิติ */
+        padding-left: 30px !important;
+        /* ขยับตัวอักษรไปทางขวาเล็กน้อยเมื่อ hover */
     }
 
     /* สั่งให้คลี่กล่องเมนูออกมาเมื่อมีการ Hover ที่ปุ่มเมนูหลัก */
@@ -64,7 +72,7 @@ if (!isset($active_nav)) {
     .arrow-down {
         display: inline-block;
         font-size: 0.75rem;
-        margin-left: 3px;
+        margin-left: 5px;
         transition: transform 0.2s;
     }
 
@@ -78,7 +86,7 @@ if (!isset($active_nav)) {
     <div class="container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
 
         <a href="<?php echo $base_dir; ?>index.php" style="color: #fff; text-decoration: none; font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
-            🎓ระบบจัดการแผนการเรียนรู้ <span style="font-size: 0.85rem; background: #2563eb; padding: 2px 8px; border-radius: 4px; font-weight: 400;">ปวส. IT</span>
+            🎓ระบบจัดการแผนการเรียนรู้ <span style="font-size: 0.85rem; background: #2563eb; padding: 2px 8px; border-radius: 4px; font-weight: 400;">ปวช./ปวส. IT</span>
         </a>
 
         <ul style="list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; align-items: center;">
@@ -119,6 +127,11 @@ if (!isset($active_nav)) {
                     <li>
                         <a href="<?php echo $base_dir; ?>devops/index.php" style="<?php echo ($active_nav == 'devops') ? 'color: #fff !important; font-weight: bold;' : ''; ?>">
                             ♾️ การพัฒนาซอฟต์แวร์รูปแบบเดฟออฟส์
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $base_dir; ?>git/index.php" style="<?php echo ($active_nav == 'git') ? 'color: #fff !important; font-weight: bold;' : ''; ?>">
+                            🔀 การพัฒนาระบบร่วมกันด้วยแพลตฟอร์ม
                         </a>
                     </li>
                 </ul>

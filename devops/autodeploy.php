@@ -207,6 +207,7 @@ $active_nav = "devops"; // ไฮไลต์เมนูวิชา DevOps
                         <p style="font-size: 0.95rem; margin: 5px 0;">ไปที่หน้าเว็บ Repository ➔ <strong>Settings</strong> ➔ <strong>Secrets and variables</strong> ➔ <strong>Actions</strong> เพิ่มตัวแปรความลับดังต่อไปนี้:</p>
                         <ul style="padding-left: 20px; line-height: 1.6; font-size: 0.95rem;">
                             <li><code>SERVER_HOST</code> = ใส่เลข IP Address ของ Ubuntu Server</li>
+                            <li><code>SERVER_PORT</code> = ใส่หมายเลข Port ของ Ubuntu Server เช่น 22
                             <li><code>SERVER_USER</code> = ชื่อบัญชีผู้ใช้งาน (เช่น `ubuntu` หรือ `root`)</li>
                             <li><code>SERVER_SSH_KEY</code> = วางข้อความรหัส Private Key ที่ก๊อปปี้มาจาก Phase 9 ทั้งหมด</li>
                         </ul>
@@ -229,6 +230,7 @@ $active_nav = "devops"; // ไฮไลต์เมนูวิชา DevOps
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c792ea;">uses:</span> appleboy/ssh-action@v1.2.0<br>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c792ea;">with:</span><br>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c792ea;">host:</span> ${{ secrets.SERVER_HOST }}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c792ea;">port:</span> ${{ secrets.SERVER_PORT }}<br>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c792ea;">username:</span> ${{ secrets.SERVER_USER }}<br>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c792ea;">key:</span> ${{ secrets.SERVER_SSH_KEY }}<br>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c792ea;">script:</span> |<br>
