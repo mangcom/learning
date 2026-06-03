@@ -217,6 +217,9 @@ $active_nav = "devops"; // ไฮไลต์เมนูที่วิชา D
                     <a href="autodeploy.php" style="display: inline-block; background: #0284c7; color: #fff; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-size: 0.9rem; font-weight: 600; transition: background 0.2s;" onmouseover="this.style.background='#0369a1'" onmouseout="this.style.background='#0284c7'">
                         เปิดบทเรียนเสริม: PHP Traditional Auto Deploy ➔
                     </a>
+                    <a href="autodeploy_private.php" style="display: inline-block; background: #0284c7; color: #fff; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-size: 0.9rem; font-weight: 600; transition: background 0.2s;" onmouseover="this.style.background='#0369a1'" onmouseout="this.style.background='#0284c7'">
+                        เปิดบทเรียนเสริม: PHP Traditional Auto Deploy ➔
+                    </a>
                 </div>
             </aside>
         </main>
