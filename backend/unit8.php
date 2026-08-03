@@ -291,6 +291,35 @@ app.listen(4000, () => console.log('🚀 Auth Server รันแล้วที
                 </ul>
             </section>
 
+            <hr style="margin: 40px 0; border: 0; border-top: 1px dashed #cbd5e1;">
+            <section class="lesson-section">
+                <h3>JWT-AUTH-LAB Docker Lab</h3>
+                <p>ตัวอย่างไฟล์ กรณีศึกษา Register Login RBAC
+                    <span>🔗 ตัวอย่าง Code รูปแบบ Docker <a href="assets/lab/jwt-auth-lab.zip" target="_blank">Download jwt-auth-lab.zip</a></span>
+                </p>
+                <div class="image-container">
+                    <div>
+                        <figure class="custom-image-box">
+                            <img src="assets/images/Readme.png" alt="Readme" class="responsive-img">
+                            <figcaption class="image-caption">
+                                <strong>รูปที่ 8.1:</strong> สรุปไฟล์ README.MD
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <div>
+                        <figure class="custom-image-box">
+                            <img src="assets/images/Manual.png" alt="Manual" class="responsive-img">
+                            <figcaption class="image-caption">
+                                <strong>รูปที่ 8.2:</strong> สรุปไฟล์ Manual.MD
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+            </section>
+
         </div>
     </div>
 
