@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สไลด์สอน หน่วยที่ 1: สถาปัตยกรรม Front-End ยุคใหม่ด้วย Next.js และ Git</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #2563eb;
+        --secondary: #0f172a;
+        --accent: #16a34a;
+        --bg: #0f172a;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        font-family: 'Sarabun', sans-serif;
+        background: var(--bg);
+        color: #0f172a;
+        overflow: hidden;
+    }
+    .deck { position: relative; width: 100vw; height: 100vh; }
+    .slide {
+        position: absolute; inset: 0;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        padding: 6vh 8vw;
+        background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+    }
+    .slide.active { display: flex; }
+    .slide h1 { font-size: 3rem; color: var(--secondary); margin: 0 0 20px 0; }
+    .slide h2 { font-size: 2.2rem; color: var(--primary); margin: 0 0 24px 0; border-left: 8px solid var(--primary); padding-left: 16px; }
+    .slide p, .slide li { font-size: 1.4rem; color: #334155; line-height: 1.6; }
+    .slide ul { margin: 0; padding-left: 1.4em; }
+    .slide li { margin-bottom: 10px; }
+    .badge { display: inline-block; background: var(--primary); color: #fff; padding: 6px 18px; border-radius: 20px; font-weight: 700; font-size: 1rem; margin-bottom: 20px; width: fit-content; }
+    .title-slide { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); align-items: center; text-align: center; }
+    .title-slide h1 { color: #fff; font-size: 2.8rem; max-width: 900px; }
+    .title-slide p { color: #93c5fd; font-size: 1.3rem; }
+    .code-slide pre { background: #0f172a; color: #e2e8f0; padding: 24px; border-radius: 12px; font-size: 1.3rem; overflow-x: auto; font-family: 'Consolas', monospace; line-height: 1.6; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
+    .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    .card h3 { margin: 0 0 10px 0; color: var(--secondary); font-size: 1.3rem; }
+    table.cmp { width: 100%; border-collapse: collapse; font-size: 1.2rem; }
+    table.cmp th, table.cmp td { border: 1px solid #e2e8f0; padding: 10px 14px; text-align: left; }
+    table.cmp th { background: var(--secondary); color: #fff; }
+    .step-flow { display: flex; gap: 14px; flex-wrap: wrap; }
+    .step-chip { background: var(--primary); color:#fff; padding: 14px 20px; border-radius: 10px; font-weight: 700; font-size: 1.1rem; flex: 1; min-width: 160px; text-align:center; }
+    .controls { position: fixed; bottom: 20px; right: 30px; z-index: 50; display: flex; gap: 10px; align-items: center; font-family: sans-serif; }
+    .controls button { background: var(--primary); color: #fff; border: none; width: 46px; height: 46px; border-radius: 50%; font-size: 1.3rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .controls button:hover { background: #1d4ed8; }
+    .counter { background: rgba(255,255,255,0.9); padding: 8px 14px; border-radius: 20px; font-weight: 700; color: var(--secondary); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    .footer-tag { position: absolute; bottom: 20px; left: 8vw; font-size: 0.9rem; color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+    <section class="slide title-slide active">
+        <span class="badge" style="background:#2563eb;">รหัสวิชา 31901-2004</span>
+        <h1>หน่วยที่ 1<br>สถาปัตยกรรม Front-End ยุคใหม่ด้วย Next.js<br>และการควบคุมเวอร์ชันด้วย Git</h1>
+        <p>การพัฒนาซอฟต์แวร์ด้วยเทคโนโลยี Front-End | สัปดาห์ที่ 1 (ทฤษฎี 1 ชม. ปฏิบัติ 4 ชม.)</p>
+    </section>
+
+    <section class="slide">
+        <h2>🎯 จุดประสงค์การเรียนรู้</h2>
+        <div class="two-col">
+            <div class="card"><h3>👩‍🎓 ด้านความรู้ (K)</h3>
+                <ul><li>อธิบายจุดเด่นของ Next.js เทียบกับ React ทั่วไป</li><li>เข้าใจโครงสร้าง App Router และ Git พื้นฐาน</li></ul>
+            </div>
+            <div class="card"><h3>🛠️ ด้านทักษะ (P)</h3>
+                <ul><li>สร้างโปรเจกต์ Next.js ด้วย create-next-app ได้เอง</li><li>ใช้ Git จัดการโปรเจกต์ทั้ง Local และ GitHub ได้</li></ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>📈 วิวัฒนาการของ Front-End</h2>
+        <div class="step-flow">
+            <div class="step-chip" style="background:#64748b;">HTML/CSS ดั้งเดิม</div>
+            <div class="step-chip" style="background:#64748b;">jQuery</div>
+            <div class="step-chip" style="background:#f59e0b;">React (SPA)</div>
+            <div class="step-chip" style="background:#16a34a;">Next.js (Framework)</div>
+        </div>
+        <p style="margin-top:30px;">แต่ละยุคแก้ปัญหาของยุคก่อนหน้า — Next.js แก้ปัญหาเรื่อง SEO, Routing และ Backend ที่ React เพียงอย่างเดียวทำได้ยาก</p>
+    </section>
+
+    <section class="slide">
+        <h2>⚖️ React (CRA) vs Next.js</h2>
+        <table class="cmp">
+            <tr><th>คุณสมบัติ</th><th>React (CRA/Vite)</th><th>Next.js</th></tr>
+            <tr><td>Routing</td><td>ต้องติดตั้งเพิ่มเอง</td><td>File-based Routing ในตัว</td></tr>
+            <tr><td>Rendering</td><td>CSR เท่านั้น</td><td>SSR / SSG / ISR / CSR</td></tr>
+            <tr><td>Backend</td><td>แยกโปรเจกต์ต่างหาก</td><td>มี API Routes ในตัว</td></tr>
+            <tr><td>SEO</td><td>ทำได้ยาก</td><td>ทำได้ดี</td></tr>
+        </table>
+    </section>
+
+    <section class="slide">
+        <h2>🗂️ โครงสร้าง App Router</h2>
+        <div class="two-col">
+            <div class="card">
+                <h3>ไฟล์สำคัญ</h3>
+                <ul>
+                    <li><code>app/layout.js</code> โครงสร้างหลักร่วมทุกหน้า</li>
+                    <li><code>app/page.js</code> เนื้อหาของแต่ละเส้นทาง</li>
+                    <li><code>app/globals.css</code> สไตล์ส่วนกลาง</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Server vs Client Component</h3>
+                <ul>
+                    <li><strong>Server Component</strong> (ค่าเริ่มต้น) — เบา เร็ว ดึงข้อมูลตรง</li>
+                    <li><strong>Client Component</strong> — ต้องมี <code>"use client"</code> เมื่อใช้ useState/คลิก</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>🔀 พื้นฐาน Git: 3 พื้นที่ทำงาน</h2>
+        <div class="step-flow">
+            <div class="step-chip" style="background:#dc2626;">Working Directory<br><span style="font-size:0.9rem; font-weight:400;">แก้ไขไฟล์</span></div>
+            <div class="step-chip" style="background:#f59e0b;">Staging Area<br><span style="font-size:0.9rem; font-weight:400;">git add</span></div>
+            <div class="step-chip" style="background:#16a34a;">Repository<br><span style="font-size:0.9rem; font-weight:400;">git commit</span></div>
+        </div>
+        <p style="margin-top:30px;">แล้วส่งขึ้น GitHub ด้วย <code>git push</code> เพื่อแชร์งานกับทีม</p>
+    </section>
+
+    <section class="slide code-slide">
+        <h2>🛠️ Live Demo: 4 ขั้นตอนสู่โปรเจกต์แรก</h2>
+        <pre>1) node -v  &amp;&amp;  npm -v
+2) npx create-next-app@latest first-nextjs-app
+3) cd first-nextjs-app  &amp;&amp;  npm run dev
+4) git init  &amp;&amp;  git add .  &amp;&amp;  git commit -m "Initial commit"
+   git remote add origin https://github.com/ชื่อผู้ใช้/first-nextjs-app.git
+   git push -u origin main</pre>
+    </section>
+
+    <section class="slide">
+        <h2>📝 ใบงานที่ 1: โปรเจกต์แรกของฉันบน GitHub</h2>
+        <ul>
+            <li>สร้างโปรเจกต์ Next.js และแก้หน้าแรกให้แสดงชื่อ-นามสกุลตนเอง</li>
+            <li>Commit และ Push ขึ้น GitHub ของตนเอง</li>
+            <li>ส่งลิงก์ Repository พร้อมภาพหน้าจอผลลัพธ์</li>
+        </ul>
+        <p style="margin-top:20px; font-weight:700; color:#d97706;">คะแนนเต็ม 5 คะแนน — ดูเกณฑ์เต็มในหน้าเนื้อหาหน่วยที่ 1</p>
+    </section>
+
+    <section class="slide title-slide">
+        <h1>พร้อมแล้ว!</h1>
+        <p>หน่วยถัดไป: การออกแบบและตกแต่งเว็บด้วย Modern HTML5, CSS3 และ Tailwind CSS</p>
+    </section>
+
+</div>
+
+<div class="controls">
+    <button id="prevBtn">←</button>
+    <span class="counter" id="counter">1 / 10</span>
+    <button id="nextBtn">→</button>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function show(i) {
+        slides[current].classList.remove('active');
+        current = (i + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        document.getElementById('counter').innerText = (current + 1) + ' / ' + slides.length;
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => show(current + 1));
+    document.getElementById('prevBtn').addEventListener('click', () => show(current - 1));
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') show(current + 1);
+        if (e.key === 'ArrowLeft') show(current - 1);
+    });
+</script>
+
+</body>
+</html>
