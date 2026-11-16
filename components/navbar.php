@@ -120,8 +120,8 @@ if (!isset($active_nav)) {
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo $base_dir; ?>network/index.php" style="<?php echo ($active_nav == 'network') ? 'color: #fff !important; font-weight: bold;' : ''; ?>">
-                            🌐 การบริหารจัดการเครือข่าย
+                        <a href="<?php echo $base_dir; ?>database/index.php" style="<?php echo ($active_nav == 'database') ? 'color: #fff !important; font-weight: bold;' : ''; ?>">
+                            🗄️ เทคโนโลยีการจัดการฐานข้อมูล
                         </a>
                     </li>
                     <li>

@@ -61,10 +61,10 @@ $active_nav = "home"; // เปิดสถานะเมนูที่หน�
             <div class="course-main-card" style="background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
                     <span style="background: #f0fdfa; color: #115e59; font-weight: 700; font-size: 0.8rem; padding: 4px 12px; border-radius: 20px;">รหัสวิชา 31901-2007</span>
-                    <h4 style="margin: 15px 0 10px 0; color: #0f172a; font-size: 1.3rem; font-weight: 700;">การบริหารจัดการเครือข่าย</h4>
-                    <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0 0 20px 0;">การวางแผน ออกแบบ และบริหารโครงสร้างเครือข่ายองค์กร (Network Architecture) เรียนรู้กลไก Routing, Switching, การจัดสรร IP/Subnet, ระบบความปลอดภัยเครือข่าย และเครื่องมือมอนิเตอร์ทราฟฟิกสายสัญญาณ</p>
+                    <h4 style="margin: 15px 0 10px 0; color: #0f172a; font-size: 1.3rem; font-weight: 700;">เทคโนโลยีการจัดการฐานข้อมูล</h4>
+                    <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0 0 20px 0;">ศึกษาและปฏิบัติเกี่ยวกับการเลือกใช้เทคโนโลยีจัดการฐานข้อมูล ทั้งรูปแบบ Relational, Non-Relational, Key-value, Document และ In-memory การใช้ View, Stored Procedure, Function, Trigger, Event, Transaction และ Replication</p>
                 </div>
-                <a href="network/index.php" style="display: block; text-align: center; background: #0d9488; color: #fff; text-decoration: none; padding: 12px; border-radius: 6px; font-weight: 600; transition: background 0.2s;">เข้าสู่บทเรียนรายวิชา ➔</a>
+                <a href="database/index.php" style="display: block; text-align: center; background: #0d9488; color: #fff; text-decoration: none; padding: 12px; border-radius: 6px; font-weight: 600; transition: background 0.2s;">เข้าสู่บทเรียนรายวิชา ➔</a>
             </div>
 
             <div class="course-main-card" style="background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); display: flex; flex-direction: column; justify-content: space-between;">
