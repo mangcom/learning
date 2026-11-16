@@ -1,2 +1,5 @@
 downloads/*
 lab/*
+.env
+admin/sync.log
+admin/sync.lock

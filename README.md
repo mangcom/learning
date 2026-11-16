@@ -57,3 +57,25 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server กำลังรันอยู่ที่ http://localhost:${PORT}`);
 });
+```
+
+---
+
+## 🐳 การรันด้วย Docker
+
+1. คัดลอก `.env.example` เป็น `.env` แล้วตั้งค่า `DEPLOY_TOKEN` เป็นค่าสุ่มที่ยาวและคาดเดายาก
+2. สั่งรัน:
+   ```bash
+   docker compose up -d --build
+   ```
+3. เปิดเว็บไซต์ที่ `http://localhost:8080` (หรือพอร์ตที่ตั้งใน `WEB_PORT`)
+
+### แผงควบคุม Sync จาก GitHub
+
+เข้าที่ `http://<host>:8080/admin/` แล้วใส่ `DEPLOY_TOKEN` เพื่อ:
+
+- **🔍 ตรวจสอบอัปเดต (Check)** - `git fetch` เทียบโค้ดในเครื่องกับ GitHub ว่าตามหลังกี่คอมมิต
+- **⬇️ ดึงโค้ดล่าสุด (Pull)** - `git reset --hard origin/<branch>` ให้ตรงกับ GitHub ล่าสุด
+- **⚙️ ล้างแคช / Build** - ล้าง OPcache (เว็บไซต์เป็น PHP ล้วน ไม่มีขั้นตอนคอมไพล์)
+
+> หมายเหตุสำหรับเซิร์ฟเวอร์จริง (Linux): โฟลเดอร์โปรเจกต์ที่ bind mount เข้า container ต้องให้สิทธิ์เขียนกับผู้ใช้ที่ container รันอยู่ (www-data, uid 33) เช่น `chown -R 33:33 .` ไม่เช่นนั้นปุ่ม Pull จะ fetch/reset ไม่สำเร็จ

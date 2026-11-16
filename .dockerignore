@@ -1,0 +1,6 @@
+.git
+.github
+.env
+.env.example
+admin/sync.log
+docker-compose.yml

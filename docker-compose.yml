@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    container_name: learning-web
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    volumes:
+      # Bind-mount the live git checkout so the admin sync panel's "Pull" button
+      # (git fetch/reset against this same folder) is reflected immediately, with no rebuild.
+      - .:/var/www/html
+    environment:
+      - DEPLOY_TOKEN=${DEPLOY_TOKEN:?set DEPLOY_TOKEN in a .env file before starting (see .env.example)}
