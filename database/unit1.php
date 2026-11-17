@@ -228,8 +228,251 @@ db.products.find();</pre>
 
             <hr style="margin: 40px 0; border: 0; border-top: 1px dashed #cbd5e1;">
 
+            <section class="lesson-section">
+                <h3>🧪 5. กรณีศึกษา: การติดตั้งและใช้งาน MongoDB บน Windows พร้อมกระบวนการ CRUD</h3>
+                <p>
+                    กรณีศึกษานี้พานักศึกษาติดตั้ง MongoDB Community Server บนเครื่อง Windows ของตนเอง แล้วฝึกปฏิบัติกระบวนการ <strong>CRUD</strong> (Create, Read, Update, Delete) ให้ครบวงจรผ่าน mongosh ก่อนปิดท้ายด้วยการเขียนโปรแกรมภาษา TypeScript อย่างง่ายเพื่อเชื่อมต่อและดึงข้อมูลมาแสดงผล ซึ่งเป็นรูปแบบการทำงานจริงที่นักพัฒนาระบบใช้เชื่อมแอปพลิเคชันเข้ากับฐานข้อมูล Document
+                </p>
+
+                <div class="step-box">
+                    <div class="step-num">ขั้นตอนที่ 1</div>
+                    <div class="step-detail">
+                        <strong>ติดตั้ง MongoDB Community Server บน Windows</strong>
+                        <ol style="margin-left: 20px;">
+                            <li>ดาวน์โหลดตัวติดตั้งจากเว็บไซต์ทางการ <code class="inline-code">mongodb.com/try/download/community</code> โดยเลือกเวอร์ชัน Windows x64 (ไฟล์ .msi)</li>
+                            <li>เปิดไฟล์ .msi แล้วเลือกรูปแบบการติดตั้งแบบ <strong>Complete</strong> และเลือกติดตั้งเป็น Windows Service (ค่าเริ่มต้น) พร้อมติดตั้ง <strong>MongoDB Compass</strong> (โปรแกรมจัดการฐานข้อมูลแบบกราฟิก) ไปพร้อมกัน</li>
+                            <li>ตรวจสอบว่า Service เริ่มทำงานแล้วด้วย PowerShell</li>
+                        </ol>
+
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">PowerShell</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>Get-Service MongoDB</pre>
+                        </div>
+
+                        <p>จากนั้นเปิดโปรแกรม <strong>mongosh</strong> (MongoDB Shell ที่ติดตั้งมาพร้อมกัน) เพื่อเชื่อมต่อฐานข้อมูลที่เครื่องตนเอง:</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">PowerShell</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>mongosh "mongodb://localhost:27017"</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-num">ขั้นตอนที่ 2</div>
+                    <div class="step-detail">
+                        <strong>สร้างฐานข้อมูลและคอลเลกชัน (Create Database &amp; Collection)</strong>
+                        <p>ใน MongoDB คำว่า <strong>ตาราง</strong> ของฐานข้อมูลเชิงสัมพันธ์เทียบได้กับ <strong>Collection</strong> คำสั่ง <code class="inline-code">use</code> จะสลับไปยังฐานข้อมูลที่ระบุ และ MongoDB จะสร้างฐานข้อมูลนั้นจริงก็ต่อเมื่อมีการบันทึกข้อมูลอย่างน้อย 1 รายการ</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">mongosh</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>use school_db
+
+db.createCollection("students")
+show collections</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-num">ขั้นตอนที่ 3</div>
+                    <div class="step-detail">
+                        <strong>นำข้อมูลเข้า 1 รายการ และหลายรายการ (Create)</strong>
+                        <p>ใช้ <code class="inline-code">insertOne()</code> สำหรับข้อมูล 1 รายการ และ <code class="inline-code">insertMany()</code> สำหรับข้อมูลหลายรายการพร้อมกัน:</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">mongosh</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>// เพิ่มข้อมูล 1 รายการ
+db.students.insertOne({
+    student_id: "6401",
+    name: "สมหญิง ขยันเรียน",
+    major: "เทคโนโลยีสารสนเทศ",
+    gpa: 3.75
+});
+
+// เพิ่มข้อมูลหลายรายการพร้อมกัน
+db.students.insertMany([
+    { student_id: "6402", name: "วรากร ตั้งใจดี", major: "เทคโนโลยีสารสนเทศ", gpa: 3.20 },
+    { student_id: "6403", name: "ปิยะดา เรียนเก่ง", major: "คอมพิวเตอร์ธุรกิจ", gpa: 2.95 },
+    { student_id: "6404", name: "ธนกร สู้งาน", major: "เทคโนโลยีสารสนเทศ", gpa: 3.50 }
+]);</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-num">ขั้นตอนที่ 4</div>
+                    <div class="step-detail">
+                        <strong>ค้นหาข้อมูลทั้งหมด และค้นหาแบบมีเงื่อนไข (Read)</strong>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">mongosh</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>// ค้นหาข้อมูลทั้งหมดในคอลเลกชัน
+db.students.find();
+
+// ค้นหาแบบมีเงื่อนไข: เฉพาะสาขาเทคโนโลยีสารสนเทศ
+db.students.find({ major: "เทคโนโลยีสารสนเทศ" });
+
+// ค้นหาแบบมีเงื่อนไข: เกรดเฉลี่ยตั้งแต่ 3.0 ขึ้นไป
+db.students.find({ gpa: { $gte: 3.0 } });</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-num">ขั้นตอนที่ 5</div>
+                    <div class="step-detail">
+                        <strong>แก้ไขข้อมูล และลบข้อมูล (Update &amp; Delete)</strong>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">mongosh</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>// แก้ไขข้อมูลรายการเดียว
+db.students.updateOne(
+    { student_id: "6402" },
+    { $set: { gpa: 3.40 } }
+);
+
+// แก้ไขข้อมูลหลายรายการที่ตรงเงื่อนไข
+db.students.updateMany(
+    { major: "เทคโนโลยีสารสนเทศ" },
+    { $set: { status: "active" } }
+);
+
+// ลบข้อมูลรายการเดียว
+db.students.deleteOne({ student_id: "6404" });
+
+// ลบข้อมูลหลายรายการที่ตรงเงื่อนไข
+db.students.deleteMany({ gpa: { $lt: 2.0 } });</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-num">ขั้นตอนที่ 6</div>
+                    <div class="step-detail">
+                        <strong>แสดงผลข้อมูลด้วยภาษา TypeScript อย่างง่ายเบื้องต้น</strong>
+                        <p>ติดตั้งไลบรารีที่จำเป็นสำหรับเชื่อมต่อ MongoDB จาก Node.js ด้วย TypeScript:</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">PowerShell</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>mkdir mongo-ts-demo
+cd mongo-ts-demo
+npm init -y
+npm install mongodb
+npm install -D typescript ts-node @types/node</pre>
+                        </div>
+
+                        <p>สร้างไฟล์ <code class="inline-code">app.ts</code> เพื่อเชื่อมต่อฐานข้อมูลและดึงรายชื่อนักศึกษามาแสดงผล:</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">TypeScript</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>import { MongoClient } from "mongodb";
+
+// กำหนดโครงสร้างข้อมูล (Type) ให้ตรงกับเอกสารใน MongoDB
+interface Student {
+    student_id: string;
+    name: string;
+    major: string;
+    gpa: number;
+}
+
+async function main() {
+    const client = new MongoClient("mongodb://localhost:27017");
+    await client.connect();
+
+    const db = client.db("school_db");
+    const students = db.collection<Student>("students");
+
+    const allStudents = await students.find().toArray();
+
+    console.log("รายชื่อนักศึกษาทั้งหมด:");
+    console.table(allStudents);
+
+    await client.close();
+}
+
+main().catch(console.error);</pre>
+                        </div>
+
+                        <p>สั่งรันโปรแกรมด้วยคำสั่ง:</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">PowerShell</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>npx ts-node app.ts</pre>
+                        </div>
+                        <p>ผลลัพธ์ที่ได้จะแสดงตารางข้อมูลนักศึกษาที่ยังเหลืออยู่ในคอลเลกชันหลังผ่านกระบวนการ Insert, Update และ Delete ในขั้นตอนก่อนหน้า ซึ่งแสดงให้เห็นว่าโปรแกรมภาษาใดก็ตามสามารถเชื่อมต่อและทำงานร่วมกับฐานข้อมูล MongoDB ได้ผ่านไดรเวอร์ (Driver) ของภาษานั้น ๆ</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr style="margin: 40px 0; border: 0; border-top: 1px dashed #cbd5e1;">
+
             <section class="assignment-box">
-                <h3>📝 5. งานที่มอบหมายและเกณฑ์การประเมินผล (Assignment)</h3>
+                <h3>📝 6. งานที่มอบหมายและเกณฑ์การประเมินผล (Assignment)</h3>
                 <p><strong>ใบงานที่ 1: วิเคราะห์และเลือกรูปแบบการจัดเก็บข้อมูล</strong></p>
                 <br>
                 <p><strong>คำสั่ง:</strong></p>
