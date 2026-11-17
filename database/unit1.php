@@ -645,8 +645,46 @@ db.students.deleteMany({ gpa: { $lt: 2.0 } });</pre>
 cd mongo-ts-demo
 npm init -y
 npm install mongodb
-npm install -D typescript tsx @types/node</pre>
+
+# เลือกติดตั้งตัวใดตัวหนึ่งสำหรับใช้รันไฟล์ TypeScript (ไม่ต้องติดตั้งทั้งสองตัว)
+npm install -D typescript tsx @types/node
+# หรือ
+npm install -D typescript ts-node @types/node</pre>
                         </div>
+
+                        <p><strong>tsx กับ ts-node ต่างกันอย่างไร:</strong> ทั้งสองเป็นโปรแกรมที่ใช้รันไฟล์ TypeScript โดยไม่ต้องสั่ง compile เป็น JavaScript ก่อนด้วยมือ แต่ทำงานภายในต่างกัน และส่งผลต่อความเสถียรต่างกันดังนี้ บทเรียนนี้เลือกใช้ <code class="inline-code">tsx</code> เป็นค่าเริ่มต้น เพราะทดสอบแล้วทำงานได้เสถียรกว่าบน Node.js เวอร์ชันใหม่ แต่ยังแสดงวิธีติดตั้ง <code class="inline-code">ts-node</code> ไว้เป็นตัวเลือกเผื่อนักศึกษาต้องใช้ในโปรเจกต์อื่นที่กำหนดให้ใช้ ts-node โดยเฉพาะ:</p>
+                        <table class="grading-table" style="margin-top: 10px;">
+                            <tr style="background:#f1f5f9;">
+                                <th>หัวข้อ</th>
+                                <th>ts-node</th>
+                                <th>tsx</th>
+                            </tr>
+                            <tr>
+                                <td>หลักการทำงาน</td>
+                                <td>เรียกใช้ TypeScript Compiler (<code class="inline-code">tsc</code>) ของจริง ตรวจสอบ Type อย่างเข้มงวดก่อนรัน</td>
+                                <td>ใช้ esbuild แปลง (transpile) โค้ดอย่างรวดเร็ว โดยไม่ตรวจ Type อย่างเข้มงวด</td>
+                            </tr>
+                            <tr>
+                                <td>ความเร็ว</td>
+                                <td>ช้ากว่า เพราะต้องผ่านขั้นตอนตรวจสอบ Type เต็มรูปแบบ</td>
+                                <td>เร็วกว่ามาก เหมาะกับการรันทดสอบบ่อย ๆ</td>
+                            </tr>
+                            <tr>
+                                <td>การตั้งค่า</td>
+                                <td>มักต้องมีไฟล์ <code class="inline-code">tsconfig.json</code> และปรับแต่งเพิ่มเติม</td>
+                                <td>รันได้ทันทีแม้ไม่มี <code class="inline-code">tsconfig.json</code></td>
+                            </tr>
+                            <tr>
+                                <td>ความเข้ากันได้</td>
+                                <td>พบปัญหากับ Node.js/TypeScript บางเวอร์ชันใหม่ ๆ (ดังที่พบ Error <code class="inline-code">Cannot read properties of undefined (reading 'fileExists')</code> ในกรณีศึกษานี้)</td>
+                                <td>รองรับ Node.js เวอร์ชันใหม่ได้ดีกว่าและมีปัญหาลักษณะนี้น้อยกว่า</td>
+                            </tr>
+                            <tr>
+                                <td>เหมาะกับ</td>
+                                <td>โปรเจกต์ขนาดใหญ่ที่ต้องการให้ตรวจสอบ Type ความถูกต้องอย่างเข้มงวดระหว่างพัฒนา</td>
+                                <td>งานทดสอบ/สาธิตที่ต้องการความรวดเร็วและไม่ยุ่งยาก เช่นกรณีศึกษานี้</td>
+                            </tr>
+                        </table>
 
                         <p>สร้างไฟล์ <code class="inline-code">app.ts</code> เพื่อเชื่อมต่อฐานข้อมูลและดึงรายชื่อนักศึกษามาแสดงผล:</p>
                         <div class="code-window">
@@ -670,7 +708,7 @@ interface Student {
 }
 
 async function main() {
-    const client = new MongoClient("mongodb://localhost:27017");
+    const client = new MongoClient("mongodb://127.0.0.1:27017");
     await client.connect();
 
     const db = client.db("school_db");
@@ -687,7 +725,15 @@ async function main() {
 main().catch(console.error);</pre>
                         </div>
 
-                        <p>สั่งรันโปรแกรมด้วยคำสั่ง:</p>
+                        <p>สังเกตว่า Connection String ใช้ <code class="inline-code">127.0.0.1</code> แทน <code class="inline-code">localhost</code> ที่เคยใช้ตอนทดสอบด้วย mongosh ในขั้นตอนที่ 2 — ทั้งสองคำโดยหลักการแล้วหมายถึงเครื่องเดียวกัน แต่ต่างกันที่ขั้นตอนการแปลงชื่อ:</p>
+                        <ul style="margin-left: 20px;">
+                            <li><code class="inline-code">localhost</code> เป็น<strong>ชื่อ</strong> (hostname) ที่ต้องผ่านการ "แปลงชื่อเป็นที่อยู่ IP" (DNS resolution) ก่อนเชื่อมต่อจริง บน Windows บางเครื่อง Node.js จะแปลงชื่อนี้เป็นที่อยู่ IPv6 (<code class="inline-code">::1</code>) ก่อนที่อยู่ IPv4 (<code class="inline-code">127.0.0.1</code>) โดยอัตโนมัติ</li>
+                            <li><code class="inline-code">127.0.0.1</code> เป็น<strong>ที่อยู่ IPv4 ของเครื่องตัวเอง</strong>อยู่แล้วตรง ๆ ไม่ต้องแปลงชื่อใด ๆ เพิ่ม</li>
+                        </ul>
+                        <p>ปัญหาคือพอร์ต 27017 ที่ Docker Desktop เปิดให้ (ตามขั้นตอนที่ 1) รับการเชื่อมต่อผ่าน IPv4 เป็นหลัก ถ้าโปรแกรม TypeScript ถูก Node.js สั่งให้เชื่อมผ่าน IPv6 (<code class="inline-code">::1</code>) ก่อน การเชื่อมต่อฝั่งนั้นจะไม่มีใครตอบรับ และ MongoDB Driver จะรอจนครบเวลา (Timeout) แล้วแสดง Error <code class="inline-code">MongoServerSelectionError: Server selection timed out</code> ออกมาแทน การระบุ <code class="inline-code">127.0.0.1</code> ตรง ๆ จึงตัดปัญหานี้ทิ้งไปทั้งหมด เพราะไม่มีขั้นตอนแปลงชื่อให้ผิดพลาดได้อีก</p>
+                        <p style="font-size:0.9rem; color:#64748b;">💡 ข้อสังเกต: ปัญหานี้มักไม่เกิดกับ mongosh ในขั้นตอนที่ 2 เพราะ mongosh มีวิธีจัดการการเชื่อมต่อที่ต่างจาก Driver ของ Node.js แต่ถ้าพบปัญหาคล้ายกันตอนใช้ mongosh ก็ใช้วิธีแก้เดียวกันได้ คือเปลี่ยน <code class="inline-code">localhost</code> เป็น <code class="inline-code">127.0.0.1</code> ใน Connection String</p>
+
+                        <p>สั่งรันโปรแกรมด้วยคำสั่ง (เลือกตามที่ติดตั้งไว้ในขั้นตอนก่อนหน้า):</p>
                         <div class="code-window">
                             <div class="code-header">
                                 <span class="code-lang">PowerShell</span>
@@ -698,7 +744,9 @@ main().catch(console.error);</pre>
                                     </svg>
                                 </button>
                             </div>
-                            <pre>npx tsx app.ts</pre>
+                            <pre>npx tsx app.ts
+# หรือถ้าเลือกติดตั้ง ts-node ไว้
+npx ts-node app.ts</pre>
                         </div>
 
                         <p><strong>หลังรันคำสั่งนี้ไม่ต้องทำอะไรเพิ่ม</strong> โปรแกรมจะเชื่อมต่อฐานข้อมูล ดึงข้อมูล และแสดงผลลัพธ์กลับมาที่หน้าต่าง Terminal เดิมทันที (ไม่ต้องเปิดเบราว์เซอร์หรือไปเปิดโปรแกรมอื่น) เพียงรอสักครู่จนขึ้นข้อความแล้วอ่านผลที่ปรากฏบนหน้าจอได้เลย สิ่งที่ควรเห็นมีลักษณะประมาณนี้ (จัดรูปแบบจริงอาจต่างกันเล็กน้อยตาม Terminal ของแต่ละเครื่อง):</p>
@@ -729,43 +777,9 @@ main().catch(console.error);</pre>
                             <ol style="margin-left: 20px;">
                                 <li><strong>ตรวจสอบก่อนว่า Container MongoDB ยังทำงานอยู่หรือไม่</strong> เปิด PowerShell แล้วสั่ง <code class="inline-code">docker ps</code> ถ้าไม่เห็นรายการ <code class="inline-code">school-mongo</code> ในผลลัพธ์ แสดงว่า Container หยุดทำงานไปแล้ว (เช่น ปิดเครื่อง/ปิด Docker Desktop ไปตั้งแต่ขั้นตอนที่ 1) ให้กลับไปที่โฟลเดอร์ที่มีไฟล์ <code class="inline-code">docker-compose.yml</code> แล้วสั่ง <code class="inline-code">docker compose up -d</code> ใหม่อีกครั้ง</li>
                                 <li><strong>ทดสอบด้วย mongosh ก่อนเสมอ</strong> ลองสั่ง <code class="inline-code">mongosh "mongodb://localhost:27017"</code> ตามขั้นตอนที่ 2 ถ้า mongosh เชื่อมต่อไม่ติดเหมือนกัน แสดงว่าปัญหาอยู่ที่ Container/Docker ไม่ใช่โค้ด TypeScript ให้แก้ตามข้อ 1 ก่อน</li>
-                                <li><strong>ถ้า mongosh เชื่อมต่อได้ปกติ แต่โปรแกรม TypeScript ยัง Error</strong> ให้ลองแก้ Connection String ในไฟล์ <code class="inline-code">app.ts</code> จาก <code class="inline-code">"mongodb://localhost:27017"</code> เป็น <code class="inline-code">"mongodb://127.0.0.1:27017"</code> แล้วรันใหม่ เพราะบน Windows บางเครื่อง Node.js จะแปลงคำว่า <code class="inline-code">localhost</code> เป็นที่อยู่ IPv6 (<code class="inline-code">::1</code>) ก่อนที่อยู่ IPv4 ซึ่งพอร์ตที่ Docker เปิดไว้อาจไม่รับการเชื่อมต่อผ่าน IPv6 ทำให้ค้างจนหมดเวลา การระบุ <code class="inline-code">127.0.0.1</code> ตรง ๆ จะบังคับให้ใช้ IPv4 เสมอและแก้ปัญหานี้ได้</li>
+                                <li><strong>ถ้า mongosh เชื่อมต่อได้ปกติ แต่โปรแกรม TypeScript ยัง Error</strong> โค้ดตัวอย่าง <code class="inline-code">app.ts</code> ด้านบนใช้ <code class="inline-code">127.0.0.1</code> แทน <code class="inline-code">localhost</code> ไว้อยู่แล้วเพื่อป้องกันปัญหานี้ (ดูคำอธิบายเหตุผลใต้โค้ดด้านบน) ให้ตรวจสอบว่าไฟล์ของนักศึกษาพิมพ์ตรงกับตัวอย่างหรือไม่ ถ้ายังพิมพ์เป็น <code class="inline-code">"mongodb://localhost:27017"</code> อยู่ ให้แก้เป็น <code class="inline-code">"mongodb://127.0.0.1:27017"</code> แล้วรันใหม่</li>
                             </ol>
                         </div>
-
-                        <p><strong>tsx กับ ts-node ต่างกันอย่างไร:</strong> ทั้งสองเป็นโปรแกรมที่ใช้รันไฟล์ TypeScript โดยไม่ต้องสั่ง compile เป็น JavaScript ก่อนด้วยมือ แต่ทำงานภายในต่างกัน และส่งผลต่อความเสถียรต่างกันดังนี้:</p>
-                        <table class="grading-table" style="margin-top: 10px;">
-                            <tr style="background:#f1f5f9;">
-                                <th>หัวข้อ</th>
-                                <th>ts-node</th>
-                                <th>tsx</th>
-                            </tr>
-                            <tr>
-                                <td>หลักการทำงาน</td>
-                                <td>เรียกใช้ TypeScript Compiler (<code class="inline-code">tsc</code>) ของจริง ตรวจสอบ Type อย่างเข้มงวดก่อนรัน</td>
-                                <td>ใช้ esbuild แปลง (transpile) โค้ดอย่างรวดเร็ว โดยไม่ตรวจ Type อย่างเข้มงวด</td>
-                            </tr>
-                            <tr>
-                                <td>ความเร็ว</td>
-                                <td>ช้ากว่า เพราะต้องผ่านขั้นตอนตรวจสอบ Type เต็มรูปแบบ</td>
-                                <td>เร็วกว่ามาก เหมาะกับการรันทดสอบบ่อย ๆ</td>
-                            </tr>
-                            <tr>
-                                <td>การตั้งค่า</td>
-                                <td>มักต้องมีไฟล์ <code class="inline-code">tsconfig.json</code> และปรับแต่งเพิ่มเติม</td>
-                                <td>รันได้ทันทีแม้ไม่มี <code class="inline-code">tsconfig.json</code></td>
-                            </tr>
-                            <tr>
-                                <td>ความเข้ากันได้</td>
-                                <td>พบปัญหากับ Node.js/TypeScript บางเวอร์ชันใหม่ ๆ (ดังที่พบ Error ในกรณีศึกษานี้)</td>
-                                <td>รองรับ Node.js เวอร์ชันใหม่ได้ดีกว่าและมีปัญหาลักษณะนี้น้อยกว่า</td>
-                            </tr>
-                            <tr>
-                                <td>เหมาะกับ</td>
-                                <td>โปรเจกต์ขนาดใหญ่ที่ต้องการให้ตรวจสอบ Type ความถูกต้องอย่างเข้มงวดระหว่างพัฒนา</td>
-                                <td>งานทดสอบ/สาธิตที่ต้องการความรวดเร็วและไม่ยุ่งยาก เช่นกรณีศึกษานี้</td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
             </section>
