@@ -544,6 +544,46 @@ db.students.find({ major: "เทคโนโลยีสารสนเทศ" 
 // ค้นหาแบบมีเงื่อนไข: เกรดเฉลี่ยตั้งแต่ 3.0 ขึ้นไป
 db.students.find({ gpa: { $gte: 3.0 } });</pre>
                         </div>
+
+                        <p><code class="inline-code">$gte</code> คือ <strong>Query Operator</strong> (ตัวดำเนินการสำหรับตั้งเงื่อนไขค้นหา) ย่อมาจาก "greater than or equal" แปลว่า <strong>"มากกว่าหรือเท่ากับ"</strong> คำสั่งข้างบนจึงหมายถึง ค้นหาเฉพาะนักศึกษาที่มี <code class="inline-code">gpa</code> ตั้งแต่ 3.0 ขึ้นไป MongoDB มี Query Operator กลุ่มเปรียบเทียบอยู่หลายตัว เทียบกับเครื่องหมายที่ใช้ใน SQL ได้ดังนี้:</p>
+                        <table class="grading-table" style="margin-top: 10px;">
+                            <tr style="background:#f1f5f9;">
+                                <th>Operator ใน MongoDB</th>
+                                <th>ความหมาย</th>
+                                <th>เทียบเท่าใน SQL</th>
+                            </tr>
+                            <tr>
+                                <td><code class="inline-code">$eq</code></td>
+                                <td>เท่ากับ</td>
+                                <td><code class="inline-code">=</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="inline-code">$ne</code></td>
+                                <td>ไม่เท่ากับ</td>
+                                <td><code class="inline-code">!=</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="inline-code">$gt</code></td>
+                                <td>มากกว่า</td>
+                                <td><code class="inline-code">&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="inline-code">$gte</code></td>
+                                <td>มากกว่าหรือเท่ากับ</td>
+                                <td><code class="inline-code">&gt;=</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="inline-code">$lt</code></td>
+                                <td>น้อยกว่า</td>
+                                <td><code class="inline-code">&lt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="inline-code">$lte</code></td>
+                                <td>น้อยกว่าหรือเท่ากับ</td>
+                                <td><code class="inline-code">&lt;=</code></td>
+                            </tr>
+                        </table>
+                        <p style="font-size:0.9rem; color:#64748b;">💡 สังเกตว่า Operator ของ MongoDB ทุกตัวต้องเขียนเป็นข้อความในเครื่องหมายคำพูดและขึ้นต้นด้วย <code class="inline-code">$</code> เสมอ เพราะในรูปแบบ JSON/BSON ไม่มีสัญลักษณ์ <code class="inline-code">&gt;</code> <code class="inline-code">&lt;</code> ให้ใช้เหมือน SQL จึงต้องใช้ชื่อ Operator แทน</p>
                     </div>
                 </div>
 
@@ -579,6 +619,10 @@ db.students.deleteOne({ student_id: "6404" });
 // ลบข้อมูลหลายรายการที่ตรงเงื่อนไข
 db.students.deleteMany({ gpa: { $lt: 2.0 } });</pre>
                         </div>
+
+                        <p><code class="inline-code">$set</code> คือ <strong>Update Operator</strong> (ตัวดำเนินการสำหรับแก้ไขข้อมูล) ใช้บอกว่า "กำหนดค่าใหม่" ให้เฉพาะฟิลด์ที่ระบุไว้เท่านั้น ฟิลด์อื่น ๆ ในเอกสารจะไม่ถูกแก้ไข เช่น <code class="inline-code">{ $set: { gpa: 3.40 } }</code> แก้ไขเฉพาะฟิลด์ <code class="inline-code">gpa</code> ส่วนฟิลด์ <code class="inline-code">name</code>, <code class="inline-code">major</code> ยังคงเดิม <strong style="color:#b45309;">ข้อควรระวัง:</strong> ถ้าไม่ใส่ <code class="inline-code">$set</code> แล้วส่ง <code class="inline-code">{ gpa: 3.40 }</code> เข้าไปตรง ๆ MongoDB จะเข้าใจว่าต้องการ<strong>แทนที่เอกสารทั้งอัน</strong>ด้วยข้อมูลใหม่นี้ ทำให้ฟิลด์อื่นที่ไม่ได้ระบุหายไปทั้งหมด</p>
+
+                        <p>ส่วน <code class="inline-code">$lt</code> ในคำสั่งลบคือ Query Operator ตัวเดียวกับที่อธิบายไว้ในขั้นตอนที่ 5 ("น้อยกว่า" ตรงข้ามกับ <code class="inline-code">$gte</code>) คำสั่ง <code class="inline-code">db.students.deleteMany({ gpa: { $lt: 2.0 } })</code> จึงหมายถึง ลบนักศึกษาทุกคนที่มี <code class="inline-code">gpa</code> ต่ำกว่า 2.0 ทิ้งไปทั้งหมด</p>
                     </div>
                 </div>
 
@@ -656,8 +700,62 @@ main().catch(console.error);</pre>
                             </div>
                             <pre>npx tsx app.ts</pre>
                         </div>
-                        <p style="font-size:0.9rem; color:#64748b;">💡 หมายเหตุ: บทความนี้ใช้ <code class="inline-code">tsx</code> รันไฟล์ TypeScript แทนไลบรารี <code class="inline-code">ts-node</code> ที่เคยนิยมใช้กันมาก่อน เพราะ <code class="inline-code">ts-node</code> มีปัญหาความเข้ากันไม่ได้กับ Node.js และ TypeScript เวอร์ชันใหม่ ๆ บางชุด (จะพบ Error เช่น <code class="inline-code">Cannot read properties of undefined (reading 'fileExists')</code>) ส่วน <code class="inline-code">tsx</code> ใช้งานง่ายกว่า ไม่ต้องตั้งค่าเพิ่ม และทำงานได้เสถียรกับ Node.js เวอร์ชันล่าสุด</p>
-                        <p>ผลลัพธ์ที่ได้จะแสดงตารางข้อมูลนักศึกษาที่ยังเหลืออยู่ในคอลเลกชันหลังผ่านกระบวนการ Insert, Update และ Delete ในขั้นตอนก่อนหน้า ซึ่งแสดงให้เห็นว่าโปรแกรมภาษาใดก็ตามสามารถเชื่อมต่อและทำงานร่วมกับฐานข้อมูล MongoDB ได้ผ่านไดรเวอร์ (Driver) ของภาษานั้น ๆ</p>
+
+                        <p><strong>หลังรันคำสั่งนี้ไม่ต้องทำอะไรเพิ่ม</strong> โปรแกรมจะเชื่อมต่อฐานข้อมูล ดึงข้อมูล และแสดงผลลัพธ์กลับมาที่หน้าต่าง Terminal เดิมทันที (ไม่ต้องเปิดเบราว์เซอร์หรือไปเปิดโปรแกรมอื่น) เพียงรอสักครู่จนขึ้นข้อความแล้วอ่านผลที่ปรากฏบนหน้าจอได้เลย สิ่งที่ควรเห็นมีลักษณะประมาณนี้ (จัดรูปแบบจริงอาจต่างกันเล็กน้อยตาม Terminal ของแต่ละเครื่อง):</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">ผลลัพธ์ที่คาดว่าจะเห็น</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>รายชื่อนักศึกษาทั้งหมด:
+┌─────────┬────────────┬──────────────────────┬──────┬──────────┐
+│ (index) │ student_id │ name                 │ gpa  │ status   │
+├─────────┼────────────┼──────────────────────┼──────┼──────────┤
+│    0    │   '6401'   │ 'สมหญิง ขยันเรียน'    │ 3.75 │ 'active' │
+│    1    │   '6402'   │ 'วรากร ตั้งใจดี'      │ 3.4  │ 'active' │
+│    2    │   '6403'   │ 'ปิยะดา เรียนเก่ง'    │ 2.95 │          │
+└─────────┴────────────┴──────────────────────┴──────┴──────────┘</pre>
+                        </div>
+                        <p>วิธีอ่านผล: จะเหลือนักศึกษาเพียง 3 คน (6401, 6402, 6403) เพราะ 6404 ถูกลบไปด้วย <code class="inline-code">deleteOne()</code> ในขั้นตอนที่ 6 ส่วนคอลัมน์ <code class="inline-code">gpa</code> ของ 6402 เปลี่ยนจาก 3.20 เป็น 3.40 ตามที่แก้ไขด้วย <code class="inline-code">updateOne()</code> และมีคอลัมน์ <code class="inline-code">status</code> เป็น <code class="inline-code">'active'</code> เฉพาะแถวที่สาขาเป็นเทคโนโลยีสารสนเทศ (ตรงกับที่ <code class="inline-code">updateMany()</code> เพิ่มฟิลด์นี้ให้) ส่วน 6403 ไม่มีค่าในคอลัมน์นี้เพราะไม่ตรงเงื่อนไข ซึ่งแสดงให้เห็นว่าโปรแกรมภาษาใดก็ตามสามารถเชื่อมต่อและทำงานร่วมกับฐานข้อมูล MongoDB ได้ผ่านไดรเวอร์ (Driver) ของภาษานั้น ๆ</p>
+
+                        <p><strong>tsx กับ ts-node ต่างกันอย่างไร:</strong> ทั้งสองเป็นโปรแกรมที่ใช้รันไฟล์ TypeScript โดยไม่ต้องสั่ง compile เป็น JavaScript ก่อนด้วยมือ แต่ทำงานภายในต่างกัน และส่งผลต่อความเสถียรต่างกันดังนี้:</p>
+                        <table class="grading-table" style="margin-top: 10px;">
+                            <tr style="background:#f1f5f9;">
+                                <th>หัวข้อ</th>
+                                <th>ts-node</th>
+                                <th>tsx</th>
+                            </tr>
+                            <tr>
+                                <td>หลักการทำงาน</td>
+                                <td>เรียกใช้ TypeScript Compiler (<code class="inline-code">tsc</code>) ของจริง ตรวจสอบ Type อย่างเข้มงวดก่อนรัน</td>
+                                <td>ใช้ esbuild แปลง (transpile) โค้ดอย่างรวดเร็ว โดยไม่ตรวจ Type อย่างเข้มงวด</td>
+                            </tr>
+                            <tr>
+                                <td>ความเร็ว</td>
+                                <td>ช้ากว่า เพราะต้องผ่านขั้นตอนตรวจสอบ Type เต็มรูปแบบ</td>
+                                <td>เร็วกว่ามาก เหมาะกับการรันทดสอบบ่อย ๆ</td>
+                            </tr>
+                            <tr>
+                                <td>การตั้งค่า</td>
+                                <td>มักต้องมีไฟล์ <code class="inline-code">tsconfig.json</code> และปรับแต่งเพิ่มเติม</td>
+                                <td>รันได้ทันทีแม้ไม่มี <code class="inline-code">tsconfig.json</code></td>
+                            </tr>
+                            <tr>
+                                <td>ความเข้ากันได้</td>
+                                <td>พบปัญหากับ Node.js/TypeScript บางเวอร์ชันใหม่ ๆ (ดังที่พบ Error ในกรณีศึกษานี้)</td>
+                                <td>รองรับ Node.js เวอร์ชันใหม่ได้ดีกว่าและมีปัญหาลักษณะนี้น้อยกว่า</td>
+                            </tr>
+                            <tr>
+                                <td>เหมาะกับ</td>
+                                <td>โปรเจกต์ขนาดใหญ่ที่ต้องการให้ตรวจสอบ Type ความถูกต้องอย่างเข้มงวดระหว่างพัฒนา</td>
+                                <td>งานทดสอบ/สาธิตที่ต้องการความรวดเร็วและไม่ยุ่งยาก เช่นกรณีศึกษานี้</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </section>
