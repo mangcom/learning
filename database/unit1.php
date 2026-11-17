@@ -229,9 +229,9 @@ db.products.find();</pre>
             <hr style="margin: 40px 0; border: 0; border-top: 1px dashed #cbd5e1;">
 
             <section class="lesson-section">
-                <h3>🧪 5. กรณีศึกษา: การติดตั้งและใช้งาน MongoDB บน Windows พร้อมกระบวนการ CRUD</h3>
+                <h3>🧪 5. กรณีศึกษา: การติดตั้งและใช้งาน MongoDB ด้วย Docker บน Windows พร้อมกระบวนการ CRUD</h3>
                 <p>
-                    กรณีศึกษานี้พานักศึกษาติดตั้ง MongoDB Community Server บนเครื่อง Windows ของตนเอง แล้วฝึกปฏิบัติกระบวนการ <strong>CRUD</strong> (Create, Read, Update, Delete) ให้ครบวงจรผ่าน mongosh ก่อนปิดท้ายด้วยการเขียนโปรแกรมภาษา TypeScript อย่างง่ายเพื่อเชื่อมต่อและดึงข้อมูลมาแสดงผล ซึ่งเป็นรูปแบบการทำงานจริงที่นักพัฒนาระบบใช้เชื่อมแอปพลิเคชันเข้ากับฐานข้อมูล Document
+                    กรณีศึกษานี้จำลองรูปแบบการทำงานจริงของนักพัฒนาระบบ โดยรัน MongoDB เป็น Container ด้วย <strong>Docker Compose</strong> แทนการติดตั้งตัวเซิร์ฟเวอร์ลงเครื่องโดยตรง ซึ่งเป็นแนวทางที่นิยมใช้เตรียมฐานข้อมูลไว้สำหรับพัฒนาแอปพลิเคชันด้วย TypeScript ในขั้นตอนถัดไป จากนั้นนักศึกษาจะติดตั้ง <strong>mongosh</strong> บนเครื่อง Windows เพื่อ Remote เข้าไปจัดการข้อมูลใน Container และฝึกปฏิบัติกระบวนการ <strong>CRUD</strong> (Create, Read, Update, Delete) ให้ครบวงจร ก่อนปิดท้ายด้วยการเขียนโปรแกรมภาษา TypeScript อย่างง่ายเพื่อเชื่อมต่อและดึงข้อมูลมาแสดงผล
                 </p>
 
                 <div class="key-concept-box">
@@ -329,11 +329,10 @@ db.products.find();</pre>
                 <div class="step-box">
                     <div class="step-num">ขั้นตอนที่ 1</div>
                     <div class="step-detail">
-                        <strong>ติดตั้ง MongoDB Community Server บน Windows</strong>
+                        <strong>ติดตั้ง Docker Desktop และสร้าง MongoDB ด้วย Docker Compose</strong>
                         <ol style="margin-left: 20px;">
-                            <li>ดาวน์โหลดตัวติดตั้งจากเว็บไซต์ทางการ <code class="inline-code">mongodb.com/try/download/community</code> โดยเลือกเวอร์ชัน Windows x64 (ไฟล์ .msi)</li>
-                            <li>เปิดไฟล์ .msi แล้วเลือกรูปแบบการติดตั้งแบบ <strong>Complete</strong> และเลือกติดตั้งเป็น Windows Service (ค่าเริ่มต้น) พร้อมติดตั้ง <strong>MongoDB Compass</strong> (โปรแกรมจัดการฐานข้อมูลแบบกราฟิก) ไปพร้อมกัน</li>
-                            <li>ตรวจสอบว่า Service เริ่มทำงานแล้วด้วย PowerShell</li>
+                            <li>ดาวน์โหลดและติดตั้ง <strong>Docker Desktop for Windows</strong> จากเว็บไซต์ทางการ <code class="inline-code">docker.com/products/docker-desktop</code> (ตัวติดตั้งจะแนะนำให้เปิดใช้งาน WSL2 ซึ่งจำเป็นสำหรับ Docker บน Windows)</li>
+                            <li>เปิดโปรแกรม Docker Desktop ทิ้งไว้จนสถานะเป็น <strong>Running</strong> แล้วตรวจสอบเวอร์ชันด้วย PowerShell</li>
                         </ol>
 
                         <div class="code-window">
@@ -346,10 +345,94 @@ db.products.find();</pre>
                                     </svg>
                                 </button>
                             </div>
-                            <pre>Get-Service MongoDB</pre>
+                            <pre>docker --version
+docker compose version</pre>
                         </div>
 
-                        <p>จากนั้นเปิดโปรแกรม <strong>mongosh</strong> (MongoDB Shell ที่ติดตั้งมาพร้อมกัน) เพื่อเชื่อมต่อฐานข้อมูลที่เครื่องตนเอง:</p>
+                        <p>สร้างโฟลเดอร์โปรเจกต์ เช่น <code class="inline-code">mongo-ts-demo</code> แล้วสร้างไฟล์ชื่อ <code class="inline-code">docker-compose.yml</code> ไว้ในโฟลเดอร์นั้น เพื่อกำหนดให้ Docker ดึง MongoDB มารันเป็น Container ให้อัตโนมัติ:</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">docker-compose.yml</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>services:
+  mongodb:
+    image: mongo:7
+    container_name: school-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:</pre>
+                        </div>
+
+                        <p>อธิบายแต่ละส่วนของไฟล์:</p>
+                        <ul style="margin-left: 20px;">
+                            <li><code class="inline-code">image: mongo:7</code> — ดึง Image ของ MongoDB เวอร์ชัน 7 จาก Docker Hub มารันเป็น Container โดยไม่ต้องติดตั้งตัวเซิร์ฟเวอร์ลงเครื่อง Windows โดยตรง</li>
+                            <li><code class="inline-code">ports: "27017:27017"</code> — เปิด Port 27017 ของเครื่อง Windows (ตัวเลขด้านซ้าย) ให้เชื่อมต่อทะลุเข้าไปยัง Port 27017 ภายใน Container (ตัวเลขด้านขวา) ซึ่งเป็น Port มาตรฐานที่ MongoDB ใช้รับการเชื่อมต่อ</li>
+                            <li><code class="inline-code">volumes: mongo-data:/data/db</code> — เก็บไฟล์ข้อมูลจริงไว้ใน Docker Volume ชื่อ <code class="inline-code">mongo-data</code> เพื่อให้ข้อมูลยังอยู่ครบแม้จะลบหรือสร้าง Container ขึ้นมาใหม่</li>
+                        </ul>
+
+                        <p>สั่งให้ Container เริ่มทำงานด้วยคำสั่งต่อไปนี้ภายในโฟลเดอร์ที่มีไฟล์ <code class="inline-code">docker-compose.yml</code>:</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">PowerShell</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>docker compose up -d
+docker compose ps</pre>
+                        </div>
+                        <p>คำสั่ง <code class="inline-code">docker compose ps</code> ใช้ตรวจสอบว่า Container ชื่อ <code class="inline-code">school-mongo</code> มีสถานะ Up และพร้อมรับการเชื่อมต่อแล้ว</p>
+                        <p style="font-size:0.9rem; color:#64748b;">💡 หมายเหตุ: ในสถานการณ์ใช้งานจริงควรกำหนดชื่อผู้ใช้และรหัสผ่านให้ MongoDB ผ่านตัวแปรแวดล้อม <code class="inline-code">MONGO_INITDB_ROOT_USERNAME</code> และ <code class="inline-code">MONGO_INITDB_ROOT_PASSWORD</code> ใน docker-compose.yml เพื่อความปลอดภัย แต่กรณีศึกษานี้ละการตั้งรหัสผ่านไว้ก่อน เพื่อให้ขั้นตอนถัดไปไม่ซับซ้อนเกินไป</p>
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-num">ขั้นตอนที่ 2</div>
+                    <div class="step-detail">
+                        <strong>ติดตั้งและใช้งาน mongosh บน Windows เพื่อ Remote เข้าไปยัง MongoDB ใน Docker</strong>
+                        <p>เนื่องจาก MongoDB ในขั้นตอนที่แล้วรันอยู่ <em>ภายใน Container</em> ไม่ได้ติดตั้งลงเครื่อง Windows ตรง ๆ นักศึกษาจึงต้องติดตั้งโปรแกรม <strong>mongosh</strong> (MongoDB Shell) แยกไว้บนเครื่อง Windows เพื่อใช้เป็นเครื่องมือ Remote เข้าไปสั่งงานฐานข้อมูลที่อยู่ใน Container</p>
+                        <p>ติดตั้งผ่าน winget (มีมาพร้อม Windows 10/11 รุ่นใหม่):</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">PowerShell</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>winget install MongoDB.Shell</pre>
+                        </div>
+                        <p>หากไม่สะดวกใช้ winget สามารถดาวน์โหลดตัวติดตั้ง mongosh แบบ .msi ได้จาก <code class="inline-code">mongodb.com/try/download/shell</code> โดยตรง จากนั้นตรวจสอบว่าติดตั้งสำเร็จ:</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">PowerShell</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>mongosh --version</pre>
+                        </div>
+
+                        <p>จากนั้น Remote จากเครื่อง Windows เข้าไปยัง MongoDB ที่รันอยู่ใน Container ผ่าน Port 27017 ที่เปิดไว้ในขั้นตอนที่ 1:</p>
                         <div class="code-window">
                             <div class="code-header">
                                 <span class="code-lang">PowerShell</span>
@@ -362,11 +445,28 @@ db.products.find();</pre>
                             </div>
                             <pre>mongosh "mongodb://localhost:27017"</pre>
                         </div>
+
+                        <p>ที่เรียกขั้นตอนนี้ว่า <strong>"Remote"</strong> เพราะโปรแกรม mongosh ทำงานอยู่บนเครื่อง Windows โดยตรง ขณะที่ตัวเซิร์ฟเวอร์ MongoDB ทำงานแยกอยู่อีกสภาพแวดล้อมหนึ่งคือภายใน Container โดยทั้งสองฝั่งสื่อสารกันผ่านเครือข่าย TCP/IP ที่ Port 27017 — เป็นรูปแบบเดียวกับการเชื่อมต่อไปยังเซิร์ฟเวอร์ฐานข้อมูลบน Production จริง เพียงเปลี่ยนจาก <code class="inline-code">localhost</code> เป็นหมายเลข IP หรือชื่อโดเมนของเซิร์ฟเวอร์ปลายทาง เช่น <code class="inline-code">mongosh "mongodb://192.168.1.50:27017"</code></p>
+
+                        <p>เพื่อเทียบความแตกต่าง ลองสังเกตว่ายังสามารถเข้าไปใช้งาน mongosh จาก<strong>ภายใน Container เอง</strong>ได้โดยตรงโดยไม่ผ่านเครือข่าย ด้วยคำสั่ง:</p>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-lang">PowerShell</span>
+                                <button class="copy-icon-btn" onclick="copyCode(this)" title="คัดลอกโค้ด">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <pre>docker exec -it school-mongo mongosh</pre>
+                        </div>
+                        <p style="font-size:0.9rem; color:#64748b;">💡 ความต่าง: คำสั่งข้างบนรันคำสั่ง mongosh <em>ที่ติดตั้งอยู่ในตัว Image ของ Container</em> ส่วนคำสั่งก่อนหน้า (<code class="inline-code">mongosh "mongodb://localhost:27017"</code>) รัน mongosh <em>ที่ติดตั้งบนเครื่อง Windows</em> แล้ว Remote ผ่านเครือข่ายเข้าไป ซึ่งเป็นวิธีที่ใกล้เคียงกับการทำงานจริงมากกว่า เพราะเครื่องพัฒนาแอปพลิเคชันมักไม่ใช่เครื่องเดียวกับเซิร์ฟเวอร์ฐานข้อมูล</p>
                     </div>
                 </div>
 
                 <div class="step-box">
-                    <div class="step-num">ขั้นตอนที่ 2</div>
+                    <div class="step-num">ขั้นตอนที่ 3</div>
                     <div class="step-detail">
                         <strong>สร้างฐานข้อมูลและคอลเลกชัน (Create Database &amp; Collection)</strong>
                         <p>ใน MongoDB คำว่า <strong>ตาราง</strong> ของฐานข้อมูลเชิงสัมพันธ์เทียบได้กับ <strong>Collection</strong> คำสั่ง <code class="inline-code">use</code> จะสลับไปยังฐานข้อมูลที่ระบุ และ MongoDB จะสร้างฐานข้อมูลนั้นจริงก็ต่อเมื่อมีการบันทึกข้อมูลอย่างน้อย 1 รายการ</p>
@@ -389,7 +489,7 @@ show collections</pre>
                 </div>
 
                 <div class="step-box">
-                    <div class="step-num">ขั้นตอนที่ 3</div>
+                    <div class="step-num">ขั้นตอนที่ 4</div>
                     <div class="step-detail">
                         <strong>นำข้อมูลเข้า 1 รายการ และหลายรายการ (Create)</strong>
                         <p>ใช้ <code class="inline-code">insertOne()</code> สำหรับข้อมูล 1 รายการ และ <code class="inline-code">insertMany()</code> สำหรับข้อมูลหลายรายการพร้อมกัน:</p>
@@ -422,7 +522,7 @@ db.students.insertMany([
                 </div>
 
                 <div class="step-box">
-                    <div class="step-num">ขั้นตอนที่ 4</div>
+                    <div class="step-num">ขั้นตอนที่ 5</div>
                     <div class="step-detail">
                         <strong>ค้นหาข้อมูลทั้งหมด และค้นหาแบบมีเงื่อนไข (Read)</strong>
                         <div class="code-window">
@@ -448,7 +548,7 @@ db.students.find({ gpa: { $gte: 3.0 } });</pre>
                 </div>
 
                 <div class="step-box">
-                    <div class="step-num">ขั้นตอนที่ 5</div>
+                    <div class="step-num">ขั้นตอนที่ 6</div>
                     <div class="step-detail">
                         <strong>แก้ไขข้อมูล และลบข้อมูล (Update &amp; Delete)</strong>
                         <div class="code-window">
@@ -483,7 +583,7 @@ db.students.deleteMany({ gpa: { $lt: 2.0 } });</pre>
                 </div>
 
                 <div class="step-box">
-                    <div class="step-num">ขั้นตอนที่ 6</div>
+                    <div class="step-num">ขั้นตอนที่ 7</div>
                     <div class="step-detail">
                         <strong>แสดงผลข้อมูลด้วยภาษา TypeScript อย่างง่ายเบื้องต้น</strong>
                         <p>ติดตั้งไลบรารีที่จำเป็นสำหรับเชื่อมต่อ MongoDB จาก Node.js ด้วย TypeScript:</p>
