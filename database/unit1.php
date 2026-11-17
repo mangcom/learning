@@ -723,6 +723,16 @@ main().catch(console.error);</pre>
                         </div>
                         <p>วิธีอ่านผล: จะเหลือนักศึกษาเพียง 3 คน (6401, 6402, 6403) เพราะ 6404 ถูกลบไปด้วย <code class="inline-code">deleteOne()</code> ในขั้นตอนที่ 6 ส่วนคอลัมน์ <code class="inline-code">gpa</code> ของ 6402 เปลี่ยนจาก 3.20 เป็น 3.40 ตามที่แก้ไขด้วย <code class="inline-code">updateOne()</code> และมีคอลัมน์ <code class="inline-code">status</code> เป็น <code class="inline-code">'active'</code> เฉพาะแถวที่สาขาเป็นเทคโนโลยีสารสนเทศ (ตรงกับที่ <code class="inline-code">updateMany()</code> เพิ่มฟิลด์นี้ให้) ส่วน 6403 ไม่มีค่าในคอลัมน์นี้เพราะไม่ตรงเงื่อนไข ซึ่งแสดงให้เห็นว่าโปรแกรมภาษาใดก็ตามสามารถเชื่อมต่อและทำงานร่วมกับฐานข้อมูล MongoDB ได้ผ่านไดรเวอร์ (Driver) ของภาษานั้น ๆ</p>
 
+                        <div class="error-alert-box">
+                            <span class="error-title">⚠️ เจอเออเรอร์ "MongoServerSelectionError: Server selection timed out after 30000 ms" หรือไม่?</span>
+                            <p>แปลว่าโปรแกรม TypeScript พยายามเชื่อมต่อ <code class="inline-code">mongodb://localhost:27017</code> แล้ว<strong>ไม่มี MongoDB ตอบกลับเลยภายใน 30 วินาที</strong> ไม่ใช่เออเรอร์ที่เกิดจากโค้ดผิด แต่เกิดจากปลายทางเชื่อมต่อไม่ติด ให้ตรวจสอบตามลำดับนี้:</p>
+                            <ol style="margin-left: 20px;">
+                                <li><strong>ตรวจสอบก่อนว่า Container MongoDB ยังทำงานอยู่หรือไม่</strong> เปิด PowerShell แล้วสั่ง <code class="inline-code">docker ps</code> ถ้าไม่เห็นรายการ <code class="inline-code">school-mongo</code> ในผลลัพธ์ แสดงว่า Container หยุดทำงานไปแล้ว (เช่น ปิดเครื่อง/ปิด Docker Desktop ไปตั้งแต่ขั้นตอนที่ 1) ให้กลับไปที่โฟลเดอร์ที่มีไฟล์ <code class="inline-code">docker-compose.yml</code> แล้วสั่ง <code class="inline-code">docker compose up -d</code> ใหม่อีกครั้ง</li>
+                                <li><strong>ทดสอบด้วย mongosh ก่อนเสมอ</strong> ลองสั่ง <code class="inline-code">mongosh "mongodb://localhost:27017"</code> ตามขั้นตอนที่ 2 ถ้า mongosh เชื่อมต่อไม่ติดเหมือนกัน แสดงว่าปัญหาอยู่ที่ Container/Docker ไม่ใช่โค้ด TypeScript ให้แก้ตามข้อ 1 ก่อน</li>
+                                <li><strong>ถ้า mongosh เชื่อมต่อได้ปกติ แต่โปรแกรม TypeScript ยัง Error</strong> ให้ลองแก้ Connection String ในไฟล์ <code class="inline-code">app.ts</code> จาก <code class="inline-code">"mongodb://localhost:27017"</code> เป็น <code class="inline-code">"mongodb://127.0.0.1:27017"</code> แล้วรันใหม่ เพราะบน Windows บางเครื่อง Node.js จะแปลงคำว่า <code class="inline-code">localhost</code> เป็นที่อยู่ IPv6 (<code class="inline-code">::1</code>) ก่อนที่อยู่ IPv4 ซึ่งพอร์ตที่ Docker เปิดไว้อาจไม่รับการเชื่อมต่อผ่าน IPv6 ทำให้ค้างจนหมดเวลา การระบุ <code class="inline-code">127.0.0.1</code> ตรง ๆ จะบังคับให้ใช้ IPv4 เสมอและแก้ปัญหานี้ได้</li>
+                            </ol>
+                        </div>
+
                         <p><strong>tsx กับ ts-node ต่างกันอย่างไร:</strong> ทั้งสองเป็นโปรแกรมที่ใช้รันไฟล์ TypeScript โดยไม่ต้องสั่ง compile เป็น JavaScript ก่อนด้วยมือ แต่ทำงานภายในต่างกัน และส่งผลต่อความเสถียรต่างกันดังนี้:</p>
                         <table class="grading-table" style="margin-top: 10px;">
                             <tr style="background:#f1f5f9;">
