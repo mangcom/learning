@@ -601,7 +601,7 @@ db.students.deleteMany({ gpa: { $lt: 2.0 } });</pre>
 cd mongo-ts-demo
 npm init -y
 npm install mongodb
-npm install -D typescript ts-node @types/node</pre>
+npm install -D typescript tsx @types/node</pre>
                         </div>
 
                         <p>สร้างไฟล์ <code class="inline-code">app.ts</code> เพื่อเชื่อมต่อฐานข้อมูลและดึงรายชื่อนักศึกษามาแสดงผล:</p>
@@ -654,8 +654,9 @@ main().catch(console.error);</pre>
                                     </svg>
                                 </button>
                             </div>
-                            <pre>npx ts-node app.ts</pre>
+                            <pre>npx tsx app.ts</pre>
                         </div>
+                        <p style="font-size:0.9rem; color:#64748b;">💡 หมายเหตุ: บทความนี้ใช้ <code class="inline-code">tsx</code> รันไฟล์ TypeScript แทนไลบรารี <code class="inline-code">ts-node</code> ที่เคยนิยมใช้กันมาก่อน เพราะ <code class="inline-code">ts-node</code> มีปัญหาความเข้ากันไม่ได้กับ Node.js และ TypeScript เวอร์ชันใหม่ ๆ บางชุด (จะพบ Error เช่น <code class="inline-code">Cannot read properties of undefined (reading 'fileExists')</code>) ส่วน <code class="inline-code">tsx</code> ใช้งานง่ายกว่า ไม่ต้องตั้งค่าเพิ่ม และทำงานได้เสถียรกับ Node.js เวอร์ชันล่าสุด</p>
                         <p>ผลลัพธ์ที่ได้จะแสดงตารางข้อมูลนักศึกษาที่ยังเหลืออยู่ในคอลเลกชันหลังผ่านกระบวนการ Insert, Update และ Delete ในขั้นตอนก่อนหน้า ซึ่งแสดงให้เห็นว่าโปรแกรมภาษาใดก็ตามสามารถเชื่อมต่อและทำงานร่วมกับฐานข้อมูล MongoDB ได้ผ่านไดรเวอร์ (Driver) ของภาษานั้น ๆ</p>
                     </div>
                 </div>
