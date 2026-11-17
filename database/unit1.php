@@ -234,6 +234,98 @@ db.products.find();</pre>
                     กรณีศึกษานี้พานักศึกษาติดตั้ง MongoDB Community Server บนเครื่อง Windows ของตนเอง แล้วฝึกปฏิบัติกระบวนการ <strong>CRUD</strong> (Create, Read, Update, Delete) ให้ครบวงจรผ่าน mongosh ก่อนปิดท้ายด้วยการเขียนโปรแกรมภาษา TypeScript อย่างง่ายเพื่อเชื่อมต่อและดึงข้อมูลมาแสดงผล ซึ่งเป็นรูปแบบการทำงานจริงที่นักพัฒนาระบบใช้เชื่อมแอปพลิเคชันเข้ากับฐานข้อมูล Document
                 </p>
 
+                <div class="key-concept-box">
+                    <strong>📖 ตารางเทียบศัพท์ สำหรับผู้ที่เคยเรียน MySQL มาก่อน</strong>
+                    <p>เนื่องจากนักศึกษาส่วนใหญ่คุ้นเคยกับคำศัพท์ของฐานข้อมูลเชิงสัมพันธ์ (MySQL) มาก่อนแล้ว ตารางต่อไปนี้เทียบคำศัพท์และวิธีคิดที่ตรงกันระหว่าง MySQL กับ MongoDB เพื่อให้ปรับตัวเข้าใจกรณีศึกษานี้ได้ง่ายขึ้น</p>
+                    <table class="grading-table" style="margin-top: 15px;">
+                        <tr style="background:#f1f5f9;">
+                            <th>คำศัพท์/คำสั่งใน MySQL</th>
+                            <th>เทียบเท่าใน MongoDB</th>
+                            <th>คำอธิบายเพิ่มเติม</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Database</strong></td>
+                            <td><strong>Database</strong></td>
+                            <td>ยังคงเป็นที่รวมของ Table/Collection ทั้งหมดเหมือนเดิม</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Table</strong> (ตาราง)</td>
+                            <td><strong>Collection</strong> (คอลเลกชัน)</td>
+                            <td>กลุ่มของข้อมูลที่เก็บร่วมกัน แต่ไม่บังคับให้ทุกรายการมีโครงสร้างคอลัมน์เหมือนกัน</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Row</strong> (แถว)</td>
+                            <td><strong>Document</strong> (เอกสาร)</td>
+                            <td>หนึ่งระเบียนข้อมูล จัดเก็บในรูปแบบ JSON/BSON แทนแถวของตาราง</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Column</strong> (คอลัมน์)</td>
+                            <td><strong>Field</strong> (ฟิลด์)</td>
+                            <td>ชื่อคีย์ภายในเอกสาร แต่ละเอกสารในคอลเลกชันเดียวกันมีฟิลด์ต่างกันได้</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Primary Key</strong></td>
+                            <td><code class="inline-code">_id</code></td>
+                            <td>MongoDB สร้างฟิลด์ <code class="inline-code">_id</code> ให้อัตโนมัติเป็นค่าไม่ซ้ำกัน (ObjectId) ในทุกเอกสาร</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Foreign Key / JOIN</strong></td>
+                            <td>Embedding หรือ <code class="inline-code">$lookup</code></td>
+                            <td>นิยมฝังข้อมูลที่เกี่ยวข้องไว้ในเอกสารเดียวกัน (Embed) แทนการ JOIN ข้ามตาราง หรือใช้ <code class="inline-code">$lookup</code> เมื่อจำเป็นต้องอ้างอิงข้ามคอลเลกชัน</td>
+                        </tr>
+                        <tr>
+                            <td>Schema ตายตัว (กำหนดคอลัมน์ล่วงหน้า)</td>
+                            <td>Schema-less</td>
+                            <td>ไม่บังคับโครงสร้าง เพิ่มฟิลด์ใหม่ในบางเอกสารได้โดยไม่กระทบเอกสารอื่น</td>
+                        </tr>
+                        <tr>
+                            <td><code class="inline-code">CREATE TABLE</code></td>
+                            <td><code class="inline-code">db.createCollection()</code></td>
+                            <td>สร้างคอลเลกชันใหม่ (หรือเกิดขึ้นอัตโนมัติเมื่อ insert ครั้งแรกก็ได้)</td>
+                        </tr>
+                        <tr>
+                            <td><code class="inline-code">INSERT INTO ... VALUES</code></td>
+                            <td><code class="inline-code">insertOne()</code> / <code class="inline-code">insertMany()</code></td>
+                            <td>เพิ่มข้อมูล 1 รายการ หรือหลายรายการพร้อมกัน</td>
+                        </tr>
+                        <tr>
+                            <td><code class="inline-code">SELECT * FROM table</code></td>
+                            <td><code class="inline-code">db.collection.find()</code></td>
+                            <td>ดึงข้อมูลทั้งหมดในคอลเลกชัน</td>
+                        </tr>
+                        <tr>
+                            <td><code class="inline-code">SELECT ... WHERE condition</code></td>
+                            <td><code class="inline-code">db.collection.find({ condition })</code></td>
+                            <td>ดึงข้อมูลแบบมีเงื่อนไข โดยส่งเงื่อนไขเป็นอ็อบเจกต์แทนประโยค WHERE</td>
+                        </tr>
+                        <tr>
+                            <td><code class="inline-code">UPDATE ... SET ... WHERE</code></td>
+                            <td><code class="inline-code">updateOne()</code> / <code class="inline-code">updateMany()</code> กับ <code class="inline-code">$set</code></td>
+                            <td>แก้ไขค่าของฟิลด์ในเอกสารที่ตรงเงื่อนไข</td>
+                        </tr>
+                        <tr>
+                            <td><code class="inline-code">DELETE FROM ... WHERE</code></td>
+                            <td><code class="inline-code">deleteOne()</code> / <code class="inline-code">deleteMany()</code></td>
+                            <td>ลบเอกสารที่ตรงเงื่อนไข 1 รายการ หรือหลายรายการ</td>
+                        </tr>
+                        <tr>
+                            <td><code class="inline-code">ALTER TABLE</code> (เพิ่ม/แก้คอลัมน์)</td>
+                            <td>ไม่จำเป็น</td>
+                            <td>เพิ่มฟิลด์ใหม่ในเอกสารที่ต้องการได้โดยตรง โดยไม่ต้องแก้โครงสร้างคอลเลกชันหรือกระทบเอกสารอื่น</td>
+                        </tr>
+                        <tr>
+                            <td><code class="inline-code">CREATE INDEX</code></td>
+                            <td><code class="inline-code">db.collection.createIndex()</code></td>
+                            <td>สร้างดัชนีเพื่อเร่งความเร็วการค้นหา ใช้แนวคิดเดียวกับ Index ของ MySQL</td>
+                        </tr>
+                        <tr>
+                            <td><code class="inline-code">START TRANSACTION / COMMIT</code></td>
+                            <td>Multi-document Transaction</td>
+                            <td>รองรับเช่นกัน แต่ต้องตั้งค่าเซิร์ฟเวอร์เป็น Replica Set ก่อนจึงจะใช้งานได้</td>
+                        </tr>
+                    </table>
+                </div>
+
                 <div class="step-box">
                     <div class="step-num">ขั้นตอนที่ 1</div>
                     <div class="step-detail">
