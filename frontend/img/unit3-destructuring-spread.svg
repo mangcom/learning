@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" viewBox="0 0 820 420" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="820" height="420" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">Destructuring (แกะค่า) และ Spread (คัดลอกแล้วต่อเติม)</text>
+
+  <!-- Destructuring -->
+  <rect x="15" y="50" width="330" height="355" rx="10" fill="#f5f3ff" stroke="#c4b5fd"/>
+  <text x="180" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#5b21b6">① Destructuring</text>
+  <rect x="40" y="94" width="280" height="110" rx="8" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="54" y="114" font-size="12" fill="#6b7280">const student =</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="13">
+    <rect x="54" y="122" width="252" height="22" rx="4" fill="#ede9fe"/><text x="62" y="138" fill="#4c1d95">name: "สมชาย"</text>
+    <rect x="54" y="148" width="252" height="22" rx="4" fill="#ede9fe"/><text x="62" y="164" fill="#4c1d95">score: 85</text>
+    <rect x="54" y="174" width="252" height="22" rx="4" fill="#f3f4f6"/><text x="62" y="190" fill="#6b7280">id: 1</text>
+  </g>
+  <path d="M120,206 C120,236 100,240 100,262" stroke="#8b5cf6" stroke-width="2" fill="none" marker-end="url(#a)"/>
+  <path d="M220,206 C220,236 240,240 240,262" stroke="#8b5cf6" stroke-width="2" fill="none" marker-end="url(#a)"/>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="13" text-anchor="middle">
+    <rect x="45" y="266" width="110" height="42" rx="8" fill="#7c3aed"/>
+    <text x="100" y="284" fill="#ddd6fe" font-size="11">ตัวแปร name</text>
+    <text x="100" y="301" fill="#ffffff">"สมชาย"</text>
+    <rect x="185" y="266" width="110" height="42" rx="8" fill="#7c3aed"/>
+    <text x="240" y="284" fill="#ddd6fe" font-size="11">ตัวแปร score</text>
+    <text x="240" y="301" fill="#ffffff">85</text>
+  </g>
+  <rect x="40" y="326" width="280" height="32" rx="6" fill="#1e1b4b"/>
+  <text x="180" y="347" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#ddd6fe">const { name, score } = student;</text>
+  <text x="180" y="380" text-anchor="middle" font-size="12" fill="#5b21b6">ดึงเฉพาะค่าที่ต้องใช้ ตามชื่อ key</text>
+  <text x="180" y="396" text-anchor="middle" font-size="12" fill="#5b21b6">(ใช้บ่อยมากกับ props ของ React)</text>
+
+  <!-- Spread -->
+  <rect x="360" y="50" width="445" height="355" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="582" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#0f172a">② แก้ของเดิม เทียบกับ คัดลอกด้วย Spread</text>
+
+  <!-- bad -->
+  <rect x="375" y="92" width="415" height="138" rx="8" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="389" y="114" font-size="13" font-weight="bold" fill="#991b1b">❌ แก้ Array เดิมโดยตรง</text>
+  <text x="389" y="136" font-family="Consolas, monospace" font-size="13" fill="#7f1d1d">scores.push(70);</text>
+  <g font-family="Tahoma, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">
+    <rect x="389" y="148" width="190" height="34" rx="6" fill="#ffffff" stroke="#f87171" stroke-dasharray="4 3"/>
+    <text x="484" y="170" fill="#7f1d1d">[85, 92, 47, 70]</text>
+  </g>
+  <text x="590" y="162" font-size="12" fill="#991b1b">กล่องเดิมถูกเปลี่ยน</text>
+  <text x="590" y="178" font-size="12" fill="#991b1b">ค่าเดิมหายไป</text>
+  <text x="389" y="206" font-size="12" fill="#991b1b">React เทียบแล้วเห็นว่า "เป็นกล่องเดิม" จึงอาจไม่วาดหน้าจอใหม่</text>
+  <text x="389" y="222" font-size="12" fill="#991b1b">และหาสาเหตุข้อผิดพลาดได้ยาก</text>
+
+  <!-- good -->
+  <rect x="375" y="242" width="415" height="150" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="389" y="264" font-size="13" font-weight="bold" fill="#065f46">✔ คัดลอกแล้วต่อเติม (Spread)</text>
+  <text x="389" y="286" font-family="Consolas, monospace" font-size="13" fill="#064e3b">const next = [...scores, 70];</text>
+  <g font-family="Tahoma, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">
+    <rect x="389" y="298" width="150" height="34" rx="6" fill="#ffffff" stroke="#34d399"/>
+    <text x="464" y="320" fill="#065f46">[85, 92, 47]</text>
+    <rect x="590" y="298" width="185" height="34" rx="6" fill="#10b981"/>
+    <text x="682" y="320" fill="#ffffff">[85, 92, 47, 70]</text>
+  </g>
+  <line x1="541" y1="315" x2="586" y2="315" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+  <text x="464" y="350" text-anchor="middle" font-size="11.5" fill="#065f46">scores (เดิม ไม่เปลี่ยน)</text>
+  <text x="682" y="350" text-anchor="middle" font-size="11.5" fill="#065f46">next (กล่องใหม่)</text>
+  <text x="389" y="376" font-size="12" fill="#065f46">Object ก็ทำได้: { ...student, score: 90 } · ใช้กับ setState ทุกครั้ง</text>
+</svg>

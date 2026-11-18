@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="410" viewBox="0 0 820 410" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="820" height="410" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">เมื่อผู้ใช้คลิกปุ่ม: DOM แบบดั้งเดิม เทียบกับ React</text>
+
+  <!-- DOM lane -->
+  <rect x="15" y="50" width="790" height="165" rx="10" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="30" y="74" font-size="14.5" font-weight="bold" fill="#9a3412">① JavaScript + DOM (Imperative — สั่งทีละขั้นว่าต้องทำอะไร)</text>
+  <g font-size="12.5" text-anchor="middle">
+    <rect x="30" y="88" width="170" height="74" rx="8" fill="#ffffff" stroke="#fb923c"/>
+    <text x="115" y="114" font-weight="bold" fill="#7c2d12">👆 ผู้ใช้คลิกปุ่ม</text>
+    <text x="115" y="136" fill="#7c2d12">เบราว์เซอร์สร้าง</text>
+    <text x="115" y="152" fill="#7c2d12">Event "click"</text>
+
+    <rect x="225" y="88" width="170" height="74" rx="8" fill="#ffffff" stroke="#fb923c"/>
+    <text x="310" y="114" font-weight="bold" fill="#7c2d12">Event Listener</text>
+    <text x="310" y="138" font-family="Consolas, monospace" font-size="11" fill="#7c2d12">btn.addEventListener(</text>
+    <text x="310" y="153" font-family="Consolas, monospace" font-size="11" fill="#7c2d12">"click", ...)</text>
+
+    <rect x="420" y="88" width="170" height="74" rx="8" fill="#ffffff" stroke="#fb923c"/>
+    <text x="505" y="114" font-weight="bold" fill="#7c2d12">เปลี่ยนข้อมูล</text>
+    <text x="505" y="142" font-family="Consolas, monospace" font-size="12" fill="#7c2d12">count = count + 1</text>
+
+    <rect x="615" y="88" width="175" height="74" rx="8" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="702" y="114" font-weight="bold" fill="#7c2d12">สั่งแก้หน้าจอเอง</text>
+    <text x="702" y="138" font-family="Consolas, monospace" font-size="11" fill="#7c2d12">el.textContent =</text>
+    <text x="702" y="153" font-family="Consolas, monospace" font-size="11" fill="#7c2d12">`กด ${count} ครั้ง`</text>
+  </g>
+  <g stroke="#64748b" stroke-width="2" marker-end="url(#a)">
+    <line x1="202" y1="125" x2="221" y2="125"/>
+    <line x1="397" y1="125" x2="416" y2="125"/>
+    <line x1="592" y1="125" x2="611" y2="125"/>
+  </g>
+  <text x="30" y="194" font-size="12.5" fill="#9a3412">⚠ ต้องจำเองว่าเมื่อข้อมูลเปลี่ยน ต้องไปแก้หน้าจอจุดไหนบ้าง ถ้าลืมจุดหนึ่ง หน้าจอจะแสดงข้อมูลไม่ตรงกัน</text>
+
+  <!-- React lane -->
+  <rect x="15" y="228" width="790" height="165" rx="10" fill="#ecfeff" stroke="#67e8f9"/>
+  <text x="30" y="252" font-size="14.5" font-weight="bold" fill="#155e75">② React (Declarative — บอกว่าข้อมูลเป็นอะไร แล้วหน้าจอเปลี่ยนตามเอง)</text>
+  <g font-size="12.5" text-anchor="middle">
+    <rect x="30" y="266" width="170" height="74" rx="8" fill="#ffffff" stroke="#22d3ee"/>
+    <text x="115" y="292" font-weight="bold" fill="#164e63">👆 ผู้ใช้คลิกปุ่ม</text>
+    <text x="115" y="314" fill="#164e63">เบราว์เซอร์สร้าง</text>
+    <text x="115" y="330" fill="#164e63">Event "click"</text>
+
+    <rect x="225" y="266" width="170" height="74" rx="8" fill="#ffffff" stroke="#22d3ee"/>
+    <text x="310" y="292" font-weight="bold" fill="#164e63">onClick ในแท็ก</text>
+    <text x="310" y="318" font-family="Consolas, monospace" font-size="11" fill="#164e63">&lt;button onClick=</text>
+    <text x="310" y="333" font-family="Consolas, monospace" font-size="11" fill="#164e63">{handleClick}&gt;</text>
+
+    <rect x="420" y="266" width="170" height="74" rx="8" fill="#ffffff" stroke="#22d3ee"/>
+    <text x="505" y="292" font-weight="bold" fill="#164e63">เปลี่ยน State</text>
+    <text x="505" y="320" font-family="Consolas, monospace" font-size="12" fill="#164e63">setCount(count + 1)</text>
+
+    <rect x="615" y="266" width="175" height="74" rx="8" fill="#cffafe" stroke="#0891b2" stroke-width="2"/>
+    <text x="702" y="292" font-weight="bold" fill="#164e63">React วาดหน้าจอใหม่</text>
+    <text x="702" y="314" fill="#164e63">ทุกจุดที่ใช้ count</text>
+    <text x="702" y="330" fill="#164e63">เปลี่ยนตามอัตโนมัติ</text>
+  </g>
+  <g stroke="#64748b" stroke-width="2" marker-end="url(#a)">
+    <line x1="202" y1="303" x2="221" y2="303"/>
+    <line x1="397" y1="303" x2="416" y2="303"/>
+    <line x1="592" y1="303" x2="611" y2="303"/>
+  </g>
+  <text x="30" y="372" font-size="12.5" fill="#155e75">✔ เขียนแค่ "หน้าจอควรเป็นอย่างไรเมื่อข้อมูลเป็นแบบนี้" ลดความผิดพลาดเมื่อหน้าเว็บซับซ้อนขึ้น (ใช้ในปฏิบัติการของหน่วยนี้)</text>
+</svg>

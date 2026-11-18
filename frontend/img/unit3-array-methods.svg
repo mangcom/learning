@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="470" viewBox="0 0 820 470" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+    <g id="in">
+      <circle cx="0" cy="0" r="17" fill="#22c55e"/><text x="0" y="5" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">85</text>
+      <circle cx="40" cy="0" r="17" fill="#22c55e"/><text x="40" y="5" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">92</text>
+      <circle cx="80" cy="0" r="17" fill="#ef4444"/><text x="80" y="5" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">47</text>
+      <circle cx="120" cy="0" r="17" fill="#22c55e"/><text x="120" y="5" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">68</text>
+    </g>
+  </defs>
+  <rect width="820" height="470" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">Array Methods: ข้อมูลเดียวกัน ผลลัพธ์ต่างกัน</text>
+  <text x="105" y="62" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#475569">Array ต้นทาง (scores)</text>
+  <text x="400" y="62" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#475569">เมธอดที่เรียกใช้</text>
+  <text x="680" y="62" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#475569">ผลลัพธ์ที่ได้</text>
+
+  <!-- rows -->
+  <g font-family="Consolas, 'Courier New', monospace" font-size="12.5">
+    <!-- map -->
+    <use href="#in" x="45" y="100"/>
+    <line x1="190" y1="100" x2="238" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="242" y="80" width="320" height="40" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="402" y="105" text-anchor="middle" fill="#1e3a8a">map(s =&gt; getGrade(s))</text>
+    <line x1="566" y1="100" x2="590" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+    <g text-anchor="middle" font-weight="bold" fill="#1e3a8a">
+      <rect x="596" y="84" width="38" height="32" rx="6" fill="#dbeafe"/><text x="615" y="105">"4"</text>
+      <rect x="638" y="84" width="38" height="32" rx="6" fill="#dbeafe"/><text x="657" y="105">"4"</text>
+      <rect x="680" y="84" width="38" height="32" rx="6" fill="#dbeafe"/><text x="699" y="105">"0"</text>
+      <rect x="722" y="84" width="48" height="32" rx="6" fill="#dbeafe"/><text x="746" y="105">"2.5"</text>
+    </g>
+    <text x="596" y="134" font-family="Tahoma, sans-serif" font-size="11.5" fill="#2563eb">แปลงทุกตัว → จำนวนเท่าเดิม</text>
+
+    <!-- filter -->
+    <use href="#in" x="45" y="180"/>
+    <line x1="190" y1="180" x2="238" y2="180" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="242" y="160" width="320" height="40" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+    <text x="402" y="185" text-anchor="middle" fill="#14532d">filter(s =&gt; s &gt;= 50)</text>
+    <line x1="566" y1="180" x2="590" y2="180" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+    <g text-anchor="middle" font-weight="bold" fill="#fff" font-family="Tahoma, sans-serif" font-size="13">
+      <circle cx="615" cy="180" r="17" fill="#22c55e"/><text x="615" y="185">85</text>
+      <circle cx="655" cy="180" r="17" fill="#22c55e"/><text x="655" y="185">92</text>
+      <circle cx="695" cy="180" r="17" fill="#22c55e"/><text x="695" y="185">68</text>
+    </g>
+    <text x="596" y="214" font-family="Tahoma, sans-serif" font-size="11.5" fill="#16a34a">เก็บเฉพาะตัวที่เงื่อนไขเป็นจริง → อาจน้อยลง</text>
+
+    <!-- find -->
+    <use href="#in" x="45" y="260"/>
+    <line x1="190" y1="260" x2="238" y2="260" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="242" y="240" width="320" height="40" rx="8" fill="#fff7ed" stroke="#ea580c"/>
+    <text x="402" y="265" text-anchor="middle" fill="#7c2d12">find(s =&gt; s &lt; 50)</text>
+    <line x1="566" y1="260" x2="590" y2="260" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+    <circle cx="615" cy="260" r="17" fill="#ef4444"/><text x="615" y="265" text-anchor="middle" font-family="Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#fff">47</text>
+    <text x="596" y="294" font-family="Tahoma, sans-serif" font-size="11.5" fill="#ea580c">ได้ตัวแรกที่เจอ 1 ตัว (ไม่ใช่ Array)</text>
+
+    <!-- reduce -->
+    <use href="#in" x="45" y="340"/>
+    <line x1="190" y1="340" x2="238" y2="340" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="242" y="320" width="320" height="40" rx="8" fill="#faf5ff" stroke="#9333ea"/>
+    <text x="402" y="345" text-anchor="middle" fill="#581c87">reduce((sum, s) =&gt; sum + s, 0)</text>
+    <line x1="566" y1="340" x2="590" y2="340" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="596" y="322" width="70" height="36" rx="8" fill="#9333ea"/>
+    <text x="631" y="345" text-anchor="middle" font-family="Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#fff">292</text>
+    <text x="596" y="374" font-family="Tahoma, sans-serif" font-size="11.5" fill="#9333ea">ยุบรวมทุกตัว → เหลือค่าเดียว</text>
+
+    <!-- sort -->
+    <use href="#in" x="45" y="420"/>
+    <line x1="190" y1="420" x2="238" y2="420" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="242" y="400" width="320" height="40" rx="8" fill="#f1f5f9" stroke="#475569"/>
+    <text x="402" y="425" text-anchor="middle" fill="#0f172a">[...scores].sort((a, b) =&gt; b - a)</text>
+    <line x1="566" y1="420" x2="590" y2="420" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+    <g text-anchor="middle" font-weight="bold" fill="#fff" font-family="Tahoma, sans-serif" font-size="13">
+      <circle cx="615" cy="420" r="17" fill="#22c55e"/><text x="615" y="425">92</text>
+      <circle cx="655" cy="420" r="17" fill="#22c55e"/><text x="655" y="425">85</text>
+      <circle cx="695" cy="420" r="17" fill="#22c55e"/><text x="695" y="425">68</text>
+      <circle cx="735" cy="420" r="17" fill="#ef4444"/><text x="735" y="425">47</text>
+    </g>
+    <text x="596" y="454" font-family="Tahoma, sans-serif" font-size="11.5" fill="#475569">ครบทุกตัว แต่เรียงลำดับใหม่ (มาก → น้อย)</text>
+  </g>
+</svg>
