@@ -1556,6 +1556,7 @@ git push</pre>
     </div>
 
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/lightbox.js"></script>
 </body>
 
 </html>

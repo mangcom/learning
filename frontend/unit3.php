@@ -1507,6 +1507,7 @@ git push</pre>
     </div>
 
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/lightbox.js"></script>
     <script>
         // ตัวรันโค้ดในหน้าบทเรียน: ใช้กับกล่องโค้ดที่มีแอตทริบิวต์ data-run
         (function () {
