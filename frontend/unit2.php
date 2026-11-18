@@ -12,7 +12,7 @@ $active_nav = "frontend";
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css?v=<?php echo filemtime(__DIR__ . "/../assets/css/style.css"); ?>">
 </head>
 
 <body>
@@ -1454,8 +1454,8 @@ a9ed376 Merge feature/new-title and resolve title conflict
         </div>
     </div>
 
-    <script src="../assets/js/script.js"></script>
-    <script src="../assets/js/lightbox.js"></script>
+    <script src="../assets/js/script.js?v=<?php echo filemtime(__DIR__ . "/../assets/js/script.js"); ?>"></script>
+    <script src="../assets/js/lightbox.js?v=<?php echo filemtime(__DIR__ . "/../assets/js/lightbox.js"); ?>"></script>
 </body>
 
 </html>
