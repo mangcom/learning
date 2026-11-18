@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="470" viewBox="0 0 820 470" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <rect width="820" height="470" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">เครื่องมือรัน/ตรวจ TypeScript: tsc, tsx, ts-node และ node</text>
+  <text x="410" y="54" text-anchor="middle" font-size="12" fill="#64748b">ผลจากการทดสอบจริงกับ TypeScript 6.0.3 / 7.0.2 และ Node.js 22.23 (พฤศจิกายน 2569)</text>
+
+  <!-- header -->
+  <g font-size="13.5" font-weight="bold" text-anchor="middle" fill="#ffffff">
+    <rect x="20" y="70" width="170" height="44" rx="8" fill="#475569"/><text x="105" y="97">หัวข้อ</text>
+    <rect x="196" y="70" width="146" height="44" rx="8" fill="#2563eb"/><text x="269" y="91">tsc</text><text x="269" y="107" font-size="11" font-weight="normal">TypeScript Compiler</text>
+    <rect x="348" y="70" width="146" height="44" rx="8" fill="#7c3aed"/><text x="421" y="91">tsx</text><text x="421" y="107" font-size="11" font-weight="normal">ใช้ esbuild</text>
+    <rect x="500" y="70" width="146" height="44" rx="8" fill="#b45309"/><text x="573" y="91">ts-node</text><text x="573" y="107" font-size="11" font-weight="normal">ใช้ TypeScript API</text>
+    <rect x="652" y="70" width="148" height="44" rx="8" fill="#15803d"/><text x="726" y="91">node ไฟล์.ts</text><text x="726" y="107" font-size="11" font-weight="normal">Node.js 22.18+</text>
+  </g>
+
+  <g font-size="12.5">
+    <!-- row 1 -->
+    <rect x="20" y="120" width="780" height="52" fill="#f8fafc"/>
+    <text x="34" y="151" font-weight="bold" fill="#0f172a">ตรวจ Type</text>
+    <text x="269" y="151" text-anchor="middle" fill="#15803d" font-weight="bold">✔ ตรวจละเอียด</text>
+    <text x="421" y="151" text-anchor="middle" fill="#b91c1c" font-weight="bold">✖ ไม่ตรวจ</text>
+    <text x="573" y="151" text-anchor="middle" fill="#15803d" font-weight="bold">✔ ตรวจก่อนรัน</text>
+    <text x="726" y="151" text-anchor="middle" fill="#b91c1c" font-weight="bold">✖ ไม่ตรวจ</text>
+    <!-- row 2 -->
+    <text x="34" y="203" font-weight="bold" fill="#0f172a">รันโค้ด</text>
+    <text x="269" y="196" text-anchor="middle" fill="#334155">✖ ไม่รันเอง</text>
+    <text x="269" y="213" text-anchor="middle" fill="#64748b" font-size="11.5">แปลงเป็น .js หรือ --noEmit</text>
+    <text x="421" y="203" text-anchor="middle" fill="#15803d">✔ รันทันที</text>
+    <text x="573" y="203" text-anchor="middle" fill="#15803d">✔ รันหลังตรวจผ่าน</text>
+    <text x="726" y="203" text-anchor="middle" fill="#15803d">✔ ตัด Type แล้วรัน</text>
+    <!-- row 3 -->
+    <rect x="20" y="224" width="780" height="52" fill="#f8fafc"/>
+    <text x="34" y="255" font-weight="bold" fill="#0f172a">โค้ดผิด score: "85"</text>
+    <text x="269" y="255" text-anchor="middle" fill="#15803d">แจ้ง Error TS2322</text>
+    <text x="421" y="255" text-anchor="middle" fill="#b91c1c">รันได้ ผลผิด 855</text>
+    <text x="573" y="255" text-anchor="middle" fill="#15803d">หยุด แจ้ง TSError</text>
+    <text x="726" y="255" text-anchor="middle" fill="#b91c1c">รันได้ ผลผิด 855</text>
+    <!-- row 4 -->
+    <text x="34" y="300" font-weight="bold" fill="#0f172a">ใช้กับ TypeScript 7</text>
+    <text x="269" y="300" text-anchor="middle" fill="#15803d">✔ (TS 7 คือ tsc ตัวใหม่)</text>
+    <text x="421" y="300" text-anchor="middle" fill="#15803d">✔ ไม่ต้องใช้ TS เลย</text>
+    <text x="573" y="294" text-anchor="middle" fill="#b91c1c" font-weight="bold">✖ ใช้ไม่ได้</text>
+    <text x="573" y="311" text-anchor="middle" fill="#b91c1c" font-size="11">Error: reading 'fileExists'</text>
+    <text x="726" y="300" text-anchor="middle" fill="#15803d">✔ ไม่ต้องใช้ TS เลย</text>
+    <!-- row 5 -->
+    <rect x="20" y="322" width="780" height="52" fill="#f8fafc"/>
+    <text x="34" y="353" font-weight="bold" fill="#0f172a">การตั้งค่า / ข้อจำกัด</text>
+    <text x="269" y="353" text-anchor="middle" fill="#334155">tsconfig.json</text>
+    <text x="421" y="353" text-anchor="middle" fill="#334155">ไม่ต้องตั้งค่า</text>
+    <text x="573" y="346" text-anchor="middle" fill="#334155">TS ≤ 6 + tsconfig</text>
+    <text x="573" y="363" text-anchor="middle" fill="#334155" font-size="11.5">module: commonjs</text>
+    <text x="726" y="346" text-anchor="middle" fill="#334155">ไม่รองรับ enum</text>
+    <text x="726" y="363" text-anchor="middle" fill="#334155" font-size="11.5">(strip-only mode)</text>
+    <!-- row 6 -->
+    <text x="34" y="400" font-weight="bold" fill="#0f172a">ความเร็ว</text>
+    <text x="269" y="400" text-anchor="middle" fill="#334155">ปานกลาง (TS 7 เร็วมาก)</text>
+    <text x="421" y="400" text-anchor="middle" fill="#334155">เร็วมาก</text>
+    <text x="573" y="400" text-anchor="middle" fill="#334155">ช้า</text>
+    <text x="726" y="400" text-anchor="middle" fill="#334155">เร็ว</text>
+  </g>
+
+  <rect x="20" y="420" width="780" height="40" rx="8" fill="#0f172a"/>
+  <text x="410" y="445" text-anchor="middle" font-size="13" fill="#e2e8f0">✅ แนวทางที่แนะนำ: <tspan fill="#c4b5fd" font-weight="bold">รันด้วย tsx</tspan> + <tspan fill="#93c5fd" font-weight="bold">ตรวจด้วย tsc --noEmit</tspan>  (Next.js ก็ทำแบบเดียวกัน: แปลงโค้ดเร็ว ๆ แล้วตรวจด้วย tsc ตอน next build)</text>
+</svg>

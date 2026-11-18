@@ -90,7 +90,7 @@ $active_nav = "frontend"; // เปิดสถานะเมนูที่ว
                             <span class="unit-badge" style="background:#f1f5f9; padding:3px 10px; border-radius:15px; font-size:0.8rem; font-weight:700;">หน่วยที่ 4</span>
                             <span style="font-size:0.8rem; color:#64748b; margin-left:10px; font-weight:600;">สัปดาห์ที่ 4 (5 ชม.)</span>
                             <h4 style="margin:8px 0 5px 0; color:#0f172a;">การพัฒนาโปรแกรมแบบพิมพ์ปลอดภัยด้วย TypeScript</h4>
-                            <p style="font-size:0.85rem; color:#475569; margin:0;">เหตุผลที่ต้องใช้ TypeScript ชนิดข้อมูลพื้นฐาน Interface และการแปลงโปรเจกต์ Next.js ให้รองรับ TypeScript</p>
+                            <p style="font-size:0.85rem; color:#475569; margin:0;">ไวยากรณ์ TypeScript ครบตาม W3Schools (Types, Interface, Union, Generics, Utility Types) พร้อมกล่องโค้ดที่ตรวจ Type และรันได้ในหน้าเรียน เปรียบเทียบ tsc/tsx/ts-node/node แปลงโปรเจกต์ Next.js ทั้งโปรเจกต์เป็น TypeScript และสร้างหน้าแสดงความก้าวหน้าการเรียนตั้งแต่หน่วยที่ 1</p>
                         </div>
                         <a href="unit4.php" class="btn-enter-unit" style="width:auto; white-space:nowrap; margin-left:20px;">ดูเนื้อหา ➔</a>
                     </div>
