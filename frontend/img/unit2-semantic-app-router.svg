@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="470" viewBox="0 0 820 470" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="820" height="470" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">Semantic HTML5 ในโครงสร้าง App Router: ไฟล์ไหนสร้างส่วนไหนของหน้าเว็บ</text>
+
+  <!-- page wireframe -->
+  <rect x="20" y="52" width="400" height="400" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="12.5" fill="#475569">
+    <text x="34" y="74">&lt;html lang="th"&gt; &lt;body&gt;</text>
+  </g>
+  <g font-size="13" text-anchor="middle" font-weight="bold">
+    <rect x="34" y="84" width="372" height="58" rx="7" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="220" y="106" fill="#1e3a8a" font-family="Consolas, monospace">&lt;header&gt; &lt;nav&gt;</text>
+    <text x="220" y="128" fill="#1e3a8a" font-weight="normal" font-size="12">โลโก้ · เมนู · Dropdown · ปุ่มแฮมเบอร์เกอร์</text>
+
+    <rect x="34" y="152" width="372" height="214" rx="7" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+    <text x="220" y="172" fill="#065f46" font-family="Consolas, monospace">&lt;main&gt;</text>
+    <rect x="50" y="182" width="340" height="80" rx="6" fill="#ffffff" stroke="#34d399"/>
+    <text x="220" y="210" fill="#065f46" font-family="Consolas, monospace">&lt;section&gt; Hero</text>
+    <text x="220" y="232" fill="#065f46" font-weight="normal" font-size="12">&lt;h1&gt; ชื่อ + ปุ่ม Call to Action</text>
+    <text x="220" y="250" fill="#065f46" font-weight="normal" font-size="12">(หน้าละ 1 h1 เท่านั้น)</text>
+    <rect x="50" y="272" width="340" height="82" rx="6" fill="#ffffff" stroke="#34d399"/>
+    <text x="220" y="296" fill="#065f46" font-family="Consolas, monospace">&lt;section&gt; &lt;h2&gt;</text>
+    <g font-family="Consolas, monospace" font-size="11.5" fill="#065f46">
+      <rect x="62" y="306" width="100" height="38" rx="4" fill="#ecfdf5" stroke="#6ee7b7"/><text x="112" y="330">&lt;article&gt;</text>
+      <rect x="170" y="306" width="100" height="38" rx="4" fill="#ecfdf5" stroke="#6ee7b7"/><text x="220" y="330">&lt;article&gt;</text>
+      <rect x="278" y="306" width="100" height="38" rx="4" fill="#ecfdf5" stroke="#6ee7b7"/><text x="328" y="330">&lt;article&gt;</text>
+    </g>
+
+    <rect x="34" y="376" width="372" height="62" rx="7" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+    <text x="220" y="400" fill="#0f172a" font-family="Consolas, monospace">&lt;footer&gt; &lt;address&gt;</text>
+    <text x="220" y="422" fill="#0f172a" font-weight="normal" font-size="12">ชื่อ · ข้อมูลติดต่อ · ลิขสิทธิ์</text>
+  </g>
+
+  <!-- file list -->
+  <g font-size="12.5">
+    <rect x="480" y="60" width="320" height="76" rx="8" fill="#0f172a"/>
+    <text x="494" y="84" fill="#fbbf24" font-family="Consolas, monospace" font-weight="bold">app/layout.js</text>
+    <text x="494" y="106" fill="#e2e8f0">โครงร่างร่วมของทุกหน้า: &lt;html&gt; &lt;body&gt;</text>
+    <text x="494" y="126" fill="#e2e8f0">วาง &lt;Navbar /&gt; &lt;main&gt; &lt;Footer /&gt;</text>
+
+    <rect x="480" y="150" width="320" height="58" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="494" y="174" fill="#1e3a8a" font-family="Consolas, monospace" font-weight="bold">app/components/Navbar.js</text>
+    <text x="494" y="196" fill="#1e3a8a">Client Component ("use client")</text>
+
+    <rect x="480" y="222" width="320" height="76" rx="8" fill="#dcfce7" stroke="#10b981"/>
+    <text x="494" y="246" fill="#065f46" font-family="Consolas, monospace" font-weight="bold">app/page.js (และ about/, services/)</text>
+    <text x="494" y="268" fill="#065f46">เนื้อหาเฉพาะของแต่ละหน้า</text>
+    <text x="494" y="288" fill="#065f46">ถูกนำไปใส่แทน {children} ใน &lt;main&gt;</text>
+
+    <rect x="480" y="312" width="320" height="58" rx="8" fill="#e2e8f0" stroke="#475569"/>
+    <text x="494" y="336" fill="#0f172a" font-family="Consolas, monospace" font-weight="bold">app/components/Footer.js</text>
+    <text x="494" y="358" fill="#0f172a">Server Component + CSS Modules</text>
+
+    <rect x="480" y="384" width="320" height="58" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="494" y="408" fill="#78350f" font-weight="bold">export const metadata</text>
+    <text x="494" y="430" fill="#78350f">สร้าง &lt;title&gt; และ description ให้ Google</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="1.6" stroke-dasharray="5 4" fill="none" marker-end="url(#a)">
+    <path d="M478,180 L410,114"/>
+    <path d="M478,262 L410,262"/>
+    <path d="M478,342 L410,406"/>
+  </g>
+</svg>

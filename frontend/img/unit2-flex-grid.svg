@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="380" viewBox="0 0 820 380" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#059669"/>
+    </marker>
+  </defs>
+  <rect width="820" height="380" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">CSS3 Layout: Flexbox (1 มิติ) เทียบกับ Grid (2 มิติ)</text>
+
+  <!-- Flexbox -->
+  <rect x="15" y="50" width="385" height="315" rx="10" fill="#f5f3ff" stroke="#c4b5fd"/>
+  <text x="207" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#5b21b6">Flexbox — จัดเรียงตามแนวเดียว</text>
+  <rect x="35" y="92" width="345" height="64" rx="8" fill="#ffffff" stroke="#a78bfa" stroke-dasharray="5 4"/>
+  <g font-size="12.5" text-anchor="middle" font-weight="bold" fill="#ffffff">
+    <rect x="48" y="104" width="78" height="40" rx="6" fill="#7c3aed"/><text x="87" y="129">โลโก้</text>
+    <rect x="196" y="104" width="54" height="40" rx="6" fill="#8b5cf6"/><text x="223" y="129">เมนู</text>
+    <rect x="256" y="104" width="54" height="40" rx="6" fill="#8b5cf6"/><text x="283" y="129">เมนู</text>
+    <rect x="316" y="104" width="54" height="40" rx="6" fill="#8b5cf6"/><text x="343" y="129">ปุ่ม</text>
+  </g>
+  <path d="M48,172 H368" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#a)"/>
+  <text x="207" y="192" text-anchor="middle" font-size="12" fill="#5b21b6">แนวหลัก (main axis): แถวเดียว จากซ้ายไปขวา</text>
+  <rect x="35" y="206" width="345" height="34" rx="6" fill="#1e1b4b"/>
+  <text x="207" y="228" text-anchor="middle" font-family="Consolas, monospace" font-size="12.5" fill="#ddd6fe">flex items-center justify-between</text>
+  <g font-size="12.5" fill="#4c1d95">
+    <text x="35" y="266">• เหมาะกับ: แถบเมนู, ปุ่มเรียงกัน, จัดของให้อยู่กึ่งกลาง</text>
+    <text x="35" y="290">• justify-between: ดันของไปชิดสองฝั่ง</text>
+    <text x="35" y="314">• items-center: จัดกึ่งกลางแนวตั้ง</text>
+    <text x="35" y="338">• flex-col: เปลี่ยนเป็นเรียงจากบนลงล่าง (ใช้บนมือถือ)</text>
+  </g>
+
+  <!-- Grid -->
+  <rect x="420" y="50" width="385" height="315" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="612" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#065f46">Grid — จัดเป็นตารางแถวและคอลัมน์</text>
+  <rect x="440" y="92" width="345" height="104" rx="8" fill="#ffffff" stroke="#34d399" stroke-dasharray="5 4"/>
+  <g font-size="12.5" text-anchor="middle" font-weight="bold" fill="#ffffff">
+    <rect x="452" y="102" width="102" height="38" rx="6" fill="#059669"/><text x="503" y="126">การ์ด 1</text>
+    <rect x="562" y="102" width="102" height="38" rx="6" fill="#059669"/><text x="613" y="126">การ์ด 2</text>
+    <rect x="672" y="102" width="102" height="38" rx="6" fill="#059669"/><text x="723" y="126">การ์ด 3</text>
+    <rect x="452" y="148" width="102" height="38" rx="6" fill="#10b981"/><text x="503" y="172">การ์ด 4</text>
+    <rect x="562" y="148" width="102" height="38" rx="6" fill="#10b981"/><text x="613" y="172">การ์ด 5</text>
+    <rect x="672" y="148" width="102" height="38" rx="6" fill="#10b981"/><text x="723" y="172">การ์ด 6</text>
+  </g>
+  <path d="M452,204 H776" stroke="#059669" stroke-width="2.5" marker-end="url(#g)"/>
+  <text x="612" y="222" text-anchor="middle" font-size="12" fill="#065f46">ควบคุมได้ทั้งคอลัมน์และแถวพร้อมกัน</text>
+  <rect x="440" y="232" width="345" height="34" rx="6" fill="#022c22"/>
+  <text x="612" y="254" text-anchor="middle" font-family="Consolas, monospace" font-size="12.5" fill="#a7f3d0">grid grid-cols-3 gap-4</text>
+  <g font-size="12.5" fill="#064e3b">
+    <text x="440" y="290">• เหมาะกับ: การ์ดสินค้า, แกลเลอรีรูป, แบ่งหน้าเป็นคอลัมน์</text>
+    <text x="440" y="314">• grid-cols-3: แบ่ง 3 คอลัมน์เท่า ๆ กัน</text>
+    <text x="440" y="338">• gap-4: ระยะห่างระหว่างช่องเท่ากันทุกด้าน</text>
+  </g>
+</svg>

@@ -70,7 +70,7 @@ $active_nav = "frontend"; // เปิดสถานะเมนูที่ว
                             <span class="unit-badge" style="background:#f1f5f9; padding:3px 10px; border-radius:15px; font-size:0.8rem; font-weight:700;">หน่วยที่ 2</span>
                             <span style="font-size:0.8rem; color:#64748b; margin-left:10px; font-weight:600;">สัปดาห์ที่ 2 (5 ชม.)</span>
                             <h4 style="margin:8px 0 5px 0; color:#0f172a;">การออกแบบและตกแต่งเว็บด้วย Modern HTML5, CSS3 และ UI Framework</h4>
-                            <p style="font-size:0.85rem; color:#475569; margin:0;">โครงสร้าง Semantic HTML ใน App Router, การจัดการ CSS (Global CSS, CSS Modules) และการติดตั้ง Tailwind CSS ในโปรเจกต์ Next.js</p>
+                            <p style="font-size:0.85rem; color:#475569; margin:0;">Semantic HTML5 ใน App Router, Global CSS / CSS Modules / Tailwind CSS, Responsive Web Design แบบ Mobile-First พร้อมสร้าง Navbar (Dropdown + Sidebar) และ Hero Section ผ่าน Docker และ Git</p>
                         </div>
                         <a href="unit2.php" class="btn-enter-unit" style="width:auto; white-space:nowrap; margin-left:20px;">ดูเนื้อหา ➔</a>
                     </div>

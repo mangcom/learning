@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" viewBox="0 0 820 420" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="820" height="420" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">Breakpoint ของ Tailwind CSS และหลักการ Mobile-First</text>
+
+  <!-- devices -->
+  <g font-size="12" text-anchor="middle" fill="#475569">
+    <rect x="160" y="54" width="28" height="48" rx="5" fill="none" stroke="#475569" stroke-width="2"/>
+    <text x="174" y="120">มือถือ</text>
+    <rect x="425" y="58" width="56" height="44" rx="5" fill="none" stroke="#475569" stroke-width="2"/>
+    <text x="453" y="120">แท็บเล็ต</text>
+    <rect x="555" y="60" width="62" height="38" rx="3" fill="none" stroke="#475569" stroke-width="2"/>
+    <path d="M548,102 h76" stroke="#475569" stroke-width="3"/>
+    <text x="586" y="120">โน้ตบุ๊ก</text>
+    <rect x="700" y="54" width="80" height="46" rx="3" fill="none" stroke="#475569" stroke-width="2"/>
+    <path d="M740,100 v6 M725,108 h30" stroke="#475569" stroke-width="2"/>
+    <text x="740" y="124">จอใหญ่</text>
+  </g>
+
+  <!-- ruler segments (0–1600px => x 40..780) -->
+  <g>
+    <rect x="40" y="134" width="296" height="40" fill="#dbeafe"/>
+    <rect x="336" y="134" width="59" height="40" fill="#bfdbfe"/>
+    <rect x="395" y="134" width="119" height="40" fill="#93c5fd"/>
+    <rect x="514" y="134" width="118" height="40" fill="#60a5fa"/>
+    <rect x="632" y="134" width="118" height="40" fill="#3b82f6"/>
+    <rect x="750" y="134" width="30" height="40" fill="#1d4ed8"/>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="13" font-weight="bold" text-anchor="middle">
+    <text x="188" y="159" fill="#1e3a8a">(ไม่มี prefix)</text>
+    <text x="365" y="159" fill="#1e3a8a">sm:</text>
+    <text x="454" y="159" fill="#1e3a8a">md:</text>
+    <text x="573" y="159" fill="#ffffff">lg:</text>
+    <text x="691" y="159" fill="#ffffff">xl:</text>
+    <text x="765" y="159" fill="#ffffff" font-size="10">2xl:</text>
+  </g>
+  <g stroke="#0f172a" stroke-width="1.5">
+    <path d="M40,174 v8 M336,174 v8 M395,174 v8 M514,174 v8 M632,174 v8 M750,174 v8"/>
+  </g>
+  <g font-size="11.5" text-anchor="middle" fill="#0f172a">
+    <text x="40" y="196">0px</text>
+    <text x="336" y="196">640px</text>
+    <text x="395" y="210">768px</text>
+    <text x="514" y="196">1024px</text>
+    <text x="632" y="196">1280px</text>
+    <text x="750" y="210">1536px</text>
+  </g>
+
+  <path d="M60,230 H760" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+  <text x="410" y="252" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">Mobile-First: เขียนสไตล์สำหรับมือถือก่อน แล้ว "เพิ่ม" สำหรับจอที่กว้างขึ้นด้วย prefix</text>
+
+  <!-- example -->
+  <rect x="20" y="268" width="780" height="40" rx="8" fill="#0f172a"/>
+  <text x="410" y="294" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#e2e8f0">className="grid <tspan fill="#fbbf24">grid-cols-1</tspan> <tspan fill="#93c5fd">sm:grid-cols-2</tspan> <tspan fill="#86efac">lg:grid-cols-3</tspan> gap-6"</text>
+
+  <g font-size="12" text-anchor="middle">
+    <rect x="40" y="320" width="230" height="90" rx="8" fill="#fef9c3" stroke="#ca8a04"/>
+    <text x="155" y="340" fill="#713f12" font-weight="bold">จอแคบกว่า 640px</text>
+    <rect x="95" y="350" width="120" height="14" rx="3" fill="#fde68a"/>
+    <rect x="95" y="368" width="120" height="14" rx="3" fill="#fde68a"/>
+    <rect x="95" y="386" width="120" height="14" rx="3" fill="#fde68a"/>
+
+    <rect x="295" y="320" width="230" height="90" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="410" y="340" fill="#1e3a8a" font-weight="bold">ตั้งแต่ 640px (sm)</text>
+    <rect x="335" y="352" width="72" height="20" rx="3" fill="#93c5fd"/>
+    <rect x="413" y="352" width="72" height="20" rx="3" fill="#93c5fd"/>
+    <rect x="335" y="378" width="72" height="20" rx="3" fill="#93c5fd"/>
+
+    <rect x="550" y="320" width="250" height="90" rx="8" fill="#dcfce7" stroke="#10b981"/>
+    <text x="675" y="340" fill="#065f46" font-weight="bold">ตั้งแต่ 1024px (lg)</text>
+    <rect x="575" y="356" width="64" height="38" rx="3" fill="#86efac"/>
+    <rect x="644" y="356" width="64" height="38" rx="3" fill="#86efac"/>
+    <rect x="713" y="356" width="64" height="38" rx="3" fill="#86efac"/>
+  </g>
+</svg>

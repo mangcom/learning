@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="440" viewBox="0 0 820 440" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <rect width="820" height="440" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">โครงสร้างหน้าเว็บ: ใช้ div ทั้งหมด เทียบกับ Semantic HTML5</text>
+
+  <!-- ===== div soup ===== -->
+  <text x="205" y="64" text-anchor="middle" font-size="14" font-weight="bold" fill="#991b1b">❌ "Div Soup" — ทุกส่วนเป็น div</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="13" text-anchor="middle" fill="#7f1d1d">
+    <rect x="25" y="76" width="360" height="300" rx="8" fill="#fef2f2" stroke="#fca5a5"/>
+    <rect x="40" y="90" width="330" height="40" rx="6" fill="#fee2e2" stroke="#f87171"/>
+    <text x="205" y="115">&lt;div class="top"&gt;</text>
+    <rect x="40" y="140" width="230" height="170" rx="6" fill="#fee2e2" stroke="#f87171"/>
+    <text x="155" y="165">&lt;div class="content"&gt;</text>
+    <rect x="55" y="180" width="200" height="54" rx="5" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="155" y="212">&lt;div class="box"&gt;</text>
+    <rect x="55" y="244" width="200" height="54" rx="5" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="155" y="276">&lt;div class="box"&gt;</text>
+    <rect x="280" y="140" width="90" height="170" rx="6" fill="#fee2e2" stroke="#f87171"/>
+    <text x="325" y="230">&lt;div&gt;</text>
+    <rect x="40" y="320" width="330" height="40" rx="6" fill="#fee2e2" stroke="#f87171"/>
+    <text x="205" y="345">&lt;div class="bottom"&gt;</text>
+  </g>
+  <g font-size="12.5" fill="#991b1b">
+    <text x="30" y="398">• Google และ Screen Reader ไม่รู้ว่าส่วนไหนคือเมนูหรือเนื้อหาหลัก</text>
+    <text x="30" y="420">• อ่านโค้ดยาก ต้องเดาความหมายจากชื่อ class</text>
+  </g>
+
+  <!-- ===== semantic ===== -->
+  <text x="615" y="64" text-anchor="middle" font-size="14" font-weight="bold" fill="#065f46">✔ Semantic HTML5 — แท็กบอกความหมาย</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="13" text-anchor="middle" font-weight="bold">
+    <rect x="435" y="76" width="360" height="300" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <rect x="450" y="90" width="330" height="40" rx="6" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="615" y="115" fill="#1e3a8a">&lt;header&gt; + &lt;nav&gt;</text>
+    <rect x="450" y="140" width="230" height="170" rx="6" fill="#dcfce7" stroke="#10b981"/>
+    <text x="565" y="165" fill="#065f46">&lt;main&gt;</text>
+    <rect x="465" y="180" width="200" height="54" rx="5" fill="#ffffff" stroke="#34d399"/>
+    <text x="565" y="212" fill="#065f46">&lt;section&gt;</text>
+    <rect x="465" y="244" width="200" height="54" rx="5" fill="#ffffff" stroke="#34d399"/>
+    <text x="565" y="276" fill="#065f46">&lt;article&gt;</text>
+    <rect x="690" y="140" width="90" height="170" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="735" y="230" fill="#78350f">&lt;aside&gt;</text>
+    <rect x="450" y="320" width="330" height="40" rx="6" fill="#e2e8f0" stroke="#475569"/>
+    <text x="615" y="345" fill="#0f172a">&lt;footer&gt;</text>
+  </g>
+  <g font-size="12.5" fill="#065f46">
+    <text x="440" y="398">• Google เข้าใจโครงสร้าง จัดอันดับ SEO ได้ดีขึ้น</text>
+    <text x="440" y="420">• Screen Reader กระโดดไปเมนู/เนื้อหาหลักได้ทันที</text>
+  </g>
+</svg>

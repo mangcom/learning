@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="400" viewBox="0 0 820 400" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="820" height="400" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">วงจรการทำงานในหน่วยนี้: VS Code + Docker + Git ไปพร้อมกัน</text>
+
+  <g text-anchor="middle">
+    <!-- row 1 -->
+    <rect x="30" y="60" width="220" height="110" rx="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="140" y="86" font-size="14" font-weight="bold" fill="#9a3412">① Git: แตก Branch</text>
+    <text x="140" y="112" font-family="Consolas, monospace" font-size="12" fill="#7c2d12">git switch -c</text>
+    <text x="140" y="130" font-family="Consolas, monospace" font-size="12" fill="#7c2d12">feature/navbar</text>
+    <text x="140" y="154" font-size="12" fill="#7c2d12">1 งาน = 1 Branch</text>
+
+    <rect x="300" y="60" width="220" height="110" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="410" y="86" font-size="14" font-weight="bold" fill="#1e3a8a">② VS Code: เขียนโค้ด</text>
+    <text x="410" y="112" font-size="12" fill="#1e3a8a">Semantic HTML + Tailwind</text>
+    <text x="410" y="132" font-size="12" fill="#1e3a8a">ส่วนขยาย Tailwind IntelliSense</text>
+    <text x="410" y="152" font-size="12" fill="#1e3a8a">ช่วยเติมชื่อคลาสให้อัตโนมัติ</text>
+
+    <rect x="570" y="60" width="220" height="110" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+    <text x="680" y="86" font-size="14" font-weight="bold" fill="#075985">③ Docker: Hot Reload</text>
+    <text x="680" y="112" font-family="Consolas, monospace" font-size="12" fill="#075985">docker compose up -d</text>
+    <text x="680" y="132" font-size="12" fill="#075985">บันทึกไฟล์ → Container</text>
+    <text x="680" y="152" font-size="12" fill="#075985">สร้างหน้าเว็บใหม่ทันที</text>
+
+    <!-- row 2 -->
+    <rect x="570" y="220" width="220" height="110" rx="10" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+    <text x="680" y="246" font-size="14" font-weight="bold" fill="#065f46">④ เบราว์เซอร์: ทดสอบ</text>
+    <text x="680" y="272" font-size="12" fill="#065f46">F12 → Ctrl+Shift+M</text>
+    <text x="680" y="292" font-size="12" fill="#065f46">ดูแบบมือถือ / แท็บเล็ต / จอใหญ่</text>
+    <text x="680" y="312" font-size="12" fill="#065f46">หรือเปิดจากมือถือจริงผ่าน Wi-Fi</text>
+
+    <rect x="300" y="220" width="220" height="110" rx="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="410" y="246" font-size="14" font-weight="bold" fill="#9a3412">⑤ Git: บันทึกงาน</text>
+    <text x="410" y="272" font-family="Consolas, monospace" font-size="12" fill="#7c2d12">git add .</text>
+    <text x="410" y="292" font-family="Consolas, monospace" font-size="12" fill="#7c2d12">git commit -m "feat: ..."</text>
+    <text x="410" y="314" font-size="12" fill="#7c2d12">Commit ทุกครั้งที่งานย่อยเสร็จ</text>
+
+    <rect x="30" y="220" width="220" height="110" rx="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="140" y="246" font-size="14" font-weight="bold" fill="#9a3412">⑥ Git: รวมและส่งงาน</text>
+    <text x="140" y="272" font-family="Consolas, monospace" font-size="12" fill="#7c2d12">git switch main</text>
+    <text x="140" y="292" font-family="Consolas, monospace" font-size="12" fill="#7c2d12">git merge feature/navbar</text>
+    <text x="140" y="312" font-family="Consolas, monospace" font-size="12" fill="#7c2d12">git push</text>
+  </g>
+
+  <g stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#a)">
+    <line x1="252" y1="115" x2="296" y2="115"/>
+    <line x1="522" y1="115" x2="566" y2="115"/>
+    <line x1="680" y1="172" x2="680" y2="216"/>
+    <line x1="568" y1="275" x2="524" y2="275"/>
+    <line x1="298" y1="275" x2="254" y2="275"/>
+    <path d="M140,218 L140,174"/>
+  </g>
+  <text x="150" y="200" font-size="12" fill="#475569" font-style="italic">งานถัดไป</text>
+  <path d="M592,218 C572,204 540,190 500,174" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="5 4" fill="none" marker-end="url(#a)"/>
+  <text x="410" y="362" text-anchor="middle" font-size="12" fill="#64748b" font-style="italic">เส้นประ: ถ้าผลลัพธ์ยังไม่ถูกใจ ให้ย้อนกลับไปแก้ที่ ② ได้หลายรอบก่อน Commit</text>
+  <text x="410" y="390" text-anchor="middle" font-size="12" fill="#64748b">สีส้ม = Git (บน Windows) · สีน้ำเงิน = VS Code · สีฟ้า = Docker · สีเขียว = เบราว์เซอร์</text>
+</svg>
