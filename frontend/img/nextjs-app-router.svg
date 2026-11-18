@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="500" viewBox="0 0 820 500" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect width="820" height="500" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">App Router: โครงสร้างโฟลเดอร์ใน app/ กลายเป็น URL ของเว็บไซต์</text>
+  <text x="40" y="66" font-size="13" font-weight="bold" fill="#475569">โครงสร้างไฟล์ในโปรเจกต์</text>
+  <text x="440" y="66" font-size="13" font-weight="bold" fill="#475569">ผลลัพธ์ที่ได้</text>
+
+  <rect x="20" y="76" width="360" height="404" rx="10" fill="#0f172a"/>
+
+  <!-- tree guide lines -->
+  <g stroke="#475569" stroke-width="1.5" fill="none">
+    <path d="M48,104 V408"/>
+    <path d="M70,132 V354"/>
+    <path d="M95,234 V247"/><path d="M95,286 V299"/><path d="M95,338 V351"/><path d="M95,390 V403"/>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="14">
+    <text x="36" y="100" fill="#fbbf24">📁 first-nextjs-app/</text>
+    <text x="58" y="126" fill="#fbbf24">📁 app/</text>
+    <text x="82" y="152" fill="#e2e8f0">layout.js</text>
+    <text x="82" y="178" fill="#e2e8f0">page.js</text>
+    <text x="82" y="204" fill="#fbbf24">📁 about/</text>
+    <text x="106" y="230" fill="#e2e8f0">page.js</text>
+    <text x="82" y="256" fill="#fbbf24">📁 contact/</text>
+    <text x="106" y="282" fill="#e2e8f0">page.js</text>
+    <text x="82" y="308" fill="#fbbf24">📁 api/hello/</text>
+    <text x="106" y="334" fill="#e2e8f0">route.js</text>
+    <text x="82" y="360" fill="#fbbf24">📁 components/</text>
+    <text x="106" y="386" fill="#e2e8f0">Counter.js</text>
+    <text x="58" y="412" fill="#fbbf24">📁 public/</text>
+    <text x="58" y="438" fill="#e2e8f0">package.json</text>
+    <text x="58" y="464" fill="#e2e8f0">docker-compose.yml</text>
+  </g>
+
+  <!-- connector arrows -->
+  <g stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#a)">
+    <line x1="175" y1="147" x2="432" y2="147"/>
+    <line x1="160" y1="173" x2="432" y2="173"/>
+    <line x1="180" y1="225" x2="432" y2="225"/>
+    <line x1="180" y1="277" x2="432" y2="277"/>
+    <line x1="190" y1="329" x2="432" y2="329"/>
+    <line x1="205" y1="381" x2="432" y2="381"/>
+    <line x1="150" y1="407" x2="432" y2="407"/>
+    <line x1="175" y1="433" x2="432" y2="433"/>
+    <line x1="230" y1="459" x2="432" y2="459"/>
+  </g>
+
+  <!-- result badges -->
+  <g font-size="12.5">
+    <rect x="436" y="134" width="364" height="26" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="446" y="152" fill="#334155">โครงร่างที่ทุกหน้าใช้ร่วมกัน (&lt;html&gt;, &lt;body&gt;)</text>
+
+    <rect x="436" y="160" width="364" height="26" rx="6" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="446" y="178" fill="#1e3a8a"><tspan font-family="Consolas, monospace" font-weight="bold">/</tspan>  หน้าแรก</text>
+
+    <rect x="436" y="212" width="364" height="26" rx="6" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="446" y="230" fill="#1e3a8a"><tspan font-family="Consolas, monospace" font-weight="bold">/about</tspan>  หน้าเกี่ยวกับฉัน</text>
+
+    <rect x="436" y="264" width="364" height="26" rx="6" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="446" y="282" fill="#1e3a8a"><tspan font-family="Consolas, monospace" font-weight="bold">/contact</tspan>  หน้าติดต่อ</text>
+
+    <rect x="436" y="316" width="364" height="26" rx="6" fill="#dcfce7" stroke="#10b981"/>
+    <text x="446" y="334" fill="#065f46"><tspan font-family="Consolas, monospace" font-weight="bold">/api/hello</tspan>  API ส่งข้อมูล JSON (Backend)</text>
+
+    <rect x="436" y="368" width="364" height="26" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="446" y="386" fill="#78350f">ไม่กลายเป็น URL เพราะไม่มี page.js (เก็บคอมโพเนนต์)</text>
+
+    <rect x="436" y="394" width="364" height="26" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="446" y="412" fill="#334155">ไฟล์รูปภาพ/ไอคอน เรียกใช้ได้ตรง เช่น /next.svg</text>
+
+    <rect x="436" y="420" width="364" height="26" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="446" y="438" fill="#334155">รายชื่อแพ็กเกจ และคำสั่ง npm run dev / build</text>
+
+    <rect x="436" y="446" width="364" height="26" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="446" y="464" fill="#334155">ตั้งค่าให้รันโปรเจกต์ใน Docker (เพิ่มเองในหน่วยนี้)</text>
+  </g>
+</svg>

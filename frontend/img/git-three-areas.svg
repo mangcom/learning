@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="380" viewBox="0 0 820 380" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="o" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ea580c"/>
+    </marker>
+  </defs>
+  <rect width="820" height="380" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">พื้นที่ทำงานของ Git และคำสั่งที่ใช้ย้ายการเปลี่ยนแปลง</text>
+
+  <rect x="15" y="50" width="582" height="285" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="6 5"/>
+  <rect x="612" y="50" width="193" height="285" rx="12" fill="#f0fdf4" stroke="#34d399" stroke-dasharray="6 5"/>
+
+  <!-- boxes -->
+  <g text-anchor="middle">
+    <rect x="30" y="120" width="164" height="95" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+    <text x="112" y="146" font-size="14" font-weight="bold" fill="#713f12">📝 Working Directory</text>
+    <text x="112" y="170" font-size="12.5" fill="#334155">พื้นที่ทำงาน</text>
+    <text x="112" y="190" font-size="12.5" fill="#334155">ไฟล์ที่เรากำลังแก้ไข</text>
+
+    <rect x="225" y="120" width="164" height="95" rx="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="307" y="146" font-size="14" font-weight="bold" fill="#7c2d12">📦 Staging Area</text>
+    <text x="307" y="170" font-size="12.5" fill="#334155">พื้นที่เตรียมบันทึก</text>
+    <text x="307" y="190" font-size="12.5" fill="#334155">เลือกไฟล์ที่จะ Commit</text>
+
+    <rect x="420" y="120" width="164" height="95" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="502" y="146" font-size="14" font-weight="bold" fill="#1e3a8a">🗄 Local Repository</text>
+    <text x="502" y="170" font-size="12.5" fill="#334155">โฟลเดอร์ .git</text>
+    <text x="502" y="190" font-size="12.5" fill="#334155">ประวัติ Commit ในเครื่อง</text>
+
+    <rect x="625" y="120" width="164" height="95" rx="10" fill="#dcfce7" stroke="#059669" stroke-width="2"/>
+    <text x="707" y="146" font-size="14" font-weight="bold" fill="#065f46">☁ Remote Repository</text>
+    <text x="707" y="170" font-size="12.5" fill="#334155">GitHub / GitLab</text>
+    <text x="707" y="190" font-size="12.5" fill="#334155">แชร์งานกับผู้อื่น</text>
+  </g>
+
+  <!-- forward commands -->
+  <g fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#g)">
+    <path d="M112,118 C112,80 307,80 307,116"/>
+    <path d="M307,118 C307,80 502,80 502,116"/>
+    <path d="M502,118 C502,80 707,80 707,116"/>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="14" font-weight="bold" fill="#1d4ed8" text-anchor="middle">
+    <rect x="168" y="70" width="80" height="22" rx="5" fill="#ffffff"/><text x="208" y="86">git add</text>
+    <rect x="355" y="70" width="100" height="22" rx="5" fill="#ffffff"/><text x="405" y="86">git commit</text>
+    <rect x="562" y="70" width="88" height="22" rx="5" fill="#ffffff"/><text x="606" y="86">git push</text>
+  </g>
+
+  <!-- backward commands -->
+  <g fill="none" stroke="#ea580c" stroke-width="2.5" marker-end="url(#o)">
+    <path d="M502,217 C502,262 132,262 132,219"/>
+    <path d="M707,217 C707,318 92,318 92,219"/>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="13.5" font-weight="bold" fill="#c2410c" text-anchor="middle">
+    <rect x="232" y="236" width="196" height="22" rx="5" fill="#f8fafc"/><text x="330" y="252">git switch / git restore</text>
+    <rect x="345" y="282" width="100" height="22" rx="5" fill="#f8fafc"/><text x="395" y="298">git pull</text>
+  </g>
+
+  <g font-size="13" font-weight="bold" text-anchor="middle">
+    <text x="306" y="356" fill="#475569">💻 เครื่องของเรา (Local)</text>
+    <text x="708" y="356" fill="#065f46">🌐 บนอินเทอร์เน็ต</text>
+  </g>
+  <text x="410" y="374" text-anchor="middle" font-size="12" fill="#64748b">ตรวจสอบสถานะได้ตลอดเวลาด้วย git status และดูประวัติด้วย git log</text>
+</svg>

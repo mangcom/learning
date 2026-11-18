@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="410" viewBox="0 0 820 410" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <rect width="820" height="410" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">ระบบควบคุมเวอร์ชันแบบรวมศูนย์ เทียบกับ แบบกระจาย (Git)</text>
+
+  <!-- ================= Centralized ================= -->
+  <rect x="15" y="50" width="385" height="345" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="207" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#991b1b">แบบรวมศูนย์ (Centralized) — CVS, SVN</text>
+
+  <rect x="132" y="92" width="150" height="72" rx="8" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+  <text x="207" y="116" text-anchor="middle" font-size="13" font-weight="bold" fill="#991b1b">🖥 Central Server</text>
+  <text x="207" y="136" text-anchor="middle" font-size="12" fill="#334155">เก็บประวัติทั้งหมด</text>
+  <text x="207" y="153" text-anchor="middle" font-size="12" fill="#334155">ไว้ที่นี่ที่เดียว</text>
+
+  <g stroke="#dc2626" stroke-width="2">
+    <line x1="160" y1="165" x2="85" y2="240"/>
+    <line x1="207" y1="165" x2="207" y2="240"/>
+    <line x1="254" y1="165" x2="329" y2="240"/>
+  </g>
+
+  <g font-size="12" text-anchor="middle">
+    <rect x="30" y="242" width="110" height="62" rx="8" fill="#ffffff" stroke="#f87171"/>
+    <text x="85" y="264" font-weight="bold" fill="#0f172a">💻 นักพัฒนา A</text>
+    <text x="85" y="283" fill="#64748b">มีแค่ไฟล์</text>
+    <text x="85" y="297" fill="#64748b">เวอร์ชันล่าสุด</text>
+    <rect x="152" y="242" width="110" height="62" rx="8" fill="#ffffff" stroke="#f87171"/>
+    <text x="207" y="264" font-weight="bold" fill="#0f172a">💻 นักพัฒนา B</text>
+    <text x="207" y="283" fill="#64748b">มีแค่ไฟล์</text>
+    <text x="207" y="297" fill="#64748b">เวอร์ชันล่าสุด</text>
+    <rect x="274" y="242" width="110" height="62" rx="8" fill="#ffffff" stroke="#f87171"/>
+    <text x="329" y="264" font-weight="bold" fill="#0f172a">💻 นักพัฒนา C</text>
+    <text x="329" y="283" fill="#64748b">มีแค่ไฟล์</text>
+    <text x="329" y="297" fill="#64748b">เวอร์ชันล่าสุด</text>
+  </g>
+
+  <g font-size="12.5" fill="#991b1b">
+    <text x="32" y="338">⚠ Server ล่ม = ทุกคนบันทึกงานและดูประวัติไม่ได้</text>
+    <text x="32" y="360">⚠ ต้องเชื่อมต่อเครือข่ายตลอดเวลาจึงจะบันทึกงานได้</text>
+    <text x="32" y="382">⚠ ถ้าข้อมูลบน Server เสียหาย ประวัติอาจหายทั้งหมด</text>
+  </g>
+
+  <!-- ================= Distributed ================= -->
+  <rect x="420" y="50" width="385" height="345" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="612" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#065f46">แบบกระจาย (Distributed) — Git</text>
+
+  <rect x="522" y="92" width="180" height="72" rx="8" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+  <text x="612" y="116" text-anchor="middle" font-size="13" font-weight="bold" fill="#065f46">☁ GitHub / GitLab (Remote)</text>
+  <text x="612" y="136" text-anchor="middle" font-size="12" fill="#334155">จุดนัดพบสำหรับแลกเปลี่ยนงาน</text>
+  <g fill="#10b981"><circle cx="582" cy="152" r="4"/><circle cx="597" cy="152" r="4"/><circle cx="612" cy="152" r="4"/><circle cx="627" cy="152" r="4"/><circle cx="642" cy="152" r="4"/></g>
+
+  <g stroke="#059669" stroke-width="2">
+    <line x1="560" y1="165" x2="490" y2="240"/>
+    <line x1="612" y1="165" x2="612" y2="240"/>
+    <line x1="664" y1="165" x2="734" y2="240"/>
+  </g>
+  <g font-size="11" fill="#065f46" font-style="italic">
+    <text x="478" y="200">push/pull</text>
+    <text x="618" y="210">push/pull</text>
+    <text x="700" y="200">push/pull</text>
+  </g>
+
+  <g font-size="12" text-anchor="middle">
+    <rect x="435" y="242" width="110" height="62" rx="8" fill="#ffffff" stroke="#34d399"/>
+    <text x="490" y="264" font-weight="bold" fill="#0f172a">💻 นักพัฒนา A</text>
+    <text x="490" y="282" fill="#065f46">ประวัติครบ (.git)</text>
+    <rect x="557" y="242" width="110" height="62" rx="8" fill="#ffffff" stroke="#34d399"/>
+    <text x="612" y="264" font-weight="bold" fill="#0f172a">💻 นักพัฒนา B</text>
+    <text x="612" y="282" fill="#065f46">ประวัติครบ (.git)</text>
+    <rect x="679" y="242" width="110" height="62" rx="8" fill="#ffffff" stroke="#34d399"/>
+    <text x="734" y="264" font-weight="bold" fill="#0f172a">💻 นักพัฒนา C</text>
+    <text x="734" y="282" fill="#065f46">ประวัติครบ (.git)</text>
+  </g>
+  <g fill="#10b981">
+    <circle cx="470" cy="293" r="3.5"/><circle cx="482" cy="293" r="3.5"/><circle cx="494" cy="293" r="3.5"/><circle cx="506" cy="293" r="3.5"/>
+    <circle cx="592" cy="293" r="3.5"/><circle cx="604" cy="293" r="3.5"/><circle cx="616" cy="293" r="3.5"/><circle cx="628" cy="293" r="3.5"/>
+    <circle cx="714" cy="293" r="3.5"/><circle cx="726" cy="293" r="3.5"/><circle cx="738" cy="293" r="3.5"/><circle cx="750" cy="293" r="3.5"/>
+  </g>
+
+  <g font-size="12.5" fill="#065f46">
+    <text x="437" y="338">✔ ทุกเครื่องมีสำเนาประวัติครบ ทำงาน Offline ได้</text>
+    <text x="437" y="360">✔ Commit ในเครื่องได้ทันที แล้วค่อย push ทีหลัง</text>
+    <text x="437" y="382">✔ Server เสีย ก็กู้คืนจากเครื่องใดเครื่องหนึ่งได้</text>
+  </g>
+</svg>

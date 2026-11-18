@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="480" viewBox="0 0 820 480" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="820" height="480" rx="12" fill="#ffffff"/>
+  <text x="410" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">Merge Conflict เกิดขึ้นเมื่อสอง Branch แก้ไขบรรทัดเดียวกัน</text>
+
+  <!-- base -->
+  <rect x="235" y="46" width="350" height="56" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="410" y="66" text-anchor="middle" font-size="12" fill="#475569">Commit ต้นทาง (ทั้งสอง Branch เริ่มจากจุดนี้)</text>
+  <text x="410" y="90" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="13" fill="#0f172a">&lt;h1&gt;สวัสดี! ฉันชื่อ สมชาย ใจดี&lt;/h1&gt;</text>
+
+  <g stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#a)">
+    <path d="M330,104 L215,134"/>
+    <path d="M490,104 L605,134"/>
+  </g>
+
+  <!-- two sides -->
+  <rect x="20" y="136" width="380" height="60" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="210" y="157" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1e3a8a">บน main แก้เป็น</text>
+  <text x="210" y="182" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="13" fill="#1e3a8a">&lt;h1&gt;Hello! I am Somchai&lt;/h1&gt;</text>
+
+  <rect x="420" y="136" width="380" height="60" rx="8" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+  <text x="610" y="157" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#065f46">บน feature/new-title แก้เป็น</text>
+  <text x="610" y="182" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="13" fill="#065f46">&lt;h1&gt;ยินดีต้อนรับสู่เว็บไซต์ของ สมชาย&lt;/h1&gt;</text>
+
+  <g stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#a)">
+    <path d="M210,198 L300,232"/>
+    <path d="M610,198 L520,232"/>
+  </g>
+  <text x="410" y="222" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="13" font-weight="bold" fill="#475569">git merge feature/new-title</text>
+
+  <!-- conflict -->
+  <rect x="60" y="236" width="700" height="150" rx="10" fill="#0f172a"/>
+  <rect x="60" y="236" width="700" height="30" rx="10" fill="#7f1d1d"/>
+  <rect x="60" y="256" width="700" height="10" fill="#7f1d1d"/>
+  <text x="76" y="256" font-size="13" font-weight="bold" fill="#fecaca">⚠ CONFLICT (content): Merge conflict in app/page.js — Git ตัดสินใจเองไม่ได้ว่าจะเอาแบบไหน</text>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="13.5">
+    <text x="80" y="292" fill="#f87171" font-weight="bold">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</text>
+    <text x="80" y="315" fill="#93c5fd">      &lt;h1&gt;Hello! I am Somchai&lt;/h1&gt;</text>
+    <text x="80" y="338" fill="#f87171" font-weight="bold">=======</text>
+    <text x="80" y="361" fill="#86efac">      &lt;h1&gt;ยินดีต้อนรับสู่เว็บไซต์ของ สมชาย&lt;/h1&gt;</text>
+    <text x="80" y="380" fill="#f87171" font-weight="bold">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/new-title</text>
+  </g>
+  <g font-size="12" fill="#cbd5e1">
+    <text x="520" y="292">← เริ่มส่วนของ main (ที่เราอยู่)</text>
+    <text x="520" y="315" fill="#93c5fd">เนื้อหาฝั่ง main</text>
+    <text x="520" y="338">← เส้นแบ่งระหว่างสองฝั่ง</text>
+    <text x="520" y="361" fill="#86efac">เนื้อหาฝั่ง feature</text>
+    <text x="520" y="380">← จบส่วนของ branch ที่นำมารวม</text>
+  </g>
+
+  <!-- resolution steps -->
+  <g font-size="12.5" text-anchor="middle">
+    <rect x="20" y="404" width="300" height="58" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="170" y="427" font-weight="bold" fill="#78350f">1. แก้ไฟล์ให้เหลือเนื้อหาที่ถูกต้อง</text>
+    <text x="170" y="448" fill="#78350f">และลบเครื่องหมาย &lt;&lt;&lt; === &gt;&gt;&gt; ออกให้หมด</text>
+
+    <rect x="345" y="404" width="210" height="58" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="450" y="427" font-weight="bold" fill="#1e3a8a">2. บอก Git ว่าแก้เสร็จแล้ว</text>
+    <text x="450" y="448" font-family="Consolas, monospace" fill="#1e3a8a">git add app/page.js</text>
+
+    <rect x="580" y="404" width="220" height="58" rx="8" fill="#dcfce7" stroke="#10b981"/>
+    <text x="690" y="427" font-weight="bold" fill="#065f46">3. บันทึกผลการ Merge</text>
+    <text x="690" y="448" font-family="Consolas, monospace" fill="#065f46">git commit</text>
+  </g>
+  <g stroke="#64748b" stroke-width="2" marker-end="url(#a)">
+    <line x1="322" y1="433" x2="341" y2="433"/>
+    <line x1="557" y1="433" x2="576" y2="433"/>
+  </g>
+</svg>

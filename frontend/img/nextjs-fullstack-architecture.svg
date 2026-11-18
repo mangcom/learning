@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="450" viewBox="0 0 820 450" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="820" height="450" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">Next.js ทำได้ทั้ง Frontend และ Backend ในโปรเจกต์เดียว</text>
+
+  <!-- Column headers -->
+  <g font-size="14" font-weight="bold" text-anchor="middle">
+    <rect x="20" y="52" width="230" height="30" rx="15" fill="#2563eb"/>
+    <text x="135" y="72" fill="#ffffff">FRONTEND (ฝั่งผู้ใช้)</text>
+    <rect x="300" y="52" width="270" height="30" rx="15" fill="#0f172a"/>
+    <text x="435" y="72" fill="#ffffff">BACKEND (ฝั่งเซิร์ฟเวอร์)</text>
+    <rect x="620" y="52" width="180" height="30" rx="15" fill="#10b981"/>
+    <text x="710" y="72" fill="#ffffff">แหล่งข้อมูล</text>
+  </g>
+
+  <!-- Browser -->
+  <rect x="20" y="95" width="230" height="270" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="135" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a8a">🌐 เบราว์เซอร์</text>
+  <g font-size="12.5" fill="#1e3a8a">
+    <rect x="35" y="135" width="200" height="96" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="45" y="156" font-weight="bold">Client Components</text>
+    <text x="45" y="176">ประกาศ "use client"</text>
+    <text x="45" y="194">ใช้ useState, onClick</text>
+    <text x="45" y="212">โต้ตอบกับผู้ใช้ได้ทันที</text>
+
+    <rect x="35" y="243" width="200" height="106" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="45" y="264" font-weight="bold">สิ่งที่เบราว์เซอร์ได้รับ</text>
+    <text x="45" y="284">• HTML ที่สร้างเสร็จแล้ว</text>
+    <text x="45" y="302">• JavaScript เท่าที่จำเป็น</text>
+    <text x="45" y="320">• ข้อมูล JSON จาก API</text>
+  </g>
+
+  <!-- Next.js server -->
+  <rect x="300" y="95" width="270" height="270" rx="10" fill="#f1f5f9" stroke="#0f172a" stroke-width="2"/>
+  <text x="435" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#0f172a">▲ Next.js Server</text>
+  <g font-size="12.5" fill="#0f172a">
+    <rect x="315" y="133" width="240" height="70" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="325" y="154" font-weight="bold">Server Components (ค่าเริ่มต้น)</text>
+    <text x="325" y="174">app/page.js — สร้าง HTML</text>
+    <text x="325" y="192">ดึงข้อมูลจากฐานข้อมูลได้โดยตรง</text>
+
+    <rect x="315" y="211" width="240" height="70" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="325" y="232" font-weight="bold">Route Handlers (สร้าง API)</text>
+    <text x="325" y="252">app/api/hello/route.js</text>
+    <text x="325" y="270">ตอบกลับเป็น JSON</text>
+
+    <rect x="315" y="289" width="240" height="62" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="325" y="310" font-weight="bold">Server Actions</text>
+    <text x="325" y="330">ฟังก์ชัน "use server" รับข้อมูลฟอร์ม</text>
+  </g>
+
+  <!-- Data sources -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="620" y="125" width="180" height="108" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <ellipse cx="710" cy="146" rx="26" ry="8" fill="#a7f3d0" stroke="#059669"/>
+    <path d="M684,146 v22 a26,8 0 0 0 52,0 v-22" fill="#a7f3d0" stroke="#059669"/>
+    <text x="710" y="198" font-weight="bold" fill="#065f46">ฐานข้อมูล</text>
+    <text x="710" y="219" font-size="11.5" fill="#065f46">MySQL / MongoDB</text>
+
+    <rect x="620" y="255" width="180" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="710" y="292" font-weight="bold" fill="#065f46">☁ External API</text>
+    <text x="710" y="314" font-size="11.5" fill="#065f46">บริการภายนอก</text>
+    <text x="710" y="332" font-size="11.5" fill="#065f46">เช่น ระบบชำระเงิน</text>
+  </g>
+
+  <!-- Arrows browser <-> server -->
+  <g stroke="#475569" stroke-width="2" marker-end="url(#a)">
+    <line x1="252" y1="170" x2="296" y2="170"/>
+    <line x1="298" y1="290" x2="254" y2="290"/>
+    <line x1="572" y1="168" x2="616" y2="168"/>
+    <line x1="572" y1="246" x2="616" y2="290"/>
+  </g>
+  <g font-size="11" fill="#475569" text-anchor="middle">
+    <text x="274" y="160">Request</text>
+    <text x="276" y="308">HTML</text>
+    <text x="276" y="322">JSON</text>
+    <text x="594" y="158">Query</text>
+  </g>
+
+  <rect x="20" y="385" width="780" height="46" rx="10" fill="#0f172a"/>
+  <text x="410" y="414" text-anchor="middle" font-size="14" fill="#ffffff">Full-stack Framework: เขียนหน้าเว็บ (React) และ API ได้ในโปรเจกต์เดียว ภาษาเดียว (JavaScript/TypeScript)</text>
+</svg>

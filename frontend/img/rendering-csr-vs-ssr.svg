@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="430" viewBox="0 0 820 430" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="820" height="430" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">เปรียบเทียบการสร้างหน้าเว็บ: CSR (React ทั่วไป) กับ SSR (Next.js)</text>
+
+  <!-- ===== CSR ===== -->
+  <rect x="20" y="52" width="780" height="168" rx="10" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="36" y="76" font-size="15" font-weight="bold" fill="#9a3412">CSR — Client-Side Rendering (สร้างหน้าเว็บที่เบราว์เซอร์)</text>
+  <g font-size="12.5" fill="#334155" text-anchor="middle">
+    <rect x="36" y="90" width="170" height="78" rx="8" fill="#ffffff" stroke="#fb923c"/>
+    <text x="121" y="116" font-weight="bold">1. ร้องขอหน้าเว็บ</text>
+    <text x="121" y="136">เบราว์เซอร์ส่ง Request</text>
+    <text x="121" y="154">ไปที่เซิร์ฟเวอร์</text>
+
+    <rect x="232" y="90" width="170" height="78" rx="8" fill="#ffffff" stroke="#fb923c"/>
+    <text x="317" y="116" font-weight="bold">2. ได้ HTML ว่างเปล่า</text>
+    <text x="317" y="136">มีแค่ &lt;div id="root"&gt;</text>
+    <text x="317" y="154">+ ไฟล์ JS ขนาดใหญ่</text>
+
+    <rect x="428" y="90" width="170" height="78" rx="8" fill="#ffffff" stroke="#fb923c"/>
+    <text x="513" y="116" font-weight="bold">3. ดาวน์โหลดและรัน JS</text>
+    <text x="513" y="136">ผู้ใช้เห็นหน้าว่าง</text>
+    <text x="513" y="154">หรือ Loading... ระหว่างรอ</text>
+
+    <rect x="624" y="90" width="160" height="78" rx="8" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+    <text x="704" y="116" font-weight="bold">4. แสดงเนื้อหา</text>
+    <text x="704" y="136">JS สร้างหน้าเว็บ</text>
+    <text x="704" y="154">ขึ้นมาทีหลัง</text>
+  </g>
+  <g stroke="#64748b" stroke-width="2" marker-end="url(#a)">
+    <line x1="207" y1="129" x2="229" y2="129"/>
+    <line x1="403" y1="129" x2="425" y2="129"/>
+    <line x1="599" y1="129" x2="621" y2="129"/>
+  </g>
+  <text x="36" y="200" font-size="13" fill="#9a3412">⚠ เห็นเนื้อหาช้าในการโหลดครั้งแรก และ Search Engine อาจเห็นเพียง HTML ว่าง ทำให้ SEO ไม่ดี</text>
+
+  <!-- ===== SSR ===== -->
+  <rect x="20" y="238" width="780" height="168" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="36" y="262" font-size="15" font-weight="bold" fill="#065f46">SSR — Server-Side Rendering (สร้างหน้าเว็บที่เซิร์ฟเวอร์ — ความสามารถของ Next.js)</text>
+  <g font-size="12.5" fill="#334155" text-anchor="middle">
+    <rect x="36" y="276" width="170" height="78" rx="8" fill="#ffffff" stroke="#34d399"/>
+    <text x="121" y="302" font-weight="bold">1. ร้องขอหน้าเว็บ</text>
+    <text x="121" y="322">เบราว์เซอร์ส่ง Request</text>
+    <text x="121" y="340">ไปที่เซิร์ฟเวอร์</text>
+
+    <rect x="232" y="276" width="170" height="78" rx="8" fill="#ffffff" stroke="#34d399"/>
+    <text x="317" y="302" font-weight="bold">2. เซิร์ฟเวอร์สร้าง HTML</text>
+    <text x="317" y="322">รัน React บนเซิร์ฟเวอร์</text>
+    <text x="317" y="340">ได้ HTML ที่มีเนื้อหาครบ</text>
+
+    <rect x="428" y="276" width="170" height="78" rx="8" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+    <text x="513" y="302" font-weight="bold">3. แสดงเนื้อหาทันที</text>
+    <text x="513" y="322">ผู้ใช้เห็นข้อมูลได้เร็ว</text>
+    <text x="513" y="340">ตั้งแต่ได้รับ HTML</text>
+
+    <rect x="624" y="276" width="160" height="78" rx="8" fill="#ffffff" stroke="#34d399"/>
+    <text x="704" y="302" font-weight="bold">4. Hydration</text>
+    <text x="704" y="322">JS ทำงานตามมา</text>
+    <text x="704" y="340">ปุ่มต่าง ๆ กดใช้งานได้</text>
+  </g>
+  <g stroke="#64748b" stroke-width="2" marker-end="url(#a)">
+    <line x1="207" y1="315" x2="229" y2="315"/>
+    <line x1="403" y1="315" x2="425" y2="315"/>
+    <line x1="599" y1="315" x2="621" y2="315"/>
+  </g>
+  <text x="36" y="386" font-size="13" fill="#065f46">✔ เห็นเนื้อหาเร็วตั้งแต่ครั้งแรก และ Search Engine อ่านเนื้อหาได้ครบ ทำให้ SEO ดี</text>
+</svg>

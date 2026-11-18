@@ -60,7 +60,7 @@ $active_nav = "frontend"; // เปิดสถานะเมนูที่ว
                             <span class="unit-badge" style="background:#f1f5f9; padding:3px 10px; border-radius:15px; font-size:0.8rem; font-weight:700;">หน่วยที่ 1</span>
                             <span style="font-size:0.8rem; color:#64748b; margin-left:10px; font-weight:600;">สัปดาห์ที่ 1 (5 ชม.)</span>
                             <h4 style="margin:8px 0 5px 0; color:#0f172a;">สถาปัตยกรรม Front-End ยุคใหม่ด้วย Next.js และการควบคุมเวอร์ชันด้วย Git</h4>
-                            <p style="font-size:0.85rem; color:#475569; margin:0;">ภาพรวมสถาปัตยกรรม Front-End สมัยใหม่ เหตุผลที่เลือก Next.js ติดตั้งเครื่องมือ สร้างโปรเจกต์แรกด้วย create-next-app และฝึก Git ตั้งแต่วันแรก</p>
+                            <p style="font-size:0.85rem; color:#475569; margin:0;">ประวัติและจุดเด่นของ React, Next.js และ Git เทคโนโลยี Front-End ที่เกี่ยวข้อง สร้างโปรเจกต์ Next.js (Frontend + Backend) ที่รันใน Docker และฝึก Git ตั้งแต่ Commit, Branch, Merge จนถึงการแก้ Conflict</p>
                         </div>
                         <a href="unit1.php" class="btn-enter-unit" style="width:auto; white-space:nowrap; margin-left:20px;">ดูเนื้อหา ➔</a>
                     </div>

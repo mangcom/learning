@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="390" viewBox="0 0 820 390" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <defs>
+    <marker id="d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="820" height="390" rx="12" fill="#ffffff"/>
+  <text x="410" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">การแตก Branch และการ Merge สองรูปแบบ</text>
+
+  <!-- ================= Fast-forward ================= -->
+  <rect x="15" y="50" width="385" height="275" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="207" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#0f172a">① Fast-forward Merge</text>
+
+  <line x1="50" y1="150" x2="140" y2="150" stroke="#2563eb" stroke-width="4"/>
+  <path d="M140,150 C180,150 180,225 220,225" fill="none" stroke="#10b981" stroke-width="4"/>
+  <line x1="220" y1="225" x2="320" y2="225" stroke="#10b981" stroke-width="4"/>
+
+  <g font-size="12" font-weight="bold" text-anchor="middle" fill="#ffffff">
+    <circle cx="60" cy="150" r="16" fill="#2563eb"/><text x="60" y="155">C1</text>
+    <circle cx="140" cy="150" r="16" fill="#2563eb"/><text x="140" y="155">C2</text>
+    <circle cx="230" cy="225" r="16" fill="#10b981"/><text x="230" y="230">C3</text>
+    <circle cx="310" cy="225" r="16" fill="#10b981"/><text x="310" y="230">C4</text>
+  </g>
+
+  <g font-size="11.5" font-weight="bold" text-anchor="middle">
+    <rect x="100" y="96" width="80" height="22" rx="11" fill="#e2e8f0"/>
+    <text x="140" y="111" fill="#64748b">main (เดิม)</text>
+    <rect x="246" y="170" width="128" height="22" rx="11" fill="#2563eb"/>
+    <text x="310" y="185" fill="#ffffff">main (หลัง merge)</text>
+    <rect x="252" y="252" width="116" height="22" rx="11" fill="#10b981"/>
+    <text x="310" y="267" fill="#ffffff">feature/contact</text>
+  </g>
+  <path d="M182,107 C240,107 290,130 306,166" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#d)"/>
+
+  <g font-size="12" fill="#334155">
+    <text x="30" y="296">main ไม่มี Commit ใหม่ระหว่างที่แยกไปทำงาน</text>
+    <text x="30" y="314">Git จึงแค่ "เลื่อนตัวชี้ main" ไปข้างหน้า ไม่สร้าง Commit ใหม่</text>
+  </g>
+
+  <!-- ================= Merge commit ================= -->
+  <rect x="420" y="50" width="385" height="275" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="612" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#0f172a">② Merge Commit (3-way Merge)</text>
+
+  <line x1="455" y1="150" x2="770" y2="150" stroke="#2563eb" stroke-width="4"/>
+  <path d="M530,150 C565,150 565,225 600,225" fill="none" stroke="#10b981" stroke-width="4"/>
+  <line x1="600" y1="225" x2="690" y2="225" stroke="#10b981" stroke-width="4"/>
+  <path d="M690,225 C730,225 735,150 765,150" fill="none" stroke="#10b981" stroke-width="4" stroke-dasharray="7 5"/>
+
+  <g font-size="12" font-weight="bold" text-anchor="middle" fill="#ffffff">
+    <circle cx="465" cy="150" r="16" fill="#2563eb"/><text x="465" y="155">C1</text>
+    <circle cx="530" cy="150" r="16" fill="#2563eb"/><text x="530" y="155">C2</text>
+    <circle cx="650" cy="150" r="16" fill="#2563eb"/><text x="650" y="155">C5</text>
+    <circle cx="610" cy="225" r="16" fill="#10b981"/><text x="610" y="230">C3</text>
+    <circle cx="690" cy="225" r="16" fill="#10b981"/><text x="690" y="230">C4</text>
+    <circle cx="770" cy="150" r="19" fill="#7c3aed" stroke="#ddd6fe" stroke-width="3"/><text x="770" y="155">M</text>
+  </g>
+
+  <g font-size="11.5" font-weight="bold" text-anchor="middle">
+    <rect x="738" y="96" width="64" height="22" rx="11" fill="#2563eb"/>
+    <text x="770" y="111" fill="#ffffff">main</text>
+    <rect x="628" y="252" width="124" height="22" rx="11" fill="#10b981"/>
+    <text x="690" y="267" fill="#ffffff">feature/new-title</text>
+    <text x="774" y="192" fill="#7c3aed">Merge</text>
+    <text x="774" y="207" fill="#7c3aed">Commit</text>
+  </g>
+
+  <g font-size="12" fill="#334155">
+    <text x="435" y="296">ทั้ง main (C5) และ feature (C3, C4) ต่างมี Commit ใหม่</text>
+    <text x="435" y="314">Git รวมสองสายเข้าด้วยกันโดยสร้าง Merge Commit (M)</text>
+  </g>
+
+  <rect x="15" y="337" width="790" height="42" rx="8" fill="#0f172a"/>
+  <text x="410" y="363" text-anchor="middle" font-size="13" fill="#e2e8f0"><tspan font-family="Consolas, monospace" fill="#93c5fd">git switch -c &lt;branch&gt;</tspan> แตก Branch   ·   <tspan font-family="Consolas, monospace" fill="#93c5fd">git switch main</tspan> กลับ main   ·   <tspan font-family="Consolas, monospace" fill="#93c5fd">git merge &lt;branch&gt;</tspan> รวมเข้า main</text>
+</svg>

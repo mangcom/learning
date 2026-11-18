@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="Tahoma, 'Leelawadee UI', 'Noto Sans Thai', Sarabun, sans-serif">
+  <rect width="800" height="330" rx="12" fill="#ffffff"/>
+  <text x="400" y="34" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a">วิวัฒนาการของเทคโนโลยี Front-End และเครื่องมือที่เกี่ยวข้อง</text>
+
+  <line x1="30" y1="165" x2="770" y2="165" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+
+  <g font-size="12" text-anchor="middle">
+    <!-- 1991 HTML (up) -->
+    <line x1="60" y1="165" x2="60" y2="118" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="60" cy="165" r="8" fill="#2563eb"/>
+    <text x="60" y="94" font-weight="bold" font-size="14" fill="#0f172a">1991</text>
+    <text x="60" y="111" fill="#334155">HTML</text>
+
+    <!-- 1995 JavaScript (down) -->
+    <line x1="116" y1="165" x2="116" y2="205" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="116" cy="165" r="8" fill="#f59e0b"/>
+    <text x="116" y="224" font-weight="bold" font-size="14" fill="#0f172a">1995</text>
+    <text x="116" y="241" fill="#334155">JavaScript</text>
+
+    <!-- 1996 CSS (up) -->
+    <line x1="172" y1="165" x2="172" y2="118" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="172" cy="165" r="8" fill="#2563eb"/>
+    <text x="172" y="94" font-weight="bold" font-size="14" fill="#0f172a">1996</text>
+    <text x="172" y="111" fill="#334155">CSS</text>
+
+    <!-- 2005 Git + AJAX (down) -->
+    <line x1="228" y1="165" x2="228" y2="205" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="228" cy="165" r="8" fill="#10b981"/>
+    <text x="228" y="224" font-weight="bold" font-size="14" fill="#0f172a">2005</text>
+    <text x="228" y="241" fill="#334155">Git, AJAX</text>
+
+    <!-- 2006 jQuery (up) -->
+    <line x1="284" y1="165" x2="284" y2="118" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="284" cy="165" r="8" fill="#f59e0b"/>
+    <text x="284" y="94" font-weight="bold" font-size="14" fill="#0f172a">2006</text>
+    <text x="284" y="111" fill="#334155">jQuery</text>
+
+    <!-- 2008 GitHub (down) -->
+    <line x1="340" y1="165" x2="340" y2="205" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="340" cy="165" r="8" fill="#10b981"/>
+    <text x="340" y="224" font-weight="bold" font-size="14" fill="#0f172a">2008</text>
+    <text x="340" y="241" fill="#334155">GitHub</text>
+
+    <!-- 2009 Node.js (up) -->
+    <line x1="396" y1="165" x2="396" y2="118" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="396" cy="165" r="8" fill="#10b981"/>
+    <text x="396" y="94" font-weight="bold" font-size="14" fill="#0f172a">2009</text>
+    <text x="396" y="111" fill="#334155">Node.js</text>
+
+    <!-- 2010 AngularJS (down) -->
+    <line x1="452" y1="165" x2="452" y2="205" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="452" cy="165" r="8" fill="#f59e0b"/>
+    <text x="452" y="224" font-weight="bold" font-size="14" fill="#0f172a">2010</text>
+    <text x="452" y="241" fill="#334155">AngularJS</text>
+
+    <!-- 2013 React (up) -->
+    <line x1="508" y1="165" x2="508" y2="118" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="508" cy="165" r="10" fill="#0ea5e9"/>
+    <text x="508" y="94" font-weight="bold" font-size="14" fill="#0f172a">2013</text>
+    <text x="508" y="111" fill="#0369a1" font-weight="bold">React</text>
+
+    <!-- 2014 Vue.js (down) -->
+    <line x1="564" y1="165" x2="564" y2="205" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="564" cy="165" r="8" fill="#f59e0b"/>
+    <text x="564" y="224" font-weight="bold" font-size="14" fill="#0f172a">2014</text>
+    <text x="564" y="241" fill="#334155">Vue.js</text>
+
+    <!-- 2016 Next.js (up) -->
+    <line x1="620" y1="165" x2="620" y2="118" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="620" cy="165" r="10" fill="#0f172a"/>
+    <text x="620" y="94" font-weight="bold" font-size="14" fill="#0f172a">2016</text>
+    <text x="620" y="111" fill="#0f172a" font-weight="bold">Next.js</text>
+
+    <!-- 2023 App Router (down) -->
+    <line x1="676" y1="165" x2="676" y2="205" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="676" cy="165" r="8" fill="#0f172a"/>
+    <text x="676" y="224" font-weight="bold" font-size="14" fill="#0f172a">2023</text>
+    <text x="676" y="241" fill="#334155">App Router</text>
+
+    <!-- 2025 Next.js 16 (up) -->
+    <line x1="732" y1="165" x2="732" y2="118" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="732" cy="165" r="8" fill="#0f172a"/>
+    <text x="732" y="94" font-weight="bold" font-size="14" fill="#0f172a">2025</text>
+    <text x="732" y="111" fill="#334155">Next.js 16</text>
+  </g>
+
+  <g font-size="12" fill="#334155">
+    <circle cx="70" cy="292" r="7" fill="#2563eb"/><text x="83" y="296">ภาษาพื้นฐานของเว็บ</text>
+    <circle cx="225" cy="292" r="7" fill="#f59e0b"/><text x="238" y="296">ไลบรารี/เฟรมเวิร์ก JavaScript</text>
+    <circle cx="420" cy="292" r="7" fill="#10b981"/><text x="433" y="296">เครื่องมือของนักพัฒนา</text>
+    <circle cx="580" cy="292" r="7" fill="#0ea5e9"/><text x="593" y="296">React</text>
+    <circle cx="655" cy="292" r="7" fill="#0f172a"/><text x="668" y="296">Next.js</text>
+  </g>
+</svg>
